@@ -1,6 +1,9 @@
 Feature: Home Page links Redirects Successfully
 
-@alreadyLoggedIn
+Background: I am login and navigate to my details page 
+	Given login application URL 
+	Then Navigate to mydetails page 
+	
 @SanityTest
 Scenario: Check Links
 

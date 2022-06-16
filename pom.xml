@@ -57,13 +57,6 @@
 			<version>3.141.59</version>
 		</dependency>
 
-		<!-- https://mvnrepository.com/artifact/net.masterthought/cucumber-reporting -->
-		<!-- <dependency>
-			<groupId>net.masterthought</groupId>
-			<artifactId>cucumber-reporting</artifactId>
-			<version>5.6.1</version>
-		</dependency>-->
-
 		<!-- https://mvnrepository.com/artifact/net.masterthought/maven-cucumber-reporting -->
 		<dependency>
 			<groupId>net.masterthought</groupId>
@@ -112,6 +105,7 @@
 					<executable>C:\Program Files\Java\jdk1.8.0_181\bin\javac.exe</executable>
 				</configuration>
 			</plugin>
+			
 			<plugin>
 				<groupId>net.masterthought</groupId>
 				<artifactId>maven-cucumber-reporting</artifactId>

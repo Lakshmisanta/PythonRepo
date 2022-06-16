@@ -1,3 +1,4 @@
+//This class only for understanding, not in use
 package stepDefinitions;
 
 import java.net.URL;
