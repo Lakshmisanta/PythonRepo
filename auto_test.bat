@@ -1,0 +1,1 @@
+START cmd /k "cd D:\Automation_Project\Inside_UCL && mvn clean test verify"
