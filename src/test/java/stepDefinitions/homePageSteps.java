@@ -6,7 +6,6 @@ import org.openqa.selenium.WebDriver;
 import PageMethods.commonMethods;
 import PageMethods.homePageMethod;
 import PageMethods.loginLogoutPage;
-import io.cucumber.java.Before;
 import io.cucumber.java.en.*;
 
 public class homePageSteps {

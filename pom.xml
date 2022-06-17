@@ -6,9 +6,6 @@
 	<artifactId>Inside_UCL</artifactId>
 	<version>0.0.1-SNAPSHOT</version>
 
-	<!--<name>Inside_UCL</name>-->
-	<!-- FIXME change it to the project's website -->
-	<!--<url>http://www.example.com</url>-->
 
 	<properties>
 		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
@@ -31,7 +28,8 @@
 			<artifactId>cucumber-java</artifactId>
 			<version>7.0.0</version>
 		</dependency>
-		
+	
+		<!--	
 		<dependency>
 			<groupId>info.cukes</groupId>
 			<artifactId>cucumber-java</artifactId>
@@ -49,6 +47,8 @@
 				</exclusion>
 			</exclusions>
 		</dependency>
+		
+		-->
 
 		<!-- https://mvnrepository.com/artifact/org.seleniumhq.selenium/selenium-java -->
 		<dependency>

@@ -50,12 +50,6 @@ public class homePageMethod extends commonMethods {
 	}
 
 	public void loginToApp() throws InterruptedException {
-
-		//System.out.println(date.getCurrentMonthPlus(2));
-		//System.out.println(date.getCurrentDay());
-		//System.out.println(date.getCurrentMonth());
-		//System.out.println(date.getCurrentDayPlus(2));
-		//System.out.println(date.getCurrentMonthPlus(2));
 		
 		explicitWait(txt_Username, "visibilityOf", 40);
 		enterText(txt_Username, globalvariables.Username);
