@@ -26,6 +26,7 @@ import org.openqa.selenium.firefox.FirefoxDriver;
 import org.openqa.selenium.ie.InternetExplorerDriver;
 import org.openqa.selenium.interactions.Actions;
 import org.openqa.selenium.remote.DesiredCapabilities;
+import org.openqa.selenium.remote.RemoteWebDriver;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
 import org.openqa.selenium.support.ui.ExpectedConditions;
@@ -35,39 +36,47 @@ import org.testng.annotations.Optional;
 
 import Enums.Browsers;
 import Enums.OS;
+import stepDefinitions.Runner;
 import utilities.cucumberLogs;
 import utilities.globalvariables;
 
 public class commonMethods {
 
 	public static WebDriver driver;
-	// boolean isElementFound = false;
-	// String filePath;
 
-	public void launchBrowser() throws InterruptedException {
-		String browserName = globalvariables.BrowserName;
 
-		if (browserName.contains("Chrome")) {
+	public void launchBrowser(boolean cross_browser) throws InterruptedException {
+		
+		if (cross_browser = false) {
+			String browserName = globalvariables.BrowserName;
+			if (browserName.contains("Chrome")) {
 
-			ChromeOptions chromeOptions = new ChromeOptions();
-			chromeOptions.addArguments("--incognito");
-			DesiredCapabilities capabilities = DesiredCapabilities.chrome();
-			capabilities.setCapability(ChromeOptions.CAPABILITY, chromeOptions);
-			System.setProperty("webdriver.chrome.driver", globalvariables.CHROME_DRIVER_PATH);
-			driver = new ChromeDriver(chromeOptions);
-			driver.manage().window().maximize();
-			driver.manage().timeouts().implicitlyWait(30, TimeUnit.SECONDS);
-			navigate_to_URL();
+				ChromeOptions chromeOptions = new ChromeOptions();
+				chromeOptions.addArguments("--incognito");
+				DesiredCapabilities capabilities = DesiredCapabilities.chrome();
+				capabilities.setCapability(ChromeOptions.CAPABILITY, chromeOptions);
+				System.setProperty("webdriver.chrome.driver", globalvariables.CHROME_DRIVER_PATH);
+				driver = new ChromeDriver(chromeOptions);
+				driver.manage().window().maximize();
+				driver.manage().timeouts().implicitlyWait(30, TimeUnit.SECONDS);
+				navigate_to_URL();
 
-		} else if (browserName.contains("FireFox")) {
+			} else if (browserName.contains("FireFox")) {
 
-			System.setProperty("webdriver.gecko.driver", globalvariables.Firefox_DRIVER_PATH);
-			driver = new FirefoxDriver();
+				System.setProperty("webdriver.gecko.driver", globalvariables.Firefox_DRIVER_PATH);
+				driver = new FirefoxDriver();
 
-		} else if (browserName.contains("internet explorer")) {
-			System.setProperty("webdriver.ie.driver", globalvariables.IE_DRIVER_PATH);
-			driver = new InternetExplorerDriver();
+			} else if (browserName.contains("internet explorer")) {
+				System.setProperty("webdriver.ie.driver", globalvariables.IE_DRIVER_PATH);
+				driver = new InternetExplorerDriver();
+			}
 		}
+		else {
+			
+			driver = Runner.connection; 
+		}
+		
+		
 	}
 
 	public static void navigate_to_URL() throws InterruptedException {

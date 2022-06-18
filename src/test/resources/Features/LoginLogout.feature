@@ -1,6 +1,6 @@
 Feature: Login and logout Functionality
 
-@RegressionTest 
+@RegressionTest
 Scenario Outline: Login and logout Inside UCL application
 
 Given I should navigate to Inside UCL app <URL>
@@ -15,5 +15,3 @@ Then I should see Welcome to Inside UCL
 Examples:
 | URL | Username | Password |
 | https://app-uat.ucl.ac.uk/InsideUCL/Home | ccaessw@ucl.ac.uk | BenNevis!234567 |
-
-
