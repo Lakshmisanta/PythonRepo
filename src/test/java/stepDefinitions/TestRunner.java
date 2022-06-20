@@ -26,13 +26,11 @@ public class TestRunner extends AbstractTestNGCucumberTests {
 	@BeforeTest
 	public void setup() throws InterruptedException {
 		System.out.println("Inside Set up method ");
-
 		System.out.println("---------------------------------------------");
 		objCommonMethods= new commonMethods();
 		objCommonMethods.launchBrowser();
 
 	}
-
 
 	@AfterTest
 	public void tearDown(Scenario scenario) throws IOException {
