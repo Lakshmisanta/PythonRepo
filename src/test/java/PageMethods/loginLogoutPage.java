@@ -46,8 +46,9 @@ public class loginLogoutPage extends commonMethods {
 	}
 
 	public void loginpage() throws InterruptedException {
-
-		commonMethods.sleepWait(50);
+		
+		System.out.println("Inside login page method");
+		commonMethods.sleepWait(30);
 		String ActualValue = commonMethods.getPageTittle();
 		System.out.println(commonMethods.getPageTittle());
 		String ExpectedValue = "Sign in to your account";

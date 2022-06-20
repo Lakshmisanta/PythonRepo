@@ -20,9 +20,8 @@ import io.cucumber.testng.FeatureWrapper;
 import io.cucumber.testng.PickleWrapper;
 import io.cucumber.testng.TestNGCucumberRunner;
 
-@CucumberOptions(features = "src/test/resources/Features", glue = { "stepDefinitions" },
-
-		plugin = "json:target/cucumber-reports/CucumberTestReport.json")
+@CucumberOptions(tags = "@RegressionTest", features = "src/test/resources/Features", glue = {
+		"stepDefinitions" }, plugin = "json:target/cucumber-reports/CucumberTestReport.json")
 
 public class Runner extends AbstractTestNGCucumberTests {
 
@@ -34,7 +33,10 @@ public class Runner extends AbstractTestNGCucumberTests {
 	@BeforeMethod(alwaysRun = true)
 	@Parameters({ "browser", "version", "platform", "crossbrowser" })
 	public void setUpClass(String browser, String version, String platform, boolean crossbrowser) throws Exception {
+
 		if (crossbrowser = true) {
+
+			System.out.println("BeforeMethod execution start");
 			String username = System.getenv("LT_USERNAME") == null ? "YOUR LT_USERNAME" : System.getenv("LT_USERNAME");
 			String accesskey = System.getenv("LT_ACCESS_KEY") == null ? "YOUR LT_ACCESS_KEY"
 					: System.getenv("LT_ACCESS_KEY");
@@ -44,7 +46,7 @@ public class Runner extends AbstractTestNGCucumberTests {
 			capability.setCapability(CapabilityType.VERSION, version);
 			capability.setCapability(CapabilityType.PLATFORM, platform);
 
-			capability.setCapability("build", "Cucumber Sample Build");
+			capability.setCapability("build", "Inside UCL Build");
 
 			capability.setCapability("network", true);
 			capability.setCapability("video", true);
@@ -57,29 +59,29 @@ public class Runner extends AbstractTestNGCucumberTests {
 			System.out.println(capability);
 			System.out.println(connection.getSessionId());
 		} else {
-
 			objCommonMethods = new commonMethods();
 			objCommonMethods.launchBrowser(crossbrowser);
 		}
-
 	}
 
-	//groups = "cucumber", description = "Runs Cucumber Feature",
-	@Test( dataProvider = "scenarios")
-	public void scenario(PickleWrapper pickle, FeatureWrapper cucumberFeature) {
-		testNGCucumberRunner.runScenario(pickle.getPickle());
+	//(groups = "cucumber", description = "Runs Cucumber Feature", dataProvider = "features")
+	@Test
+	public void feature(PickleWrapper Pickle , FeatureWrapper cucumberFeature) {
+		testNGCucumberRunner.runScenario(Pickle.getPickle());
 	}
 
-	@DataProvider
+	@DataProvider(parallel = true)
 	public Object[][] scenarios() {
-		return testNGCucumberRunner.provideScenarios();
-		///Object[][] scenarios = super.scenarios();
-		//return scenarios;
+		 //return testNGCucumberRunner.provideScenarios();
+		Object[][] scenarios = super.scenarios();
+		return scenarios;
 	}
 
-	/*
-	 * @AfterClass(alwaysRun = true) public void tearDownClass() {
-	 * testNGCucumberRunner.finish(); }
-	 */
+	
+
+	@AfterClass(alwaysRun = true)
+	public void tearDownClass() {
+		testNGCucumberRunner.finish();
+	}
 
 }
