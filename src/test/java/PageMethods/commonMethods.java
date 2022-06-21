@@ -48,9 +48,7 @@ public class commonMethods {
 	public static WebDriver driver;
 
 
-	public void launchBrowser(boolean cross_browser) throws InterruptedException, MalformedURLException {
-
-		if (cross_browser = false) {
+	public void launchBrowser() throws InterruptedException, MalformedURLException {
 
 			String browserName = globalvariables.BrowserName;
 			if (browserName.contains("Chrome")) {
@@ -74,14 +72,6 @@ public class commonMethods {
 				System.setProperty("webdriver.ie.driver", globalvariables.IE_DRIVER_PATH);
 				driver = new InternetExplorerDriver();
 			}
-
-		} else
-
-		{
-
-			driver = Runner.connection;
-		}
-
 	}
 
 	public static void navigate_to_URL() throws InterruptedException {
