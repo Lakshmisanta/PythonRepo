@@ -46,12 +46,29 @@ public class loginLogoutPage extends commonMethods {
 	}
 
 	public void loginpage() throws InterruptedException {
-
-		commonMethods.sleepWait(8);
+		
+		System.out.println("Inside login page method");
+		commonMethods.sleepWait(30);
 		String ActualValue = commonMethods.getPageTittle();
+		System.out.println(commonMethods.getPageTittle());
 		String ExpectedValue = "Sign in to your account";
+		System.out.println("Expected Title : Sign in to your account");
 		// compareValues(ActualValue, ExpectedValue, "LoginPage");
 		cucumberLogs.info("Successfully On LoginPage");
+	}
+	
+	public void enterUsernameAndPassword() throws InterruptedException {
+
+		commonMethods.sleepWait(10);
+		commonMethods.enterText(txt_Username, "ccaessw@ucl.ac.uk");
+		commonMethods.waitTillVisiblity(btn_Next, "btn_Next");
+		commonMethods.clickElement(btn_Next, "btn_Next");
+		commonMethods.waitTillVisiblity(txt_Password, "txt_Password");
+		commonMethods.enterText(txt_Password, "BenNevis!234567");
+		commonMethods.sleepWait(10);
+		commonMethods.clickElement(btn_login, "btn_Next");
+		commonMethods.sleepWait(10);
+
 	}
 
 	public void enterUsernameAndPassword(String Username, String Password) throws InterruptedException {

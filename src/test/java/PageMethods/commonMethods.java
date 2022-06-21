@@ -2,6 +2,8 @@ package PageMethods;
 
 import java.io.File;
 import java.io.IOException;
+import java.net.MalformedURLException;
+import java.net.URL;
 import java.text.DateFormat;
 import java.text.SimpleDateFormat;
 import java.util.Calendar;
@@ -25,7 +27,9 @@ import org.openqa.selenium.chrome.ChromeOptions;
 import org.openqa.selenium.firefox.FirefoxDriver;
 import org.openqa.selenium.ie.InternetExplorerDriver;
 import org.openqa.selenium.interactions.Actions;
+import org.openqa.selenium.remote.CapabilityType;
 import org.openqa.selenium.remote.DesiredCapabilities;
+import org.openqa.selenium.remote.RemoteWebDriver;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
 import org.openqa.selenium.support.ui.ExpectedConditions;
@@ -35,6 +39,7 @@ import org.testng.annotations.Optional;
 
 import Enums.Browsers;
 import Enums.OS;
+import stepDefinitions.Runner;
 import utilities.cucumberLogs;
 import utilities.globalvariables;
 
@@ -43,30 +48,40 @@ public class commonMethods {
 	public static WebDriver driver;
 
 
-	public void launchBrowser() throws InterruptedException {
-		String browserName = globalvariables.BrowserName;
+	public void launchBrowser(boolean cross_browser) throws InterruptedException, MalformedURLException {
 
-		if (browserName.contains("Chrome")) {
+		if (cross_browser = false) {
 
-			ChromeOptions chromeOptions = new ChromeOptions();
-			chromeOptions.addArguments("--incognito");
-			DesiredCapabilities capabilities = DesiredCapabilities.chrome();
-			capabilities.setCapability(ChromeOptions.CAPABILITY, chromeOptions);
-			System.setProperty("webdriver.chrome.driver", globalvariables.CHROME_DRIVER_PATH);
-			driver = new ChromeDriver(chromeOptions);
-			driver.manage().window().maximize();
-			driver.manage().timeouts().implicitlyWait(30, TimeUnit.SECONDS);
-			navigate_to_URL();
+			String browserName = globalvariables.BrowserName;
+			if (browserName.contains("Chrome")) {
 
-		} else if (browserName.contains("FireFox")) {
+				ChromeOptions chromeOptions = new ChromeOptions();
+				chromeOptions.addArguments("--incognito");
+				DesiredCapabilities capabilities = DesiredCapabilities.chrome();
+				capabilities.setCapability(ChromeOptions.CAPABILITY, chromeOptions);
+				System.setProperty("webdriver.chrome.driver", globalvariables.CHROME_DRIVER_PATH);
+				driver = new ChromeDriver(chromeOptions);
+				driver.manage().window().maximize();
+				driver.manage().timeouts().implicitlyWait(30, TimeUnit.SECONDS);
+				navigate_to_URL();
 
-			System.setProperty("webdriver.gecko.driver", globalvariables.Firefox_DRIVER_PATH);
-			driver = new FirefoxDriver();
+			} else if (browserName.contains("FireFox")) {
 
-		} else if (browserName.contains("internet explorer")) {
-			System.setProperty("webdriver.ie.driver", globalvariables.IE_DRIVER_PATH);
-			driver = new InternetExplorerDriver();
+				System.setProperty("webdriver.gecko.driver", globalvariables.Firefox_DRIVER_PATH);
+				driver = new FirefoxDriver();
+
+			} else if (browserName.contains("internet explorer")) {
+				System.setProperty("webdriver.ie.driver", globalvariables.IE_DRIVER_PATH);
+				driver = new InternetExplorerDriver();
+			}
+
+		} else
+
+		{
+
+			driver = Runner.connection;
 		}
+
 	}
 
 	public static void navigate_to_URL() throws InterruptedException {
@@ -83,8 +98,8 @@ public class commonMethods {
 
 	public static void navigateto_URL(String URL) throws InterruptedException {
 
-		// String URL = globalvariables.URL;
 		driver.get(URL);
+		System.out.println("URL launch");
 		Thread.sleep(4000);
 		cucumberLogs.info("URL is Launched : " + URL);
 	}
@@ -93,27 +108,6 @@ public class commonMethods {
 
 		elem.clear();
 	}
-
-	/*
-	 * public WebDriver selectBrowser(String browser) { if
-	 * (System.getProperty("os.name").toLowerCase().contains(OS.WINDOW.name().
-	 * toLowerCase())) { if (browser.equalsIgnoreCase(Browsers.CHROME.name())) {
-	 * System.setProperty("webdriver.chrome.driver",
-	 * globalvariables.CHROME_DRIVER_PATH); driver = new ChromeDriver();
-	 * driver.manage().window().maximize(); } else if
-	 * (browser.equalsIgnoreCase(Browsers.FIREFOX.name())) {
-	 * System.setProperty("webdriver.gecko.driver", System.getProperty("user.dir") +
-	 * "/src/test/resources/drivers/geckodriver.exe"); driver = new FirefoxDriver();
-	 * } } else if
-	 * (System.getProperty("os.name").toLowerCase().contains(OS.MAC.name().
-	 * toLowerCase())) { if (browser.equalsIgnoreCase(Browsers.CHROME.name())) {
-	 * System.setProperty("webdriver.chrome.driver",
-	 * globalvariables.CHROME_DRIVER_PATH); driver = new ChromeDriver(); } else if
-	 * (browser.equalsIgnoreCase(Browsers.FIREFOX.name())) {
-	 * System.setProperty("webdriver.firefox.marionette",
-	 * System.getProperty("user.dir") + "/src/test/resources/drivers/geckodriver");
-	 * driver = new FirefoxDriver(); } } return driver; }
-	 */
 
 	public static boolean waitTillVisiblity(WebElement elem, String elementName) {
 		try {
@@ -221,14 +215,12 @@ public class commonMethods {
 	}
 
 	// Method to Scroll Down
-
 	public void scrolldownbrowser(WebElement elem) {
 		JavascriptExecutor js = (JavascriptExecutor) driver;
 		js.executeScript("arguments[0].scrollIntoView();", elem);
 	}
 
 	// Alert Methods
-
 	public void alertAccept() {
 
 		Alert alert;

@@ -1,5 +1,5 @@
 //This class only for understanding, not in use
-/*package stepDefinitions;
+package stepDefinitions;
 
 import java.net.URL;
 
@@ -13,73 +13,75 @@ import org.testng.annotations.DataProvider;
 import org.testng.annotations.Parameters;
 import org.testng.annotations.Test;
 
-import cucumber.api.CucumberOptions;
-import cucumber.api.testng.CucumberFeatureWrapper;
-import cucumber.api.testng.TestNGCucumberRunner;
+import PageMethods.commonMethods;
+import io.cucumber.testng.AbstractTestNGCucumberTests;
+import io.cucumber.testng.CucumberOptions;
+import io.cucumber.testng.FeatureWrapper;
+import io.cucumber.testng.PickleWrapper;
+import io.cucumber.testng.TestNGCucumberRunner;
 
+@CucumberOptions(tags = "@RegressionTest", features = "src/test/resources/Features", glue = {
+		"stepDefinitions" }, plugin = "json:target/cucumber-reports/CucumberTestReport.json")
 
-@CucumberOptions(
-        features = "src/main/java/Features",
-        glue = {"steDefinitions"},
-        plugin = "json:target/cucumber-reports/CucumberTestReport.json")
+public class Runner extends AbstractTestNGCucumberTests {
 
+	private TestNGCucumberRunner testNGCucumberRunner;
+	commonMethods objCommonMethods;
 
-public class Runner {
+	public static RemoteWebDriver connection;
+
+	@BeforeMethod(alwaysRun = true)
+	@Parameters({ "browser", "version", "platform", "crossbrowser" })
+	public void setUpClass(String browser, String version, String platform, boolean crossbrowser) throws Exception {
+
+		if (crossbrowser = true) {
+
+			System.out.println("BeforeMethod execution start");
+			String username = System.getenv("LT_USERNAME") == null ? "YOUR LT_USERNAME" : System.getenv("LT_USERNAME");
+			String accesskey = System.getenv("LT_ACCESS_KEY") == null ? "YOUR LT_ACCESS_KEY"
+					: System.getenv("LT_ACCESS_KEY");
+
+			DesiredCapabilities capability = new DesiredCapabilities();
+			capability.setCapability(CapabilityType.BROWSER_NAME, browser);
+			capability.setCapability(CapabilityType.VERSION, version);
+			capability.setCapability(CapabilityType.PLATFORM, platform);
+
+			capability.setCapability("build", "Inside UCL Build");
+
+			capability.setCapability("network", true);
+			capability.setCapability("video", true);
+			capability.setCapability("console", true);
+			capability.setCapability("visual", true);
+
+			String gridURL = "https://" + username + ":" + accesskey + "@hub.lambdatest.com/wd/hub";
+			System.out.println("gridURL : " + gridURL);
+			connection = new RemoteWebDriver(new URL(gridURL), capability);
+			System.out.println(capability);
+			System.out.println(connection.getSessionId());
+		} else {
+			objCommonMethods = new commonMethods();
+			objCommonMethods.launchBrowser(crossbrowser);
+		}
+	}
+
+	//(groups = "cucumber", description = "Runs Cucumber Feature", dataProvider = "features")
+	@Test
+	public void feature(PickleWrapper Pickle , FeatureWrapper cucumberFeature) {
+		testNGCucumberRunner.runScenario(Pickle.getPickle());
+	}
+
+	@DataProvider(parallel = true)
+	public Object[][] scenarios() {
+		 //return testNGCucumberRunner.provideScenarios();
+		Object[][] scenarios = super.scenarios();
+		return scenarios;
+	}
+
 	
-    private TestNGCucumberRunner testNGCucumberRunner;
-  
-    public static RemoteWebDriver connection;
-    
-    @BeforeClass(alwaysRun = true)
-    public void setUpCucumber() {
-    	 testNGCucumberRunner = new TestNGCucumberRunner(this.getClass());
-    }
-    
-    @BeforeMethod(alwaysRun = true)
-    @Parameters({ "browser", "version", "platform" })
-    public void setUpClass(String browser, String version, String platform) throws Exception {
 
-    		String username = System.getenv("LT_USERNAME") == null ? "YOUR LT_USERNAME" : System.getenv("LT_USERNAME"); 
-    		String accesskey = System.getenv("LT_ACCESS_KEY") == null ? "YOUR LT_ACCESS_KEY" : System.getenv("LT_ACCESS_KEY"); 
+	@AfterClass(alwaysRun = true)
+	public void tearDownClass() {
+		testNGCucumberRunner.finish();
+	}
 
-    		DesiredCapabilities capability = new DesiredCapabilities();    		
-    		capability.setCapability(CapabilityType.BROWSER_NAME, browser);
-    		capability.setCapability(CapabilityType.VERSION,version);
-    		capability.setCapability(CapabilityType.PLATFORM, platform);
-    		    		
-    		capability.setCapability("build", "Cucumber Sample Build");
-    		
-    		capability.setCapability("network", true);
-    		capability.setCapability("video", true);
-    		capability.setCapability("console", true);
-    		capability.setCapability("visual", true);
-
-    		String gridURL = "https://" + username + ":" + accesskey + "@hub.lambdatest.com/wd/hub";
-    		System.out.println(gridURL);
-    		connection = new RemoteWebDriver(new URL(gridURL), capability);
-    		System.out.println(capability);
-    		System.out.println(connection.getSessionId());
 }
- 
-    @Test(groups = "cucumber", description = "Runs Cucumber Feature", dataProvider = "features")
-	
-	  public void feature(CucumberFeatureWrapper cucumberFeature) {
-	  testNGCucumberRunner.runCucumber(cucumberFeature.getCucumberFeature());
-	  }
-	 
- 
-    @DataProvider
-	
-	  public Object[][] features() { 
-    	return  testNGCucumberRunner.provideFeatures(); 
-    	}
-	 
- 
-    @AfterClass(alwaysRun = true)
-    public void tearDownClass() throws Exception {
-        testNGCucumberRunner.finish();
-    }
-
-
-}
-*/

@@ -2,6 +2,7 @@
 <!DOCTYPE suite SYSTEM "https://testng.org/testng-1.0.dtd">
 <suite name="BDD Test Suite">
     <test name="Login and Logout Test" preserve-order="true">
+    <parameter name="crossbrowser" value="false"/>
         <classes>
             <class name="stepDefinitions.TestRunner"/>
         </classes>

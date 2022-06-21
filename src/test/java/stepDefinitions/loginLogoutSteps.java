@@ -5,19 +5,24 @@ import java.io.IOException;
 import org.openqa.selenium.OutputType;
 import org.openqa.selenium.TakesScreenshot;
 import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.remote.RemoteWebDriver;
 
 import PageMethods.commonMethods;
 import PageMethods.loginLogoutPage;
+//import PageMethods.commonMethods;
+//import PageMethods.loginLogoutPage;
 import io.cucumber.java.After;
 import io.cucumber.java.Before;
 import io.cucumber.java.Scenario;
 import io.cucumber.java.en.*;
 import utilities.cucumberLogs;
+import stepDefinitions.Runner;
 
-public class loginLogoutSteps extends commonMethods {
+
+
+public class loginLogoutSteps {
 	
-	WebDriver driver;
-	//public RemoteWebDriver driver = this.connection;
+
 	 
 	@Given("^I should navigate to Inside UCL app (.*)$")
 	public void i_should_navigate_to_inside_ucl_app_url(String URL) throws InterruptedException {
@@ -25,11 +30,17 @@ public class loginLogoutSteps extends commonMethods {
 		commonMethods.navigateto_URL(URL);
 	}
 
-	@And("I should see login page")
+	@Given("I should see login page")
 	public void i_should_see_login_page() throws IOException, InterruptedException {
-
+		System.out.println("Inside loggin page");
 		loginLogoutPage objloginLogoutPage = new loginLogoutPage(commonMethods.driver);
 		objloginLogoutPage.loginpage();
+	}
+	
+	@When("I enter Username and Password")
+	public void i_enter_username_and_password() throws InterruptedException {
+		loginLogoutPage objloginLogoutPage = new loginLogoutPage(commonMethods.driver);
+		objloginLogoutPage.enterUsernameAndPassword();
 	}
 
 	@When("^I enter (.*) and (.*)$")
