@@ -77,8 +77,8 @@ public class commonMethods {
 
 		String URL = globalvariables.URL;
 		driver.get(URL);
-		Thread.sleep(4000);
-		cucumberLogs.info("URL is Launched : " + URL);
+		Thread.sleep(2000);
+		cucumberLogs.info("URL is Laun	ched : " + URL);
 	}
 
 	public WebDriver getDriver() {
@@ -89,7 +89,7 @@ public class commonMethods {
 
 		driver.get(URL);
 		System.out.println("URL launch");
-		Thread.sleep(4000);
+		Thread.sleep(2000);
 		cucumberLogs.info("URL is Launched : " + URL);
 	}
 

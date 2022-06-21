@@ -23,7 +23,7 @@ public class TestRunner extends AbstractTestNGCucumberTests {
 	commonMethods objCommonMethods;
 
 
-	@BeforeTest
+	@BeforeMethod(alwaysRun = true)
 	public void setup() throws InterruptedException {
 		System.out.println("Inside Set up method ");
 		System.out.println("---------------------------------------------");
@@ -32,13 +32,15 @@ public class TestRunner extends AbstractTestNGCucumberTests {
 
 	}
 
-	@AfterTest
-	public void tearDown(Scenario scenario) throws IOException {
+	@AfterMethod
+	public void tearDown() throws IOException {
 
+   /*
 		if (scenario.isFailed()) {
 			final byte[] screenshot = ((TakesScreenshot) objCommonMethods.driver).getScreenshotAs(OutputType.BYTES);
 			scenario.attach(screenshot, "image/png", scenario.getName()); // stick it in the report
 		}
+		*/
 		objCommonMethods.closebrowser();
 	}
 
