@@ -41,8 +41,7 @@ import utilities.globalvariables;
 public class commonMethods {
 
 	public static WebDriver driver;
-	// boolean isElementFound = false;
-	// String filePath;
+
 
 	public void launchBrowser() throws InterruptedException {
 		String browserName = globalvariables.BrowserName;
