@@ -47,7 +47,7 @@ public class commonMethods {
 	public static WebDriver driver;
 
 
-	public void launchBrowser() throws InterruptedException, MalformedURLException {
+	public void launchBrowser() throws InterruptedException {
 
 			String browserName = globalvariables.BrowserName;
 			if (browserName.contains("Chrome")) {
