@@ -16,14 +16,13 @@ import io.cucumber.java.Before;
 import io.cucumber.java.Scenario;
 import io.cucumber.java.en.*;
 import utilities.cucumberLogs;
-import stepDefinitions.Runner;
 
 
 
 public class loginLogoutSteps {
-	
 
-	 
+
+
 	@Given("^I should navigate to Inside UCL app (.*)$")
 	public void i_should_navigate_to_inside_ucl_app_url(String URL) throws InterruptedException {
 
@@ -36,7 +35,7 @@ public class loginLogoutSteps {
 		loginLogoutPage objloginLogoutPage = new loginLogoutPage(commonMethods.driver);
 		objloginLogoutPage.loginpage();
 	}
-	
+
 	@When("I enter Username and Password")
 	public void i_enter_username_and_password() throws InterruptedException {
 		loginLogoutPage objloginLogoutPage = new loginLogoutPage(commonMethods.driver);
@@ -64,7 +63,7 @@ public class loginLogoutSteps {
 		objloginLogoutPage.homepage();
 	}
 
-	
+
 
 	@When("I click on popup menu")
 	public void i_click_on_popup_menu() throws InterruptedException {
@@ -97,5 +96,5 @@ public class loginLogoutSteps {
 		cucumberLogs.endTestCase("End : Login Inside UCL with valid credentials");
 	}
 
-	
+
 }

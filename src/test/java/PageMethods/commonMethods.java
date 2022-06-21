@@ -39,7 +39,6 @@ import org.testng.annotations.Optional;
 
 import Enums.Browsers;
 import Enums.OS;
-import stepDefinitions.Runner;
 import utilities.cucumberLogs;
 import utilities.globalvariables;
 
