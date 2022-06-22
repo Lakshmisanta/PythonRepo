@@ -29,18 +29,11 @@ public class TestRunner extends AbstractTestNGCucumberTests {
 		System.out.println("---------------------------------------------");
 		objCommonMethods= new commonMethods();
 		objCommonMethods.launchBrowser();
-
 	}
 
 	@AfterMethod
 	public void tearDown() throws IOException {
 
-   /*
-		if (scenario.isFailed()) {
-			final byte[] screenshot = ((TakesScreenshot) objCommonMethods.driver).getScreenshotAs(OutputType.BYTES);
-			scenario.attach(screenshot, "image/png", scenario.getName()); // stick it in the report
-		}
-		*/
 		objCommonMethods.closebrowser();
 	}
 
