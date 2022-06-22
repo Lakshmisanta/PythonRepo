@@ -9,7 +9,7 @@
         <classes>
             <class name="stepDefinitions.CrossBrowserRunner" />
         </classes>
-    </test> <!-- Test -->
+    </test>
 
 
 </suite>
