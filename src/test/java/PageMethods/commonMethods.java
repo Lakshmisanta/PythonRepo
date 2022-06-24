@@ -36,7 +36,7 @@ import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.Select;
 import org.openqa.selenium.support.ui.WebDriverWait;
 import org.testng.annotations.Optional;
-
+import io.github.bonigarcia.wdm.WebDriverManager;
 import Enums.Browsers;
 import Enums.OS;
 import utilities.cucumberLogs;
@@ -52,11 +52,17 @@ public class commonMethods {
 			String browserName = globalvariables.BrowserName;
 			if (browserName.contains("Chrome")) {
 
+				//We don't need to think about the Chromedriver.exe we are using WebDriver Manager to
+				// handle that instead of adding it in our project like the following:
+				WebDriverManager.chromedriver().setup();
+
 				ChromeOptions chromeOptions = new ChromeOptions();
 				chromeOptions.addArguments("--incognito");
 				DesiredCapabilities capabilities = DesiredCapabilities.chrome();
 				capabilities.setCapability(ChromeOptions.CAPABILITY, chromeOptions);
-				System.setProperty("webdriver.chrome.driver", globalvariables.CHROME_DRIVER_PATH);
+
+				//System.setProperty("webdriver.chrome.driver", globalvariables.CHROME_DRIVER_PATH);
+
 				driver = new ChromeDriver(chromeOptions);
 				driver.manage().window().maximize();
 				driver.manage().timeouts().implicitlyWait(30, TimeUnit.SECONDS);
