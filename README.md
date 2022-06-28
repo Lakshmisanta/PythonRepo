@@ -32,8 +32,8 @@ This project is used by the following companies:
 5. Browser driver (make sure you have your desired browser driver and class path is set)
 
 
-    
-## Maven folder structures 
+
+## Maven folder structures
 
 
 ![alt text](https://git.automation.ucl.ac.uk/sits-integration/UCL-e2e-AutomationTest/-/blob/dev/MavenFolderStructure.png)
@@ -42,14 +42,14 @@ This project is used by the following companies:
 
 ## Directory layout Files
 
-1. src/main/java 
+1. src/main/java
 
 Inside this folder you can put all the application resource files. Resources for the main (real) artifact should be put in this folder.
 In this folder , you will find Utilities package. In this package , we are having common generic java classes like- cucumberLogs.java and cucumberReport
 Were cucumberLogs file is to generate the application logs file which have a specified format.
 And cucumberReports file is to generate cucumber Reports after script Execution.
 
-2. src/test/java 
+2. src/test/java
 Inside this folder you can put all the application test resource files. Resources for the test artifact should be put in this folder.
 In this folder, you will find 2 packages as below-
 
@@ -62,7 +62,7 @@ Writing TestRunner class –
 
 ![alt text](https://git.automation.ucl.ac.uk/sits-integration/UCL-e2e-AutomationTest/-/blob/dev/TESTRUNNER.png)
 
-ii. ii. PageMethods – It consist of classes respective to each page . implementing Page factory methodology. 
+ii. ii. PageMethods – It consist of classes respective to each page . implementing Page factory methodology.
 
 3. src/test/resources
 
@@ -70,7 +70,7 @@ Inside this folder you can put all the application resource files. Resources for
 
 In this folder , you will find folders like Features, Config , Drivers.
 
-i. Features-  Here we are writing features scenarios as below- 
+i. Features-  Here we are writing features scenarios as below-
 
 ![alt text](https://git.automation.ucl.ac.uk/sits-integration/UCL-e2e-AutomationTest/-/blob/dev/FEATURE.png)
 
@@ -83,10 +83,13 @@ iii. Config – In this folder, we are having properties file to respective depe
 - Fork this repo, keep the folder the structure intact
 - Run the following maven command from command line
 
+# to run scripts on local browser
+  mvn clean test -Dcucumber.filter.tags=@RegressionTest -Dsuite=local.xml
 
-mvn clean test verify
+# to run scripts on lambdatest
+  mvn clean test -Dcucumber.filter.tags=@RegressionTest -Dsuite=crossbrowser.xml
 
-- The scripts should run successfully in Chrome browser and should generate application logs 
+- The scripts should run successfully in Chrome browser and should generate application logs
 - Target folder should be created with cucumber-html-report and surefire-reports.
 - Test_Output folder should be created with the default testng reports
 
@@ -98,3 +101,6 @@ Default cucumber HTML reports are generated which is customized according to spe
 
 ![alt text](https://git.automation.ucl.ac.uk/sits-integration/UCL-e2e-AutomationTest/-/blob/dev/HTML_REPORT_2.png)
 
+#Allure reports
+# run below command after above commands
+  mvn allure:serve
