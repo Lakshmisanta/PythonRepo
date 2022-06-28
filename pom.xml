@@ -11,8 +11,10 @@
 		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
 		<maven.compiler.source>1.8</maven.compiler.source>
 		<maven.compiler.target>1.8</maven.compiler.target>
-		<allure.maven.version>2.10.0</allure.maven.version>
 		<aspectj.version>1.9.6</aspectj.version>
+		<allure.maven.version>2.10.0</allure.maven.version>
+		<allure.testng.version>2.18.0</allure.testng.version>
+
 	</properties>
 
 	<dependencies>
@@ -61,19 +63,22 @@
 		</dependency>
 
 		<!--Allure testng Dependency-->
-	  <dependency>
+
+		 <dependency>
 			    <groupId>io.qameta.allure</groupId>
 			    <artifactId>allure-testng</artifactId>
-			    <version>2.18.1</version>
-	  </dependency> -->
+			    <version>${allure.testng.version}</version>
+	  </dependency>
+
  		<!--Allure Cucumber Dependency-->
 <!--
 		<dependency>
 		    <groupId>io.qameta.allure</groupId>
 		    <artifactId>allure-cucumber5-jvm</artifactId>
 		    <version>2.18.0</version>
+				<scope>test</scope>
 		</dependency>
-  -->
+-->
 		<!--Allure Cucumber Dependency-->
 	</dependencies>
 
@@ -86,15 +91,17 @@
 				<artifactId>maven-surefire-plugin</artifactId>
 				<version>2.19</version>
 				<configuration>
-				<testFailureIgnore>true</testFailureIgnore>
+				<testFailureIgnore>true </testFailureIgnore>
 					<suiteXmlFiles>
 					<!-- src/test/resources/testSuites/testng.xml -->
 						<suiteXmlFile>${suite}</suiteXmlFile>
 					</suiteXmlFiles>
 					<argLine>
 		         -javaagent:"${settings.localRepository}/org/aspectj/aspectjweaver/${aspectj.version}/aspectjweaver-${aspectj.version}.jar"
-		         -Dcucumber.options="--plugin io.qameta.allure.cucumber5jvm.AllureCucumber5Jvm"
 					</argLine>
+					<systemPropertyVariables>
+						<allure.results.directory>${project.build.directory}/allure-results</allure.results.directory>
+					</systemPropertyVariables>
 				</configuration>
 				<dependencies>
 					<dependency>
@@ -107,9 +114,10 @@
 				<plugin>
 					<groupId>io.qameta.allure</groupId>
 					<artifactId>allure-maven</artifactId>
-					<version>2.10.0</version>
+					<version>${allure.maven.version}</version>
 					<configuration>
-						<reportVersion>2.18.0</reportVersion>
+						<reportVersion>${allure.testng.version}</reportVersion>
+						<resultsDirectory>${project.build.directory}/allure-results</resultsDirectory>
 					</configuration>
 				</plugin>
 
