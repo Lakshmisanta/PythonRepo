@@ -56,6 +56,13 @@
 		</dependency>
 
 		<dependency>
+		    <groupId>io.github.bonigarcia</groupId>
+		    <artifactId>webdrivermanager</artifactId>
+		    <version>3.8.1</version>
+		    <scope>test</scope>
+		</dependency>
+		
+		<dependency>
 			<groupId>io.cucumber</groupId>
 			<artifactId>cucumber-picocontainer</artifactId>
 			<version>7.0.0</version>
@@ -149,7 +156,10 @@
 							<!-- output directory for the generated report -->
 							<outputDirectory>target</outputDirectory>
 							<!-- optional, defaults to outputDirectory if not specified -->
-							<inputDirectory>${project.build.directory}</inputDirectory>
+
+
+
+ 							<inputDirectory>${project.build.directory}</inputDirectory>
 							<jsonFiles>
 									<!-- supports wildcard or name pattern -->
 									<param>**/*.json</param>
