@@ -89,4 +89,4 @@ i. StepDefinitions-
     mvn allure:serve
 
   Check on terminal ip generated to view Allure report
-  append it with index.html e.g. http://192.168.1.105:64937/index.html
+  append it with index.html e.g. http://192.xx.xx.xx:64937/index.html
