@@ -74,7 +74,7 @@ i. StepDefinitions-
   Change tags in above command to run a specific test. e.g.
     mvn clean test -Dcucumber.filter.tags=@wip -Dsuite=local.xml
 
-  Run a specific feature
+# Run a specific feature
     mvn clean test -Dcucumber.features=src/test/resources/Features/LoginLogout.feature -Dsuite=local.xml
 
 # To run scripts on lambdatest
