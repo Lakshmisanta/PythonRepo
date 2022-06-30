@@ -70,19 +70,19 @@ iii. Config – In this folder, we are having properties file to respective depe
 - First Clone this repo, keeping same folder structure and wait for clone to finish
 
 # to run scripts on local machine browser
-   mvn clean test -Dcucumber.filter.tags=@RegressionTest -Dsuite=local.xml
+    mvn clean test -Dcucumber.filter.tags=@RegressionTest -Dsuite=local.xml
 
-   mvn clean test -Dcucumber.filter.tags=@SanityTest -Dsuite=local.xml
+    mvn clean test -Dcucumber.filter.tags=@SanityTest -Dsuite=local.xml
 
   Change tags in above command to run a specific test. e.g.
-   mvn clean test -Dcucumber.filter.tags=@wip -Dsuite=local.xml
+    mvn clean test -Dcucumber.filter.tags=@wip -Dsuite=local.xml
 
   Run a specific feature
-   mvn clean test -Dcucumber.features=src/test/resources/Features/LoginLogout.feature -Dsuite=local.xml
+    mvn clean test -Dcucumber.features=src/test/resources/Features/LoginLogout.feature -Dsuite=local.xml
 
 # To run scripts on lambdatest
 
-   mvn clean test -Dcucumber.filter.tags=@RegressionTest -Dsuite=crossbrowser.xml
+    mvn clean test -Dcucumber.filter.tags=@RegressionTest -Dsuite=crossbrowser.xml
 
   The scripts should run successfully in Chrome browser and should generate application logs
 
