@@ -3,23 +3,6 @@
 
 This repository contains a collection of Regression Test Suite in BDD + TDD framework for Inside UCL application
 
-
-
-
-## Features:
-
-This project is used by the following companies:
-
-- Crisp & Clear maven folder structures
-- Extensive methods in CucumberRunner class
-- CucumberOptions with detailed explanation of using "tags", "glue" ,”monochrome” , “pulgins”
-- Screenshots on failure feature in CucumberRunner class
-- TestNG Annotations/hooks like "@After", “@Before” etc.
-- Descriptive pom.xml and testng.xml
-- Scenarios for Regression suite features and step definition files
-- Methods for running tests in Firefox and Chrome and Edge browsers
-
-
 ## Installation (pre-requisites)
 
 1. JDK 1.8+ (make sure Java class path is set in environment variables)
@@ -29,34 +12,38 @@ This project is used by the following companies:
    - Maven
    - Cucumber
    - TestNG
-5. Browser driver (make sure you have your desired browser driver and class path is set)
+5. Git bash to run tests from command line
 
 
+## Features:
 
-## Maven folder structures
+- Crisp & Clear maven folder structures
+- Extensive methods in CucumberRunner class
+- CucumberOptions with detailed explanation of using "tags", "glue" ,”monochrome” , “pulgins”
+- Screenshots on failure feature in CucumberRunner class
+- TestNG and cucumber Annotations/hooks like "@After", “@Before” etc.
+- Descriptive pom.xml and testng.xml
+- Scenarios for Regression suite features and step definition files
+- Methods for running tests in Firefox and Chrome and Edge browsers
 
 
-![alt text](https://git.automation.ucl.ac.uk/sits-integration/UCL-e2e-AutomationTest/-/blob/dev/MavenFolderStructure.png)
-
-
-
-## Directory layout Files
+## Folder and file layout
 
 1. src/main/java
 
-Inside this folder you can put all the application resource files. Resources for the main (real) artifact should be put in this folder.
-In this folder , you will find Utilities package. In this package , we are having common generic java classes like- cucumberLogs.java and cucumberReport
-Were cucumberLogs file is to generate the application logs file which have a specified format.
-And cucumberReports file is to generate cucumber Reports after script Execution.
+  Inside this folder you can put all the application resource files. Resources for the main (real) artifact should be put in this folder.
+  In this folder , you will find Utilities package. In this package , we are having common generic java classes like- cucumberLogs.java and cucumberReport
+  Were cucumberLogs file is to generate the application logs file which have a specified format.
+  And cucumberReports file is to generate cucumber Reports after script Execution.
 
 2. src/test/java
-Inside this folder you can put all the application test resource files. Resources for the test artifact should be put in this folder.
-In this folder, you will find 2 packages as below-
 
-i. StepDefinitions- Here we have step definition classes. As below
+  Inside this folder you can put all the application test resource files. Resources for the test artifact should be put in this folder.
+  In this folder, you will find 2 packages as below-
 
+i. StepDefinitions-
 
-![alt text](https://git.automation.ucl.ac.uk/sits-integration/UCL-e2e-AutomationTest/-/blob/dev/STEP_DEF.png)
+   Given When Then steps are added under this package
 
 Writing TestRunner class –
 
@@ -78,29 +65,28 @@ ii. Drivers- Here we have the respective drivers to launch the browser to run th
 
 iii. Config – In this folder, we are having properties file to respective dependencies like log4j and cucumber properties
 
-# Run Scripts
+# how to run test cases [from command line or git bash terminal]
 
-- Fork this repo, keep the folder the structure intact
-- Run the following maven command from command line
+- First Clone this repo, keeping same folder structure and wait for clone to finish
 
-# to run scripts on local browser
-  mvn clean test -Dcucumber.filter.tags=@RegressionTest -Dsuite=local.xml
+# to run scripts on local machine browser
+   mvn clean test -Dcucumber.filter.tags=@RegressionTest -Dsuite=local.xml
 
-# to run scripts on lambdatest
-  mvn clean test -Dcucumber.filter.tags=@RegressionTest -Dsuite=crossbrowser.xml
+   mvn clean test -Dcucumber.filter.tags=@SanityTest -Dsuite=local.xml
 
-- The scripts should run successfully in Chrome browser and should generate application logs
-- Target folder should be created with cucumber-html-report and surefire-reports.
-- Test_Output folder should be created with the default testng reports
+  Change tags in above command to run a specific test. e.g.
+   mvn clean test -Dcucumber.filter.tags=@wip -Dsuite=local.xml
 
-# HTML Reports
+  Run a specific feature
+   mvn clean test -Dcucumber.features=src/test/resources/Features/LoginLogout.feature -Dsuite=local.xml
 
-Default cucumber HTML reports are generated which is customized according to specific needs.
+# To run scripts on lambdatest
 
-![alt text](https://git.automation.ucl.ac.uk/sits-integration/UCL-e2e-AutomationTest/-/blob/dev/html_REPOPRT.png)
+   mvn clean test -Dcucumber.filter.tags=@RegressionTest -Dsuite=crossbrowser.xml
 
-![alt text](https://git.automation.ucl.ac.uk/sits-integration/UCL-e2e-AutomationTest/-/blob/dev/HTML_REPORT_2.png)
+  The scripts should run successfully in Chrome browser and should generate application logs
 
-#Allure reports
-# run below command after above commands
-  mvn allure:serve
+# Generate HTML Reports
+   To generate html report run below command just after above command
+
+    mvn allure:serve
