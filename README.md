@@ -84,6 +84,9 @@ i. StepDefinitions-
   The scripts should run successfully in Chrome browser and should generate application logs
 
 # Generate HTML Reports
-   To generate html report run below command just after above command
+  To generate html report run below command just after above command
 
     mvn allure:serve
+
+  Check on terminal ip generated to view Allure report
+  append it with index.html e.g. http://192.168.1.105:64937/index.html
