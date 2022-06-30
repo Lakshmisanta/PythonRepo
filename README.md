@@ -43,33 +43,30 @@ This repository contains a collection of Regression Test Suite in BDD + TDD fram
 
 i. StepDefinitions-
 
-   Given When Then steps are added under this package
+  Given When Then steps are added under this package
 
-Writing TestRunner class –
+  Writing TestRunner class –
 
-![alt text](https://git.automation.ucl.ac.uk/sits-integration/UCL-e2e-AutomationTest/-/blob/dev/TESTRUNNER.png)
 
-ii. ii. PageMethods – It consist of classes respective to each page . implementing Page factory methodology.
+  ii. ii. PageMethods – It consist of classes respective to each page . implementing Page factory methodology.
 
 3. src/test/resources
 
-Inside this folder you can put all the application resource files. Resources for the test  should be put in this folder.
+  Inside this folder you can put all the application resource files. Resources for the test  should be put in this folder.
 
-In this folder , you will find folders like Features, Config , Drivers.
+  In this folder , you will find folders like Features, Config , Drivers.
 
-i. Features-  Here we are writing features scenarios as below-
+  i. Features-  Here we are writing features scenarios as below-
 
-![alt text](https://git.automation.ucl.ac.uk/sits-integration/UCL-e2e-AutomationTest/-/blob/dev/FEATURE.png)
+  ii. Drivers- Here we have the respective drivers to launch the browser to run the script
 
-ii. Drivers- Here we have the respective drivers to launch the browser to run the script
+  iii. Config – In this folder, we are having properties file to respective dependencies like log4j and cucumber properties
 
-iii. Config – In this folder, we are having properties file to respective dependencies like log4j and cucumber properties
+# How to run test cases [from command line or git bash terminal]
 
-# how to run test cases [from command line or git bash terminal]
+- First clone this repo, keeping same folder structure and wait for clone to finish
 
-- First Clone this repo, keeping same folder structure and wait for clone to finish
-
-# to run scripts on local machine browser
+# To run scripts on local machine browser
     mvn clean test -Dcucumber.filter.tags=@RegressionTest -Dsuite=local.xml
 
     mvn clean test -Dcucumber.filter.tags=@SanityTest -Dsuite=local.xml
