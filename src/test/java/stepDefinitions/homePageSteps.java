@@ -1,19 +1,22 @@
 package stepDefinitions;
 
 import java.io.IOException;
-
+import org.testng.asserts.SoftAssert;
 import org.openqa.selenium.WebDriver;
 import PageMethods.commonMethods;
 import PageMethods.homePageMethod;
 import PageMethods.loginLogoutPage;
+import PageMethods.myTimeOffPage;
 import io.cucumber.java.en.*;
 
 public class homePageSteps {
 
 	WebDriver driver;
 	homePageMethod objhomePageMethod = new homePageMethod(commonMethods.driver);
-	
-	
+	myTimeOffPage timeoffpage = new myTimeOffPage(commonMethods.driver);
+	SoftAssert softAssert = new SoftAssert();
+
+
 
 	@Given("I navigate to Inside UCL app")
 	public void i_navigate_to_inside_ucl_app() throws InterruptedException {
@@ -27,7 +30,7 @@ public class homePageSteps {
 		objhomePageMethod.loginToApp();
 	}
 
-	
+
 	@And("I click on Mydetails Tile")
 	public void i_click_on_mydetails_tile() throws InterruptedException {
 
@@ -50,7 +53,8 @@ public class homePageSteps {
 	@Then("I should see MyTimeOff page")
 	public void i_should_see_my_time_off_page() throws InterruptedException {
 
-		objhomePageMethod.my_time_Off_Page();
+		softAssert.assertEquals(timeoffpage.isMyTimeOffDisplayed(),true);
+		softAssert.assertAll();
 	}
 
 }

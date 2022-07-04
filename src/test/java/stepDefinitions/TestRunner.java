@@ -15,6 +15,7 @@ import org.testng.annotations.*;
 @CucumberOptions(tags = "", features = "src/test/resources/Features",
 glue = { "stepDefinitions" },
 plugin = {
+	  "pretty",
 		"json:target/cucumber.json",
 		"junit:target/Cucumber.xml"
 	 },
