@@ -123,6 +123,7 @@
 					<configuration>
 						<reportVersion>${allure.testng.version}</reportVersion>
 						<resultsDirectory>${project.build.directory}/allure-results</resultsDirectory>
+						<reportDirectory>${project.build.directory}/site/allure-report</reportDirectory>
 					</configuration>
 				</plugin>
 
