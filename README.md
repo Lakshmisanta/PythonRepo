@@ -85,4 +85,4 @@ i. StepDefinitions-
 
     mvn clean test -Dcucumber.filter.tags=@RegressionTest -Dsuite=crossbrowser.xml
 
-    The scripts should run successfully in Chrome browser and should generate application logs
+  The scripts should run successfully in Chrome browser and should generate application logs
