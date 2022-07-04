@@ -3,13 +3,11 @@
 <suite name="BDD Test Suite" verbose="1" parallel="tests" thread-count="3" >
 
     <test name="WIN8TEST" annotations="JDK" preserve-order="true">
-        <parameter name="browser" value="chrome"/>
-        <parameter name="version" value="latest"/>
-        <parameter name="platform" value="Windows 10"/>
+        <parameter name="browser" value="Safari"/>
+        <parameter name="version" value="15.0"/>
+        <parameter name="platform" value="MacOS Monterey"/>
         <classes>
             <class name="stepDefinitions.CrossBrowserRunner" />
         </classes>
     </test>
-
-
 </suite>
