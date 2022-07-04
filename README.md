@@ -1,7 +1,7 @@
 
 # Inside UCL E2E Automation
 
-This repository contains a collection of Regression Test Suite in BDD + TDD framework for Inside UCL application
+This repository contains a collection of regression tests for Inside UCL application
 
 ## Installation (pre-requisites)
 
@@ -13,7 +13,6 @@ This repository contains a collection of Regression Test Suite in BDD + TDD fram
    - Cucumber
    - TestNG
 5. Git bash to run tests from command line
-
 
 ## Features:
 
@@ -27,7 +26,7 @@ This repository contains a collection of Regression Test Suite in BDD + TDD fram
 - Methods for running tests in Firefox and Chrome and Edge browsers
 
 
-## Folder and file layout
+# Folder and file layout
 
 1. src/main/java
 
@@ -43,18 +42,15 @@ This repository contains a collection of Regression Test Suite in BDD + TDD fram
 
 i. StepDefinitions-
 
-  Given When Then steps are added under this package
+  Given When Then steps are added under this package, a matching class is created for every page class.
 
-  Writing TestRunner class –
-
-
-  ii. ii. PageMethods – It consist of classes respective to each page . implementing Page factory methodology.
+  ii. PageMethods – It consist of classes respective to each page . implementing Page factory methodology.
 
 3. src/test/resources
 
   Inside this folder you can put all the application resource files. Resources for the test  should be put in this folder.
 
-  In this folder , you will find folders like Features, Config , Drivers.
+  In this folder , you will find folders like Features, Config.
 
   i. Features-  Here we are writing features scenarios as below-
 
@@ -66,22 +62,16 @@ i. StepDefinitions-
 
 - First clone this repo, keeping same folder structure and wait for clone to finish
 
-# To run scripts on local machine browser
+# To run scripts on local machine browser with tags e.g.
     mvn clean test -Dcucumber.filter.tags=@RegressionTest -Dsuite=local.xml
 
     mvn clean test -Dcucumber.filter.tags=@SanityTest -Dsuite=local.xml
 
-  Change tags in above command to run a specific test. e.g.
+# Change tags in above command to run a specific test. e.g.
     mvn clean test -Dcucumber.filter.tags=@wip -Dsuite=local.xml
 
 # Run a specific feature
     mvn clean test -Dcucumber.features=src/test/resources/Features/LoginLogout.feature -Dsuite=local.xml
-
-# To run scripts on lambdatest
-
-    mvn clean test -Dcucumber.filter.tags=@RegressionTest -Dsuite=crossbrowser.xml
-
-  The scripts should run successfully in Chrome browser and should generate application logs
 
 # Generate HTML Reports
   To generate html report run below command just after above command
@@ -90,3 +80,9 @@ i. StepDefinitions-
 
   Check on terminal ip generated to view Allure report
   append it with index.html e.g. http://192.xx.xx.xx:64937/index.html
+
+# To run scripts on lambdatest
+
+    mvn clean test -Dcucumber.filter.tags=@RegressionTest -Dsuite=crossbrowser.xml
+
+    The scripts should run successfully in Chrome browser and should generate application logs
