@@ -16,6 +16,7 @@ import org.testng.annotations.*;
 glue = { "stepDefinitions" },
 plugin = {
 	  "pretty",
+		"io.qameta.allure.cucumber7jvm.AllureCucumber7Jvm",
 		"json:target/cucumber.json",
 		"junit:target/Cucumber.xml"
 	 },
