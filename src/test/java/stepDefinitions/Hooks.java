@@ -10,6 +10,8 @@ import PageMethods.commonMethods;
 import io.cucumber.java.After;
 import io.cucumber.java.Before;
 import io.cucumber.java.Scenario;
+import io.qameta.allure.Allure;
+import java.io.ByteArrayInputStream;
 
 public class Hooks {
 
@@ -27,9 +29,10 @@ public class Hooks {
 	  @After
     public void tearDown(Scenario scenario) throws IOException {
   	  if (scenario.isFailed()) {
-         final byte[] screenshot = ((TakesScreenshot)
-  	    objCommonMethods.driver).getScreenshotAs(OutputType.BYTES);
-  	    scenario.attach(screenshot, "image/png", scenario.getName()); // stick it in 	  the report
+
+        final ByteArrayInputStream screenshot = new ByteArrayInputStream(((TakesScreenshot)
+  	    objCommonMethods.driver).getScreenshotAs(OutputType.BYTES));
+  	    Allure.addAttachment(scenario.getName(),screenshot ); // stick it in 	  the report
       }
     }
 

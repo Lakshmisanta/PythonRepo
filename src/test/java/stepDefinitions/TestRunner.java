@@ -15,7 +15,9 @@ import org.testng.annotations.*;
 @CucumberOptions(tags = "", features = "src/test/resources/Features",
 glue = { "stepDefinitions" },
 plugin = {
-		"json:target/cucumber.json",
+	  "pretty",
+		"io.qameta.allure.cucumber7jvm.AllureCucumber7Jvm",
+	//	"json:target/cucumber.json",
 		"junit:target/Cucumber.xml"
 	 },
 monochrome = true)
