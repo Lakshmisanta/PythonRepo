@@ -23,7 +23,7 @@ public class loginLogoutSteps {
 
 
 
-	@Given("^I should navigate to Inside UCL app (.*)$")
+	@Given("^I navigate to Inside UCL app (.*)$")
 	public void i_should_navigate_to_inside_ucl_app_url(String URL) throws InterruptedException {
 
 		commonMethods.navigateto_URL(URL);
@@ -48,7 +48,7 @@ public class loginLogoutSteps {
 		objloginLogoutPage.enterUsernameAndPassword(Username, Password);
 	}
 
-	@And("I Click on Login button")
+	@And("I click on login")
 	public void i_click_on_login_button() throws InterruptedException {
 
 		loginLogoutPage objloginLogoutPage = new loginLogoutPage(commonMethods.driver);
@@ -71,15 +71,17 @@ public class loginLogoutSteps {
 		objloginLogoutPage.clickOnPopupMenu();
 	}
 
-	@And("I Click on Logout button")
+	@And("I logout from application")
 	public void i_click_on_logout_button() throws InterruptedException {
 
 		loginLogoutPage objloginLogoutPage = new loginLogoutPage(commonMethods.driver);
+		//select menu
+		objloginLogoutPage.clickOnPopupMenu();
 		objloginLogoutPage.clickOnLogoutBtn();
 
 	}
 
-	@Then("I should see Welcome to Inside UCL")
+	@Then("I should be on login page")
 	public void i_should_see_welcome_to_inside_ucl() throws IOException {
 
 		System.out.println("Welcome to Inside UCL");

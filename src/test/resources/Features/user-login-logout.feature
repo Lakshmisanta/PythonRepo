@@ -1,16 +1,15 @@
 Feature: Login and logout Functionality
 
-@RegressionTest
+@wip
 Scenario Outline: Login and logout inside UCL application
 
-  Given I should navigate to Inside UCL app <URL>
+  Given I navigate to Inside UCL app <URL>
   And I should see login page
   When I enter <Username> and <Password>
-  And I Click on Login button
+  And I click on login
   Then I should see application home page
-  When I click on popup menu
-  And I Click on Logout button
-  Then I should see Welcome to Inside UCL
+  And I logout from application
+  Then I should be on login page
 
 Examples:
   | URL                                      | Username          | Password        |
