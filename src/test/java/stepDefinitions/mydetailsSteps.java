@@ -251,7 +251,7 @@ public class mydetailsSteps extends commonMethods {
 
 	}
 
-	@And("^I  select (.*) as disability$")
+	@And("^I select (.*) as disability$")
 	public void i_select_disabilty_type_as_disability(String disabilityType) throws InterruptedException {
 
 		objmydetailsPage.selectDisabilityType(disabilityType);
@@ -302,7 +302,7 @@ public class mydetailsSteps extends commonMethods {
 	public void verify_employment_details_fields() {
 		objmydetailsPage.Verify_employmentFields();
 	}
-	
+
 	@Given("I click on Work locations")
 	public void i_click_on_work_locations() {
 		objmydetailsPage.work_locations();
@@ -333,7 +333,7 @@ public class mydetailsSteps extends commonMethods {
 		objmydetailsPage.edit_Bank_details();
 	}
 
-	@Given("I click on Skills")
+	@Given("I click on skills")
 	public void i_click_on_skills() {
 		objmydetailsPage.skills();
 	}
@@ -343,7 +343,7 @@ public class mydetailsSteps extends commonMethods {
 		objmydetailsPage.Edit();
 	}
 
-	@When("I should Add Skills")
+	@When("I should add Skills")
 	public void i_should_add_skills() {
 		objmydetailsPage.addSkills();
 	}
