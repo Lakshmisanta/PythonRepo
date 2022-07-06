@@ -1,12 +1,14 @@
-Feature: My details page functionality
-
+Feature: My Details
+  In order to update my details
+	As a logged user
+	should be able to add , edit and cancel new details
 
 Background:
 	Given login application URL
 	Then Navigate to mydetails page
 
 @End2EndTest
-Scenario: Basic Details ADD functionality
+Scenario: User can add basic details
 
 	Given I click on basic details
 	When I click on Edit details
@@ -20,7 +22,7 @@ Scenario: Basic Details ADD functionality
 	And I click on Save changes
 
 @End2EndTest
-Scenario: Contact Details ADD functionality
+Scenario: User can add contact details
 
 	Given I click on Contact details
 	When I click on Edit details
@@ -40,7 +42,7 @@ Scenario: Contact Details ADD functionality
 
 
 @End2EndTest
-Scenario: Emergency Contact Details ADD functionality
+Scenario: User can add emergency contact details
 
 	Given  I am navigating to Emergency Contact details
 	Then  I should see Emergency contact details
@@ -63,7 +65,7 @@ Scenario: Emergency Contact Details ADD functionality
 	Then  I click on Save changes
 
 @End2EndTest
-Scenario: Emergency Contact Details Edit functionality
+Scenario: User can edit emergency contact details
 
 	Given  I am navigating to Emergency Contact details
 	When  I click Edit emergency details
@@ -75,35 +77,35 @@ Scenario: Emergency Contact Details Edit functionality
 	Then  I click on Save changes
 
 @End2EndTest
-Scenario: EDI Edit functionality
+Scenario: User can edit Equality,Diversity and Inclusions details
 
 	Given  I am navigating to EDI
-	When  I click Edit EDI
-	Then  I edit EDI fields
-	And  I click on review changes
-	Then  I click on Save changes
+	When I click Edit EDI
+	Then I edit EDI fields
+	And I click on review changes
+	Then I click on Save changes
 
 @End2EndTest
-Scenario: Education and qualification ADD functionality
+Scenario: User can add education and qualification details
 
-	Given    I click on Education and qualification
-	When    I click on Add Qualification
-	Then    I should complete mandatory and optional details
+	Given I click on Education and qualification
+	When I click on Add Qualification
+	Then I should complete mandatory and optional details
 		| Fields                 | Values              |
 		| Title            		 |BDD cucumber workshop|
 		| Awarding             	 | First class         |
-	And    I should add the subject
-	Then    I should delete the subject and verify subject deleted
-	And  I click on review changes
-	Then  I click on Save changes
+	And I should add the subject
+	Then I should delete the subject and verify subject deleted
+	And I click on review changes
+	Then I click on Save changes
 
 
 @End2EndTest
-Scenario: Disability ADD functionality
+Scenario: Use can add disability details
 
-	Given  I click on Disability
-	When  I click on Add disability record
-	And  I  select <disabiltyType> as disability
+	Given I click on Disability
+	When I click on Add disability record
+	And I select <disabiltyType> as disability
 	Then Verify Reason field is disabled or enabled according to <disabiltyType>
 	Then Select reason if disabilityType is yes
 	Then Select reason if disabilityType is yes
@@ -116,11 +118,11 @@ Scenario: Disability ADD functionality
 		| Yes |
 
 @End2EndTest
-Scenario: Disability Edit Disability function
+Scenario: User can edit disability details
 
-	Given  I click on Disability
-	When  I click on Edit disability record
-	And  I  select <disabiltyType> as disability
+	Given I click on Disability
+	When I click on Edit disability record
+	And I select <disabiltyType> as disability
 	Then Add StartDate and EndDate for disability
 	Then I click on Cancel
 
@@ -130,37 +132,37 @@ Scenario: Disability Edit Disability function
 		| Yes           |
 
 @End2EndTest
-Scenario: Employment history functionality
+Scenario: User can view employment history details
 
-	Given    I click on Employment history
-	When   I click on View employment details
+	Given I click on Employment history
+	When I click on View employment details
 	Then Verify employment details fields
 
 @End2EndTest
-Scenario: Work locations functionality
+Scenario: User can edit work location details
 
-	Given    I click on Work locations
-	When   I click on Edit location details
+	Given I click on Work locations
+	When I click on Edit location details
 	And I should Edit location details
-	And  I click on review changes
-	Then  I click on Save changes
+	And I click on review changes
+	Then I click on Save changes
 
 
 @End2EndTest
-Scenario: Bank details functionality
+Scenario: User can add bank details
 
-	Given    Starting TestCase "Bank details functionality"
-	Given    I click on Bank details
-	When   I click on Edit Bank details
+	Given Starting TestCase "Bank details functionality"
+	Given I click on Bank details
+	When I click on Edit Bank details
 	And I should Edit Bank details
 	#And  I click on review changes
 	#Then  I click on Save changes
 	Then  I click on Cancel
 
 @End2EndTest
-Scenario: Skills functionality
+Scenario: User can add update skills details
 
-	Given    I click on Skills
-	When   I should Add Skills
-	And I should delete Skills
-	Then  I click on Save changes
+	Given I click on skills
+	When I should Add skills
+	And I should delete skills
+	Then I click on Save changes
