@@ -84,7 +84,7 @@ public class commonMethods {
 		String URL = globalvariables.URL;
 		driver.get(URL);
 		Thread.sleep(2000);
-		cucumberLogs.info("URL is Laun	ched : " + URL);
+		cucumberLogs.info("URL is Launched : " + URL);
 	}
 
 	public WebDriver getDriver() {
@@ -128,13 +128,15 @@ public class commonMethods {
 
 		try {
 			elem.click();
-			cucumberLogs.info(elementName + " Element is clicked");
+			System.out.println(elementName + " Element is clicked");
 		} catch (ElementClickInterceptedException e) {
 
 			((JavascriptExecutor) driver).executeScript("arguments[0].style.border='3px solid red'", elem);
 			JavascriptExecutor executor = (JavascriptExecutor) driver;
 			executor.executeScript("arguments[0].click();", elem);
 			cucumberLogs.info(elementName + " Element is clicked by javascript");
+			System.out.println(elementName + " Element is clicked by javascript");
+
 		}
 
 	}
@@ -207,6 +209,13 @@ public class commonMethods {
 
 		return true;
 
+	}
+
+	public static boolean explicitWaitForTextInElement(WebElement elem, String textToBePresent, int seconds) {
+
+		WebDriverWait waitForElement;
+		waitForElement = new WebDriverWait(driver, seconds);
+		return waitForElement.until(ExpectedConditions.textToBePresentInElement(elem,textToBePresent));
 	}
 
 	// Method to Scroll Down
