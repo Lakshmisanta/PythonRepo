@@ -82,6 +82,9 @@ public class mydetailsPage extends commonMethods {
 	@FindBy(xpath = "//*[@type = 'button']")
 	WebElement btn_Cancel;
 
+	@FindBy(xpath = "//*[@id='Input_MainPostCode_Edit']")
+	WebElement txt_Postcode;
+
 	@FindBy(xpath = "//button[contains(text(),'Review changes')]")
 	WebElement btn_reviewChanges;
 
@@ -136,26 +139,8 @@ public class mydetailsPage extends commonMethods {
 	@FindBy(xpath = "//*[@class='btn OSFillParent']")
 	WebElement btn_AddEmergencyAddress;
 
-	@FindBy(xpath = "//*[@id='Input_LastName_Edit']")
-	WebElement txt_EmergencyLastname;
-
-	@FindBy(xpath = "//*[@id='Dropdown_Relationship']")
-	WebElement drpdwn_Relationship;
-
 	@FindBy(xpath = "//*[@id='Dropdown_MainCounty_Edit']")
 	WebElement drpdwn_Country;
-
-	@FindBy(xpath = "//*[@id='Input_MainPostCode_Edit']")
-	WebElement txt_Postcode;
-
-	@FindBy(xpath = "//*[@id='Dropdown_Title']")
-	WebElement drpdwn_Title;
-
-	@FindBy(xpath = "//*[@id='Input_FirstName_Edit']")
-	WebElement txt_EmergencyFirstname;
-
-	@FindBy(xpath = "//*[@id='Input_EmailAddress_Edit']")
-	WebElement txt_Email;
 
 	@FindBy(xpath = "//*[@id='Input_SecondaryPhoneNumber_Edit']")
 	WebElement txt_mobileNo;
@@ -204,6 +189,9 @@ public class mydetailsPage extends commonMethods {
 
 	@FindBy(xpath = "//*[@CLASS='vscomp-value']")
 	WebElement drpdwn_QualificationType;
+
+	@FindBy(xpath = "//*[@id='Dropdown_Relationship']")
+	WebElement drpdwn_Relationship;
 
 	@FindBy(xpath = "//*[@CLASS='vscomp-search-input']")
 	public List<WebElement> txt_searchQualificationType;
@@ -536,51 +524,6 @@ public class mydetailsPage extends commonMethods {
 
 	}
 
-	public void enterMandatorydata(DataTable Mtable) throws InterruptedException {
-
-		enterText(txt_EmergencyLastname, Mtable.cell(2, 1));
-		sleepWait(10);
-		selectDropdown(drpdwn_Relationship, "selectByVisiblTtext", Mtable.cell(1, 1));
-		sleepWait(20);
-		scrolldownbrowser(txt_Emergency_address2);
-		clearText(txt_Emergency_address1);
-		enterText(txt_Emergency_address1, Mtable.cell(3, 1));
-		sleepWait(10);
-
-		clearText(txt_Emergency_address2);
-		enterText(txt_Emergency_address2, Mtable.cell(4, 1));
-		sleepWait(20);
-
-	}
-
-	public void enterOptionaldata(DataTable table) throws InterruptedException {
-
-		selectDropdown(drpdwn_Title, "selectByVisiblTtext", table.cell(1, 1));
-		sleepWait(10);
-		enterText(txt_EmergencyFirstname, table.cell(2, 1));
-		sleepWait(10);
-		enterText(txt_Email, table.cell(3, 1));
-		sleepWait(10);
-		enterText(txt_mobileNo, table.cell(4, 1));
-		sleepWait(10);
-
-	}
-
-	public void clickReviewChanges() {
-
-		scrolldownbrowser(btn_reviewChanges);
-		explicitWait(btn_reviewChanges, "elementToBeClickable", 10);
-		clickElement1(btn_reviewChanges, "btn_reviewChanges");
-
-	}
-
-	public void clickSaveChanges() throws InterruptedException {
-
-		sleepWait(5);
-		// explicitWait(btn_SaveChanges, "elementToBeClickable", 10);
-		clickElement1(btn_SaveChanges, "btn_SaveChanges");
-		sleepWait(15);
-	}
 
 	public void clickEditEmergencydetails() {
 		explicitWait(btn_EditEmergencyAddress, "elementToBeClickable", 10);
@@ -611,7 +554,7 @@ public class mydetailsPage extends commonMethods {
 		enterText(txt_Postcode, "5676123");
 		sleepWait(10);
 	}
-	
+
 	public boolean is_EmergencyContact_Landing_Displayed() {
 
 		if (btn_AddEmergencyAddress.isDisplayed()) {

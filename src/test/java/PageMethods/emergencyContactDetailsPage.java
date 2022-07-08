@@ -19,7 +19,7 @@ import utilities.globalvariables;
 
 public class emergencyContactDetailsPage extends commonMethods {
 
-  @FindBy(xpath = "//form/button[@class='btn']")
+  @FindBy(xpath = "//form[@id='b1-Form1']//button[@class='btn']")
   WebElement btn_Cancel;
 
   @FindBy(xpath = "//div[@class='popup-dialog popup-dialog']")
@@ -35,7 +35,7 @@ public class emergencyContactDetailsPage extends commonMethods {
   public WebElement dlg_ContactAdded;
 
   @FindBy(xpath = "//div[@id='b1-popupReviewChanges']//button[@class='btn OSFillParent']")
-  public WebElement btn_ReviewChangesCancel;
+  public WebElement btn_CancelReviewChanges;
 
   @FindBy(xpath = "//div[@id='b1-popupReviewChanges']//button[@class='btn btn-primary OSFillParent']")
   public WebElement btn_SaveReviewChanges;
@@ -91,8 +91,14 @@ public class emergencyContactDetailsPage extends commonMethods {
 	@FindBy(xpath = "//*[@id='Input_EmailAddress_Edit']")
 	WebElement txt_Email;
 
+  @FindBy(xpath = "//button[contains(text(),'Review changes')]")
+	WebElement btn_reviewChanges;
 
-  public addEmergencyContactDetailPage(WebDriver driver) {
+
+  @FindBy(xpath = "//*[@type = 'button']/div")
+	WebElement btn_SaveChanges;
+
+  public emergencyContactDetailsPage(WebDriver driver) {
 
 		PageFactory.initElements(driver, this);
 	}
@@ -125,7 +131,7 @@ public class emergencyContactDetailsPage extends commonMethods {
 
   public void cancelReviewChanges() {
 		explicitWait(dlg_ReviewChanges, "visibilityOf", 20);
-		clickElement(btn_ReviewChangesCancel, "Cancel button on Review Changes");
+		clickElement(btn_CancelReviewChanges, "Cancel button on Review Changes");
 	}
 
 	public void SaveReviewChanges() {
@@ -185,7 +191,7 @@ public class emergencyContactDetailsPage extends commonMethods {
 	}
 
   public void clickSaveChanges() throws InterruptedException {
-    
+
 		explicitWait(btn_SaveChanges, "elementToBeClickable", 10);
 		clickElement(btn_SaveChanges, "btn_SaveChanges");
 		sleepWait(15);

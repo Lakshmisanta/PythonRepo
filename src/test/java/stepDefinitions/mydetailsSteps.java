@@ -16,6 +16,8 @@ import io.cucumber.java.Before;
 import io.cucumber.java.Scenario;
 import io.cucumber.java.en.*;
 import utilities.cucumberLogs;
+import org.testng.asserts.SoftAssert;
+
 
 public class mydetailsSteps extends commonMethods {
 
@@ -161,20 +163,12 @@ public class mydetailsSteps extends commonMethods {
 														"Emergency Contacts landing is not displayed");
 	}
 
-	@Then("I click on review changes")
-	public void i_click_on_review_changes() {
-		objmydetailsPage.clickReviewChanges();
-	}
 
 	@Then("I click on review changes and verify changes")
 	public void i_click_on_review_changes_and_verify_changes() throws InterruptedException {
 		objmydetailsPage.clickReviewAndVerify();
 	}
 
-	@Then("I click on Save changes")
-	public void i_click_on_save_changes() throws InterruptedException {
-		objmydetailsPage.clickSaveChanges();
-	}
 
 	@When("I click Edit emergency details")
 	public void i_click_edit_emergency_details() {

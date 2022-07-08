@@ -6,10 +6,12 @@ import org.openqa.selenium.OutputType;
 import org.openqa.selenium.TakesScreenshot;
 import org.openqa.selenium.WebDriver;
 
-import PageMethods.commonMethods;
+import PageMethods.emergencyContactDetailsPage;
 import PageMethods.homePageMethod;
 import PageMethods.loginLogoutPage;
 import PageMethods.mydetailsPage;
+import PageMethods.commonMethods;
+
 import io.cucumber.datatable.DataTable;
 import io.cucumber.java.After;
 import io.cucumber.java.Before;
@@ -21,16 +23,12 @@ import org.testng.asserts.SoftAssert;
 
 public class addEmergencyContactDetailsSteps extends commonMethods {
 
-  mydetailsPage objmydetailsPage;
-	homePageMethod objhomePageMethod;
-  emergencyContactDetailsPage emergencyContactDtlPage
+  emergencyContactDetailsPage emergencyContactDtlPage;
   SoftAssert softAssert;
 
 	@Before
 	public void setUp() {
 
-		objmydetailsPage = new mydetailsPage(commonMethods.driver);
-		objhomePageMethod = new homePageMethod(commonMethods.driver);
     emergencyContactDtlPage = new emergencyContactDetailsPage(commonMethods.driver);
 		softAssert = new SoftAssert();
 	}
@@ -43,57 +41,57 @@ public class addEmergencyContactDetailsSteps extends commonMethods {
   @Then("I cancel to review changes")
 	public void cancelToReviewChanges() {
 
-		emergencyContactDetailsPage.cancelReviewChanges();
+		emergencyContactDtlPage.cancelReviewChanges();
 	}
 
 	@Then("I choose to cancel contact details")
 	public void i_choose_to_cancel_emergency_contact_details() {
 
-		emergencyContactDetailsPage.cancelContactDetails();
+		emergencyContactDtlPage.cancelContactDetails();
 	}
 
 	@Then("again decide to continue editing contact details")
 	public void again_decide_to_continue_editing_emergency_contact_details() {
 
-		emergencyContactDetailsPage.continueEditingContactDetails();
+		emergencyContactDtlPage.continueEditingContactDetails();
 	}
 
   @Then("I choose to review changes")
 	public void chooseToReviewChanges() {
-		emergencyContactDetailsPage.clickReviewChanges();
+		emergencyContactDtlPage.clickReviewChanges();
 	}
 
   @Then("I am redirected to add emergency contact page")
 	public void i_am_redirected_to_emergency_contact_page() {
-		softAssert.assertEquals(emergencyContactDetailsPage.is_Add_EmergencyContact_Displayed(),true,
+		softAssert.assertEquals(emergencyContactDtlPage.is_Add_EmergencyContact_Displayed(),true,
 														"Add Emergency Contacts is not displayed");
 	}
 
   @Then("emergency contact is added")
 	public void emergency_contact_is_added() {
 	    // Verify on
-      emergencyContactDetailsPage.isEmergencyContactAdded();
+      emergencyContactDtlPage.isEmergencyContactAdded();
 	}
 
   @Then("decide to discard contact details")
   public void again_decide_to_discard_contact_details() {
-    emergencyContactDetailsPage.DiscardContactDetails();
+    emergencyContactDtlPage.DiscardContactDetails();
   }
 
   @Then("I save changes to add contact details")
   public void i_click_on_save_changes_review_changes() throws InterruptedException {
-    emergencyContactDetailsPage.SaveReviewChanges();
+    emergencyContactDtlPage.SaveReviewChanges();
   }
 
   @Then("I enter mandatory details")
 	public void i_enter_mandatory_fields(DataTable table) throws InterruptedException {
 
-		emergencyContactDetailsPage.enterMandatorydata(table);
+		emergencyContactDtlPage.enterMandatorydata(table);
 	}
 
   @Then("I enter optional details")
 	public void i_enter_optional_fields(DataTable table) throws InterruptedException {
 
-		emergencyContactDetailsPage.enterOptionaldata(table);
+		emergencyContactDtlPage.enterOptionaldata(table);
 	}
 }

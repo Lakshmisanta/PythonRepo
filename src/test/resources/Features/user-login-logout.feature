@@ -1,6 +1,6 @@
 Feature: Login and logout Functionality
 
-@wip
+
 Scenario Outline: Login and logout inside UCL application
 
   Given I navigate to Inside UCL app <URL>
