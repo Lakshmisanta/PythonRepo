@@ -175,6 +175,11 @@ public class mydetailsSteps extends commonMethods {
 		objmydetailsPage.clickEditEmergencydetails();
 	}
 
+	@When("I edit an existing emergency contact")
+  public void i_edit_an_existing_emergency_contact() {
+		objmydetailsPage.clickEditEmergencydetails();
+  }
+
 	@Then("I should Edit Mandatory fields")
 	public void i_should_edit_mandatory_fields() throws InterruptedException {
 		objmydetailsPage.editMandatoryField();

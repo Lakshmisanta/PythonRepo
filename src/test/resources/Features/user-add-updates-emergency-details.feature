@@ -1,4 +1,4 @@
-Feature: My Details
+Feature: Emergency Details
   In order to update my details
 	As a logged user
 	should be able to add , edit and cancel emergency details
@@ -7,7 +7,6 @@ Background:
 	Given login application URL
 	Then navigate to mydetails page
 
-@emergency
 Scenario: User can add emergency contact details
 
 	Given I navigate to emergency contact details
@@ -40,7 +39,6 @@ Scenario: User can add emergency contact details
 	And I save changes to add contact details
   Then emergency contact is added
 
-@wip
 Scenario: User can discard emergency contact details
 
   Given I navigate to emergency contact details
@@ -66,4 +64,25 @@ Scenario: User can discard emergency contact details
     | Postcode               | PR7 1NY             |
   And I choose to cancel contact details
   And decide to discard contact details
+  Then I am redirected to emergency contact landing page
+
+@wip
+Scenario: User can update emergency contact details
+
+  Given I navigate to emergency contact details
+  Then I should see emergency contact details
+  When I edit an existing emergency contact
+  And I update emergency contact details
+    | First Name             | Peter               |
+    | Last Name              | Jean                |
+    | Email               	 | helpemergencycontacts@gmail.com |
+    | Primary home number    | 	01278 457475       |
+    | Personal mobile        | 	01278 457475       |
+    | Work number            | 	01278 457475       |
+    | Postcode               | PR7 1BD             |
+    | Relationship           | Husband             |
+    | Address1               | 35 A                |
+    | Address2               | Foxhole Rd          |
+  When I choose to review changes
+	And I save changes to add contact details
   Then I am redirected to emergency contact landing page

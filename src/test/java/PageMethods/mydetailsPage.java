@@ -526,8 +526,8 @@ public class mydetailsPage extends commonMethods {
 
 
 	public void clickEditEmergencydetails() {
-		explicitWait(btn_EditEmergencyAddress, "elementToBeClickable", 10);
-		clickElement(btn_EditEmergencyAddress, "btn_EditEmergencyAddress");
+		explicitWait(btn_EditEmergencyAddress, "elementToBeClickable", 30);
+		clickElement(btn_EditEmergencyAddress, "Edit Emergency Contact");
 	}
 
 	public void editMandatoryField() throws InterruptedException {

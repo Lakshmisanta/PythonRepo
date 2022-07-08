@@ -21,7 +21,7 @@ import utilities.cucumberLogs;
 import org.testng.asserts.SoftAssert;
 
 
-public class addEmergencyContactDetailsSteps extends commonMethods {
+public class EmergencyContactDetailsSteps extends commonMethods {
 
   emergencyContactDetailsPage emergencyContactDtlPage;
   SoftAssert softAssert;
@@ -94,4 +94,22 @@ public class addEmergencyContactDetailsSteps extends commonMethods {
 
 		emergencyContactDtlPage.enterOptionaldata(table);
 	}
+/*
+  @When("^I update (.*) as (.*) in emergency contact details$")
+  public void i_update_last_name_as_user_in_emergency_contact_details(String fieldname , String value) throws InterruptedException {
+    emergencyContactDtlPage.updateEmergencyContactDetails(fieldname, value);
+  }
+*/
+  @When("I update emergency contact details")
+  public void i_update_emergency_contact_details(DataTable contactDetails) {
+      // Write code here that turns the phrase above into concrete actions
+      // For automatic transformation, change DataTable to one of
+      // E, List<E>, List<List<E>>, List<Map<K,V>>, Map<K,V> or
+      // Map<K, List<V>>. E,K,V must be a String, Integer, Float,
+      // Double, Byte, Short, Long, BigInteger or BigDecimal.
+      //
+      // For other transformations you can register a DataTableType.
+      emergencyContactDtlPage.updateEmergencyContactDetails(contactDetails);
+  }
+
 }

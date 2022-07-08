@@ -4,6 +4,7 @@ import java.io.IOException;
 import java.util.List;
 import java.util.NoSuchElementException;
 import java.util.Random;
+import java.util.List;
 
 import org.openqa.selenium.ElementNotInteractableException;
 import org.openqa.selenium.WebDriver;
@@ -103,11 +104,70 @@ public class emergencyContactDetailsPage extends commonMethods {
 		PageFactory.initElements(driver, this);
 	}
 
+
+  public void enterLastName(String name){
+    clearText(txt_EmergencyLastname);
+    enterText(txt_EmergencyLastname, name);
+  }
+
+  public void enterFirstName(String name){
+    clearText(txt_EmergencyFirstname);
+    enterText(txt_EmergencyFirstname, name);
+  }
+
+  public void selectTitle(String title){
+    selectDropdown(drpdwn_Title, "selectByVisiblTtext",title);
+  }
+
+  public void selectRelationship(String relationship){
+    selectDropdown(drpdwn_Relationship, "selectByVisiblTtext",relationship);
+  }
+
+  public void selectCounty(String county){
+    selectDropdown(drpdwn_County, "selectByVisiblTtext",county);
+  }
+
+  public void enterEmailAddress(String emailaddress){
+    clearText(txt_Email);
+    enterText(txt_Email, emailaddress);
+  }
+
+  public void enterPrimaryhomeNumber(String primaryHomeNumber){
+    clearText(txt_primaryHomeNumber);
+    enterText(txt_primaryHomeNumber, primaryHomeNumber);
+  }
+
+  public void enterPersonalMobile(String personalMobile){
+    clearText(txt_personalMobile);
+    enterText(txt_personalMobile, personalMobile);
+  }
+
+  public void enterWorkNumber(String workNumber){
+
+    clearText(txt_workNumber);
+    enterText(txt_workNumber, workNumber);
+  }
+  public void enterPostcode(String postcode){
+
+    clearText(txt_Postcode);
+    enterText(txt_Postcode, postcode);
+  }
+
+  public void enterAddressLine1(String addressline1){
+    clearText(txt_Emergency_address1);
+    enterText(txt_Emergency_address1,  addressline1);
+  }
+  public void enterAddressLine2(String addressline2){
+    clearText(txt_Emergency_address2);
+    enterText(txt_Emergency_address2,  addressline2);
+  }
+  
   public void cancelContactDetails() {
 		explicitWait(btn_Cancel, "elementToBeClickable", 20);
 		moveToElement(btn_Cancel);
 		clickElement(btn_Cancel, "Cancel");
 	}
+
 
   public void DiscardContactDetails() {
 
@@ -183,6 +243,62 @@ public class emergencyContactDetailsPage extends commonMethods {
 
 	}
 
+  public void updateEmergencyContactDetails(DataTable contactDetails ) {
+
+     int totalRows = contactDetails.height();
+     //Write the code to handle Data Table
+
+     for(int i=0;i<totalRows;i++){
+
+        switch(contactDetails.cell(i,0).toLowerCase()){
+          case "first name":
+            enterFirstName(contactDetails.cell(i,1));
+            break;
+          case "last name":
+            enterLastName(contactDetails.cell(i,1));
+            break;
+          case "title":
+            selectTitle(contactDetails.cell(i,1));
+            break;
+          case "relationship":
+            selectRelationship(contactDetails.cell(i,1));
+            break;
+          case "email address":
+            enterEmailAddress(contactDetails.cell(i,1));
+            break;
+          case "primary home number":
+            enterPrimaryhomeNumber(contactDetails.cell(i,1));
+            break;
+          case "personal mobile":
+            enterPersonalMobile(contactDetails.cell(i,1));
+            break;
+          case "work number":
+            enterWorkNumber(contactDetails.cell(i,1));
+            break;
+          case "postcode":
+            enterPostcode(contactDetails.cell(i,1));
+            break;
+          case "address line1":
+            enterAddressLine1(contactDetails.cell(i,1));
+            break;
+          case "address line2":
+            enterAddressLine2(contactDetails.cell(i,1));
+            break;
+          default:
+             break;
+        }
+
+  }
+
+        /*
+    switch(details.get(0).toLowerCase()){
+      case "last name":
+         enterLastName(value);
+         break;
+    }
+    */
+  }
+
   public void clickReviewChanges() {
 
 		scrolldownbrowser(btn_reviewChanges);
@@ -196,8 +312,6 @@ public class emergencyContactDetailsPage extends commonMethods {
 		clickElement(btn_SaveChanges, "btn_SaveChanges");
 		sleepWait(15);
 	}
-
-
 
 
 
