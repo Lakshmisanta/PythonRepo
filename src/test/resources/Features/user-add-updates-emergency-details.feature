@@ -75,7 +75,7 @@ Scenario: User can update emergency contact details
   And I update emergency contact details
     | First Name             | Peter               |
     | Last Name              | Jean                |
-    | Email               	 | helpemergencycontacts@gmail.com |
+    | Email Address              	 | helpemergencycontacts@gmail.com |
     | Primary home number    | 	01278 457475       |
     | Personal mobile        | 	01278 457475       |
     | Work number            | 	01278 457475       |

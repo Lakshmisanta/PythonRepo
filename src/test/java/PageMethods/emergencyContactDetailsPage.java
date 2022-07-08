@@ -161,7 +161,7 @@ public class emergencyContactDetailsPage extends commonMethods {
     clearText(txt_Emergency_address2);
     enterText(txt_Emergency_address2,  addressline2);
   }
-  
+
   public void cancelContactDetails() {
 		explicitWait(btn_Cancel, "elementToBeClickable", 20);
 		moveToElement(btn_Cancel);
