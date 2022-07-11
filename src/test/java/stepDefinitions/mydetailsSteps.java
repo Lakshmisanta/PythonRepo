@@ -16,23 +16,41 @@ import io.cucumber.java.Before;
 import io.cucumber.java.Scenario;
 import io.cucumber.java.en.*;
 import utilities.cucumberLogs;
+import org.testng.asserts.SoftAssert;
+
 
 public class mydetailsSteps extends commonMethods {
 
-	WebDriver driver;
-	mydetailsPage objmydetailsPage = new mydetailsPage(commonMethods.driver);
-	homePageMethod objhomePageMethod = new homePageMethod(commonMethods.driver);
+	// remove below lines with parallel-test branch is merged.
+	//mydetailsPage objmydetailsPage = new mydetailsPage(commonMethods.driver);
+	//homePageMethod objhomePageMethod = new homePageMethod(commonMethods.driver);
 
-	@Given("login application URL")
+	mydetailsPage objmydetailsPage;
+	homePageMethod objhomePageMethod ;
+  SoftAssert softAssert;
+
+	@Before
+	public void setUp() {
+		objmydetailsPage = new mydetailsPage(commonMethods.driver);
+		objhomePageMethod = new homePageMethod(commonMethods.driver);
+		softAssert = new SoftAssert();
+
+	}
+
+	@After
+	public void tearDown(){
+
+	}
+
+	@Given("I am logged onto UCL as a registered user")
 	public void login_application_url() throws InterruptedException {
 
 		objhomePageMethod.loginToApp();
 	}
 
-	@Then("Navigate to mydetails page")
+	@Then("I navigate to mydetails page")
 	public void navigate_to_mydetails_page() throws InterruptedException {
 
-		// objhomePageMethod.my_details();
 		objmydetailsPage.my_details();
 	}
 
@@ -120,55 +138,46 @@ public class mydetailsSteps extends commonMethods {
 		objmydetailsPage.deleteAlternateAddress();
 	}
 
-	@Given("I am navigating to Emergency Contact details")
+	@Given("I navigate to emergency contact details")
 	public void i_am_navigating_to_emergency_contact_details() {
 
 		objmydetailsPage.Emergency_details();
 	}
 
-	@Then("I should see Emergency contact details")
+	@Then("I should see emergency contact details")
 	public void i_should_see_emergency_contact_details() {
 
 		objmydetailsPage.Verify_Emergency_page();
 	}
 
-	@When("I click Add emergency contact")
+	@When("I click add emergency contact")
 	public void i_click_add_emergency_contact() {
 
 		objmydetailsPage.addEmergencyContact();
 	}
 
-	@Then("I enter mandatory fields")
-	public void i_enter_mandatory_fields(DataTable table) throws InterruptedException {
-
-		objmydetailsPage.enterMandatorydata(table);
+	@Then("I am redirected to emergency contact landing page")
+	public void i_am_redirected_to_emergency_contact_landing_page() {
+		softAssert.assertEquals(objmydetailsPage.is_EmergencyContact_Landing_Displayed(),true,
+														"Emergency Contacts landing is not displayed");
 	}
 
-	@Then("I enter optional fields")
-	public void i_enter_optional_fields(DataTable table) throws InterruptedException {
-
-		objmydetailsPage.enterOptionaldata(table);
-	}
-
-	@Then("I click on review changes")
-	public void i_click_on_review_changes() {
-		objmydetailsPage.clickReviewChanges();
-	}
 
 	@Then("I click on review changes and verify changes")
 	public void i_click_on_review_changes_and_verify_changes() throws InterruptedException {
 		objmydetailsPage.clickReviewAndVerify();
 	}
 
-	@Then("I click on Save changes")
-	public void i_click_on_save_changes() throws InterruptedException {
-		objmydetailsPage.clickSaveChanges();
-	}
 
 	@When("I click Edit emergency details")
 	public void i_click_edit_emergency_details() {
 		objmydetailsPage.clickEditEmergencydetails();
 	}
+
+	@When("I edit an existing emergency contact")
+  public void i_edit_an_existing_emergency_contact() {
+		objmydetailsPage.clickEditEmergencydetails();
+  }
 
 	@Then("I should Edit Mandatory fields")
 	public void i_should_edit_mandatory_fields() throws InterruptedException {

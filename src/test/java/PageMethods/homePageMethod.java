@@ -21,7 +21,7 @@ public class homePageMethod extends commonMethods {
 
 	@FindBy(xpath = "//input[@type='submit']")
 	WebElement btn_Next;
-	
+
 	@FindBy(xpath = "//input[@id='idSIButton9']")
 	WebElement btn_yes;
 
@@ -31,12 +31,15 @@ public class homePageMethod extends commonMethods {
 	@FindBy(xpath = "//*[@class ='inside-ucl-large-tile__text OSFillParent']")
 	public List<WebElement> link_MyDetails;
 
+	@FindBy(xpath = "//div[@class ='osui-gallery']")
+	WebElement link_Gallery;
+
 	@FindBy(xpath = "//*[@class ='InsideUCL--Title']")
 	WebElement PageTitle;
 
 	@FindBy(xpath = "//*[@class ='popover-top']")
 	WebElement btn_Menu;
-	
+
 	@FindBy(xpath = "//*[contains(text(),'Home')]")
 	WebElement btn_Home;
 
@@ -46,11 +49,10 @@ public class homePageMethod extends commonMethods {
 	public homePageMethod(WebDriver driver) {
 
 		PageFactory.initElements(driver, this);
-
 	}
 
 	public void loginToApp() throws InterruptedException {
-		
+
 		explicitWait(txt_Username, "visibilityOf", 40);
 		enterText(txt_Username, globalvariables.Username);
 		explicitWait(btn_Next, "elementToBeClickable", 40);
@@ -60,16 +62,13 @@ public class homePageMethod extends commonMethods {
 		clickElement(btn_Next, "btn_Next");
 		explicitWait(btn_yes, "elementToBeClickable", 20);
 		clickElement(btn_yes, "btn_yes");
-		sleepWait(30);
-		
-
 	}
 
 	public void my_details() throws InterruptedException {
 
 		sleepWait(15);
-		explicitWait(link_MyDetails.get(0), "elementToBeClickable", 30);
-		clickElement(link_MyDetails.get(0), "link_MyDetails");
+		explicitWait(link_Gallery, "visibilityOf", 30);
+		clickElement(link_MyDetails.get(0), "My Details");
 	}
 
 	public void my_details_Page() throws InterruptedException {

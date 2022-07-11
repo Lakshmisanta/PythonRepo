@@ -16,8 +16,6 @@ public class homePageSteps {
 	myTimeOffPage timeoffpage = new myTimeOffPage(commonMethods.driver);
 	SoftAssert softAssert = new SoftAssert();
 
-
-
 	@Given("I navigate to Inside UCL app")
 	public void i_navigate_to_inside_ucl_app() throws InterruptedException {
 
