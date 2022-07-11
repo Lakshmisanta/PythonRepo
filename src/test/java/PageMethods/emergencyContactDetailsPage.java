@@ -152,14 +152,16 @@ public class emergencyContactDetailsPage extends commonMethods {
     enterText(txt_workNumber, workNumber);
   }
 
-  public void enterCity(String city`){
+  public void enterCity(String city){
 
     clearText(txt_City);
     enterText(txt_City, city);
   }
-  public void setPrimaryContact(String isPrimary){
-      
 
+  public void setPrimaryContact(String isPrimary){
+      if(isPrimary.toLowerCase().equals(isPrimary.toLowerCase()) ){
+        chkbx_PrimaryCtc.click();
+      }
   }
   public void enterPostcode(String postcode){
 

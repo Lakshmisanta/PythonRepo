@@ -5,7 +5,7 @@ Feature: Emergency Details
 	should be able to add , edit and cancel emergency details
 
 Background:
-	Given I am logged onto UCL as a registered user 
+	Given I am logged onto UCL as a registered user
 	Then I navigate to mydetails page
 
 Scenario: User can add emergency contact details
