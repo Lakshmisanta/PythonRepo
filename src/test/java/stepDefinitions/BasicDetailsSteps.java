@@ -51,10 +51,10 @@ public class BasicDetailsSteps extends commonMethods {
 			softAssert.assertEquals(objbasicdetailsPage.enterUserDetails(),true);
 	}
 
-	@And("DOB NI number Nationality should not get edited")
+	@And("DOB NI number Nationality are disabled")
 	public void DOB_NI_number_nationality_should_not_get_edited() {
 
-		objbasicdetailsPage.enterSubDetails();
+		softAssert.assertEquals(objbasicdetailsPage.enterSubDetails(),true);
 	}
 
 	@When("No details entered then review changes is disabled")

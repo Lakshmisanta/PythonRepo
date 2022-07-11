@@ -14,9 +14,8 @@ Feature: Basic Details
     Then basic details landing page is displayed
   	When I choose to edit basic details
     Then basic details page is displayed
-    And Title Firstname Lastname are disbaled
-
-  	#And DOB NI number Nationality should not get edited
+    And Title Firstname Lastname are disabled
+    And DOB NI number Nationality are disabled
     #And date of brith ni number Nationality are disabled
   	#When No details entered then review changes is disabled
   	#Then I should enter optional basic details

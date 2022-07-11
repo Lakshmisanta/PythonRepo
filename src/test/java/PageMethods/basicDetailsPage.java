@@ -115,15 +115,15 @@ public class basicDetailsPage extends commonMethods {
 
 	}
 
-	public void enterSubDetails() {
+	public boolean enterSubDetails() {
 
 		if (!(txt_DOB.isEnabled() && txt_NI_Number.isEnabled() && txt_Nationality.isEnabled())) {
 			cucumberLogs.info("DOB/Number/Nationality is not getting Editable");
-
-		} else {
-
+			return true;
+		}
+		else {
 			cucumberLogs.fail("DOB/Number/Nationality is getting Editable");
-
+			return false;
 		}
 
 	}
