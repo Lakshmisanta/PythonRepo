@@ -17,13 +17,13 @@ Scenario: User can add emergency contact details
 		| Fields                 | Values              |
 		| Relationship           | Brother             |
 		| Last Name              | Luke               |
-		| Address1               | 35 A                |
-		| Address2               | Foxhole Rd          |
+		| Address Line1               | 35 A                |
+		| Address Line2               | Foxhole Rd          |
 	Then I enter optional details
 		| Fields                 | Values              |
 		| Title            		   | Mr              	   |
 		| First Name             | Peter               |
-		| Email               	 | EmergencyContacts@gmail.com |
+		| Email Address          | EmergencyContacts@gmail.com |
     | Primary home number    | 	01278 457474       |
 		| Personal mobile        | 	01278 457474       |
     | Work number            | 	01278 457474       |
@@ -49,13 +49,13 @@ Scenario: User can discard emergency contact details
     | Fields                 | Values              |
     | Relationship           | Brother             |
     | Last Name              | Luke               |
-    | Address1               | 35 A                |
-    | Address2               | Foxhole Rd          |
+    | Address Line1               | 35 A                |
+    | Address Line2               | Foxhole Rd          |
   Then I enter optional details
     | Fields                 | Values              |
     | Title            		   | Mr              	   |
     | First Name             | Peter               |
-    | Email               	 | EmergencyContacts@gmail.com |
+    | Email Address          | EmergencyContacts@gmail.com |
     | Primary home number    | 	01278 457474       |
     | Personal mobile        | 	01278 457474       |
     | Work number            | 	01278 457474       |
@@ -75,14 +75,14 @@ Scenario: User can update emergency contact details
   And I update emergency contact details
     | First Name             | Peter               |
     | Last Name              | Jean                |
-    | Email Address              	 | helpemergencycontacts@gmail.com |
+    | Email Address          | helpemergencycontacts@gmail.com |
     | Primary home number    | 	01278 457476       |
     | Personal mobile        | 	01278 457476       |
     | Work number            | 	01278 457476       |
     | Postcode               | PR7 1BD             |
     | Relationship           | Husband             |
-    | Address1               | 36                |
-    | Address2               | Newgate Street          |
+    | Address Line1               | 36                |
+    | Address Line2               | Newgate Street          |
   When I choose to review changes
 	And I save changes to add contact details
   Then I am redirected to emergency contact landing page

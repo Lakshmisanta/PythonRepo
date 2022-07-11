@@ -375,8 +375,8 @@ public class mydetailsPage extends commonMethods {
 
 	public void my_details() throws InterruptedException {
 
-		explicitWait(link_Gallery, "elementToBeClickable", 100);
-		clickElement(link_Gallery, "link_MyDetails");
+		explicitWait(link_Gallery, "visibilityOf", 100);
+		clickElement(link_MyDetails.get(0), "My Details link");
 		//Wait for side menu to appear after clicking on my details block
 		explicitWait(menu_mydetailsMenu, "visibilityOf", 30);
 	}

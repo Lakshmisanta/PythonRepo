@@ -34,7 +34,6 @@ public class homePageMethod extends commonMethods {
 	@FindBy(xpath = "//div[@class ='osui-gallery']")
 	WebElement link_Gallery;
 
-
 	@FindBy(xpath = "//*[@class ='InsideUCL--Title']")
 	WebElement PageTitle;
 
@@ -68,8 +67,8 @@ public class homePageMethod extends commonMethods {
 	public void my_details() throws InterruptedException {
 
 		sleepWait(15);
-		explicitWait(link_Gallery, "elementToBeClickable", 30);
-		clickElement(link_MyDetails.get(0), "link_MyDetails");
+		explicitWait(link_Gallery, "visibilityOf", 30);
+		clickElement(link_MyDetails.get(0), "My Details");
 	}
 
 	public void my_details_Page() throws InterruptedException {
