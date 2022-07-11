@@ -37,7 +37,7 @@ public class mydetailsPage extends commonMethods {
 	@FindBy(xpath = "//div[@class='side-menu']")
 	public WebElement menu_mydetailsMenu;
 
-	@FindBy(xpath = "//*[contains(text(),'Basic details')]")
+	@FindBy(xpath = "//*[contains(text(),'Basic details')][@class='OSFillParent']")
 	WebElement link_BasicDetails;
 
 	@FindBy(xpath = "//*[@type = 'button']")
@@ -383,10 +383,8 @@ public class mydetailsPage extends commonMethods {
 
 	public void basic_details() {
 
-		if (!btn_EditDetails.isDisplayed()) {
-			commonMethods.explicitWait(link_BasicDetails, "elementToBeClickable", 20);
-			commonMethods.clickElement(link_BasicDetails, "link_BasicDetails");
-		}
+		explicitWait(link_BasicDetails, "elementToBeClickable", 20);
+		clickElement(link_BasicDetails, "Basic Details");
 	}
 
 	public void edit_details() {
