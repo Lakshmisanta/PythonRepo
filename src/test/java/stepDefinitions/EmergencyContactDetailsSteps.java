@@ -86,13 +86,13 @@ public class EmergencyContactDetailsSteps extends commonMethods {
   @Then("I enter mandatory details")
 	public void i_enter_mandatory_fields(DataTable table) throws InterruptedException {
 
-		emergencyContactDtlPage.enterMandatorydata(table);
+		emergencyContactDtlPage.updateEmergencyContactDetails(table);
 	}
 
   @Then("I enter optional details")
 	public void i_enter_optional_fields(DataTable table) throws InterruptedException {
 
-		emergencyContactDtlPage.enterOptionaldata(table);
+		emergencyContactDtlPage.updateEmergencyContactDetails(table);
 	}
 /*
   @When("^I update (.*) as (.*) in emergency contact details$")

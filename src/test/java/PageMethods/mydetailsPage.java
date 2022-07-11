@@ -31,6 +31,9 @@ public class mydetailsPage extends commonMethods {
 	@FindBy(xpath = "//*[@class ='inside-ucl-large-tile__text OSFillParent']")
 	public List<WebElement> link_MyDetails;
 
+	@FindBy(xpath = "//div[@class ='osui-gallery']")
+	WebElement link_Gallery;
+
 	@FindBy(xpath = "//div[@class='side-menu']")
 	public WebElement menu_mydetailsMenu;
 
@@ -372,8 +375,8 @@ public class mydetailsPage extends commonMethods {
 
 	public void my_details() throws InterruptedException {
 
-		explicitWait(link_MyDetails.get(0), "elementToBeClickable", 100);
-		clickElement(link_MyDetails.get(0), "link_MyDetails");
+		explicitWait(link_Gallery, "elementToBeClickable", 100);
+		clickElement(link_Gallery, "link_MyDetails");
 		//Wait for side menu to appear after clicking on my details block
 		explicitWait(menu_mydetailsMenu, "visibilityOf", 30);
 	}
