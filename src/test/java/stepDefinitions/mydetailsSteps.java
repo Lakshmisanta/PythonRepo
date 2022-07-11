@@ -42,16 +42,15 @@ public class mydetailsSteps extends commonMethods {
 
 	}
 
-	@Given("login application URL")
+	@Given("I am logged onto UCL as a registered user")
 	public void login_application_url() throws InterruptedException {
 
 		objhomePageMethod.loginToApp();
 	}
 
-	@Then("navigate to mydetails page")
+	@Then("I navigate to mydetails page")
 	public void navigate_to_mydetails_page() throws InterruptedException {
 
-		// objhomePageMethod.my_details();
 		objmydetailsPage.my_details();
 	}
 

@@ -86,6 +86,10 @@ public class emergencyContactDetailsPage extends commonMethods {
 	@FindBy(xpath = "//*[@id='Dropdown_Title']")
 	WebElement drpdwn_Title;
 
+  @FindBy(xpath = "//input[@id='Checkbox1']")
+	WebElement chkbx_PrimaryCtc;
+
+
   @FindBy(xpath = "//*[@id='Input_FirstName_Edit']")
 	WebElement txt_EmergencyFirstname;
 
@@ -147,19 +151,35 @@ public class emergencyContactDetailsPage extends commonMethods {
     clearText(txt_workNumber);
     enterText(txt_workNumber, workNumber);
   }
+
+  public void enterCity(String city`){
+
+    clearText(txt_City);
+    enterText(txt_City, city);
+  }
+  public void setPrimaryContact(String isPrimary){
+      
+
+  }
   public void enterPostcode(String postcode){
 
     clearText(txt_Postcode);
     enterText(txt_Postcode, postcode);
   }
 
-  public void enterAddressLine1(String addressline1){
+  public void enterAddressLine1(String addressline){
     clearText(txt_Emergency_address1);
-    enterText(txt_Emergency_address1,  addressline1);
+    enterText(txt_Emergency_address1,  addressline);
   }
-  public void enterAddressLine2(String addressline2){
+
+  public void enterAddressLine2(String addressline){
     clearText(txt_Emergency_address2);
-    enterText(txt_Emergency_address2,  addressline2);
+    enterText(txt_Emergency_address2,  addressline);
+  }
+
+  public void enterAddressLine3(String addressline){
+    clearText(txt_Emergency_address3);
+    enterText(txt_Emergency_address3,  addressline);
   }
 
   public void cancelContactDetails() {
@@ -167,7 +187,6 @@ public class emergencyContactDetailsPage extends commonMethods {
 		moveToElement(btn_Cancel);
 		clickElement(btn_Cancel, "Cancel");
 	}
-
 
   public void DiscardContactDetails() {
 
@@ -198,7 +217,6 @@ public class emergencyContactDetailsPage extends commonMethods {
 		explicitWait(dlg_ReviewChanges, "visibilityOf", 20);
 		clickElement(btn_SaveReviewChanges, "Save changes button on Review Changes");
 	}
-
 
   public boolean is_Add_EmergencyContact_Displayed() {
 
@@ -284,19 +302,19 @@ public class emergencyContactDetailsPage extends commonMethods {
           case "address line2":
             enterAddressLine2(contactDetails.cell(i,1));
             break;
+          case "address line3":
+              enterAddressLine3(contactDetails.cell(i,1));
+              break;
+          case "city":
+              enterCity(contactDetails.cell(i,1));
+              break;
+          case "county":
+              selectCounty(contactDetails.cell(i,1));
+              break;
           default:
              break;
         }
-
-  }
-
-        /*
-    switch(details.get(0).toLowerCase()){
-      case "last name":
-         enterLastName(value);
-         break;
-    }
-    */
+      }
   }
 
   public void clickReviewChanges() {

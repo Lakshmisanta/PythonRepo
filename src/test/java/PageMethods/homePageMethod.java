@@ -21,7 +21,7 @@ public class homePageMethod extends commonMethods {
 
 	@FindBy(xpath = "//input[@type='submit']")
 	WebElement btn_Next;
-	
+
 	@FindBy(xpath = "//input[@id='idSIButton9']")
 	WebElement btn_yes;
 
@@ -36,7 +36,7 @@ public class homePageMethod extends commonMethods {
 
 	@FindBy(xpath = "//*[@class ='popover-top']")
 	WebElement btn_Menu;
-	
+
 	@FindBy(xpath = "//*[contains(text(),'Home')]")
 	WebElement btn_Home;
 
@@ -46,11 +46,10 @@ public class homePageMethod extends commonMethods {
 	public homePageMethod(WebDriver driver) {
 
 		PageFactory.initElements(driver, this);
-
 	}
 
 	public void loginToApp() throws InterruptedException {
-		
+
 		explicitWait(txt_Username, "visibilityOf", 40);
 		enterText(txt_Username, globalvariables.Username);
 		explicitWait(btn_Next, "elementToBeClickable", 40);
@@ -60,9 +59,6 @@ public class homePageMethod extends commonMethods {
 		clickElement(btn_Next, "btn_Next");
 		explicitWait(btn_yes, "elementToBeClickable", 20);
 		clickElement(btn_yes, "btn_yes");
-		sleepWait(30);
-		
-
 	}
 
 	public void my_details() throws InterruptedException {

@@ -1,11 +1,12 @@
+@wip
 Feature: Emergency Details
   In order to update my details
 	As a logged user
 	should be able to add , edit and cancel emergency details
 
 Background:
-	Given login application URL
-	Then navigate to mydetails page
+	Given I am logged onto UCL as a registered user 
+	Then I navigate to mydetails page
 
 Scenario: User can add emergency contact details
 
@@ -66,7 +67,6 @@ Scenario: User can discard emergency contact details
   And decide to discard contact details
   Then I am redirected to emergency contact landing page
 
-@wip
 Scenario: User can update emergency contact details
 
   Given I navigate to emergency contact details
@@ -76,13 +76,13 @@ Scenario: User can update emergency contact details
     | First Name             | Peter               |
     | Last Name              | Jean                |
     | Email Address              	 | helpemergencycontacts@gmail.com |
-    | Primary home number    | 	01278 457475       |
-    | Personal mobile        | 	01278 457475       |
-    | Work number            | 	01278 457475       |
+    | Primary home number    | 	01278 457476       |
+    | Personal mobile        | 	01278 457476       |
+    | Work number            | 	01278 457476       |
     | Postcode               | PR7 1BD             |
     | Relationship           | Husband             |
-    | Address1               | 35 A                |
-    | Address2               | Foxhole Rd          |
+    | Address1               | 36                |
+    | Address2               | Newgate Street          |
   When I choose to review changes
 	And I save changes to add contact details
   Then I am redirected to emergency contact landing page
