@@ -32,7 +32,7 @@ Feature: Basic Details
   	When I choose to edit basic details
     Then basic details page is displayed
   	When  I enter optional basic contact details
-      |  Preferred First Name   | Test   |
+      |  Preferred First Name  | Test   |
       |  Preferred Last Name   | User   |
     And I choose to cancel editing of basic contact details
     But again decide to continue editing of basic contact details
