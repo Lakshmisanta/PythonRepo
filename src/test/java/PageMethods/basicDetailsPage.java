@@ -94,6 +94,11 @@ public class basicDetailsPage extends commonMethods {
   @FindBy(xpath = "//div[@id='b1-popupReviewChanges']//button[@class='btn btn-primary OSFillParent']")
 	WebElement btn_SaveChanges;
 
+	@FindBy(xpath = "//div[@id='conPreferredLastName']")
+	WebElement lbl_PreferredLastName;
+
+  String PreferredLastName;
+
 	public basicDetailsPage(WebDriver driver) {
 
 		PageFactory.initElements(driver, this);
@@ -131,7 +136,9 @@ public class basicDetailsPage extends commonMethods {
 
 	public void enterPreferredLastName(String name){
 		clearText(txt_PreferredLastName);
-		enterText(txt_PreferredLastName, name);
+		this.PreferredLastName = new String(name + StringUtils.generateRandomChars("abcdefghijklmnopqrstuvxyz", 5));
+		enterText(txt_PreferredLastName, this.PreferredLastName);
+
 	}
 
 	public void enterPreferredFirstName(String name){
@@ -198,10 +205,10 @@ public class basicDetailsPage extends commonMethods {
 
         switch(contactDetails.cell(i,0).toLowerCase()){
           case "preferred first name":
-            enterPreferredFirstName(contactDetails.cell(i,1) + StringUtils.generateRandomChars("abcdefghijklmnopqrstuvxyz", 5));
+            enterPreferredFirstName(contactDetails.cell(i,1) );
             break;
           case "preferred last name":
-            enterPreferredLastName(contactDetails.cell(i,1) + StringUtils.generateRandomChars("abcdefghijklmnopqrstuvxyz", 5));
+            enterPreferredLastName(contactDetails.cell(i,1) );
             break;
           default:
              break;
@@ -243,7 +250,7 @@ public class basicDetailsPage extends commonMethods {
 	}
 
 	public boolean isBasicDetailsSaved(){
-		return explicitWaitForTextInElement(dlg_basicDetailsAdded,"Changes applied",20);
+		return explicitWaitForTextInElement(lbl_PreferredLastName,this.PreferredLastName,20);
 	}
 
 }
