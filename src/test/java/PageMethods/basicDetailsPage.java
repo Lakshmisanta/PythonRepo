@@ -56,7 +56,7 @@ public class basicDetailsPage extends commonMethods {
 	@FindBy(xpath = "//*[@id = 'Input_FirstNamePreferred_Edit']")
 	WebElement txt_PreferredFirstName;
 
-	@FindBy(xpath = "//form[@id='b1-Form1']//button[@class='btn']")
+	@FindBy(xpath = "//button[@class='btn'][contains(text(),'Cancel')]")
   WebElement btn_Cancel;
 
 	@FindBy(xpath = "//*[@id = 'Input_LastNamePreferred_Edit']")
@@ -208,8 +208,8 @@ public class basicDetailsPage extends commonMethods {
   }
 
 	public void cancelBasicContactDetails() {
-		moveToElement(btn_Cancel);
 		explicitWait(btn_Cancel, "elementToBeClickable", 20);
+		moveToElement(btn_Cancel);
 		clickElement(btn_Cancel, "Cancel button");
 	}
 
