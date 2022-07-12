@@ -20,19 +20,19 @@ public class DateUtils {
 		// Integer to String Conversion
 		String todayStr = Integer.toString(todayInt);
 		System.out.println("TodayDay Str: " + todayStr + "\n");
-		
+
 		// Get Current Month as a number
 				int CurrentMonthInt = calendar.get(Calendar.MONTH);
 				System.out.println("CurrentMonthInt Day Int: " + CurrentMonthInt + "\n");
-				
+
 				// Integer to String Conversion
 				String CurrentMonthStr = Integer.toString(CurrentMonthInt);
 				System.out.println("CurrentMonthStr Str: " + CurrentMonthStr + "\n");
 
 		return todayStr ;
 	}
-	
-	
+
+
 	// Get The Current Month
 		public static String getCurrentMonth() {
 			// Create a Calendar Object
@@ -41,14 +41,14 @@ public class DateUtils {
 			// Get Current Month as a number
 					int CurrentMonthInt = calendar.get(Calendar.MONTH);
 					System.out.println("CurrentMonthInt Day Int: " + CurrentMonthInt + "\n");
-					
+
 					// Integer to String Conversion
 					String CurrentMonthStr = Integer.toString(CurrentMonthInt);
 					System.out.println("CurrentMonthStr Str: " + CurrentMonthStr + "\n");
 
 			return CurrentMonthStr ;
 		}
-	
+
 
 	// Get The Current Day plus days. You can change this method based on your
 	// needs.
@@ -59,7 +59,7 @@ public class DateUtils {
 		System.out.println("dayOfWeekPlus Str: " + dayOfWeekPlus + "\n");
 		return Integer.toString(dayOfWeekPlus);
 	}
-	
+
 	// Get The Current Day plus days. You can change this method based on your
 		// needs.
 		public static String getCurrentMonthPlus(int noOfMonth) {

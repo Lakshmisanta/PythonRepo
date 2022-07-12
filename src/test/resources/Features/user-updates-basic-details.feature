@@ -34,7 +34,7 @@ Feature: Basic Details
     Then basic details page is displayed
   	When I enter optional basic contact details
       |  Preferred First Name  | Test   |
-      |  Preferred Last Name   | User   |
+      |  Preferred Last Name   | random   |
     And I choose to cancel editing of basic contact details
     But again decide to continue editing of basic contact details
     And I review changes in basic details

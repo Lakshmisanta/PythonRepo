@@ -14,6 +14,8 @@ import org.testng.asserts.SoftAssert;
 
 import io.cucumber.datatable.DataTable;
 import utilities.DateUtils;
+import utilities.StringUtils;
+
 import utilities.cucumberLogs;
 import utilities.globalvariables;
 
@@ -75,7 +77,7 @@ public class basicDetailsPage extends commonMethods {
 	DateUtils date = new DateUtils();
 
   @FindBy(xpath = "//div[@class='portal-class']")
-  public WebElement dlg_ContactAdded;
+  public WebElement dlg_basicDetailsAdded;
 
 	@FindBy(xpath = "//div[@class='popup-dialog popup-dialog']")
 	public WebElement dlg_DiscardChanges;
@@ -196,10 +198,10 @@ public class basicDetailsPage extends commonMethods {
 
         switch(contactDetails.cell(i,0).toLowerCase()){
           case "preferred first name":
-            enterPreferredFirstName(contactDetails.cell(i,1));
+            enterPreferredFirstName(contactDetails.cell(i,1) + StringUtils.generateRandomChars("abcdefghijklmnopqrstuvxyz", 5));
             break;
           case "preferred last name":
-            enterPreferredLastName(contactDetails.cell(i,1));
+            enterPreferredLastName(contactDetails.cell(i,1) + StringUtils.generateRandomChars("abcdefghijklmnopqrstuvxyz", 5));
             break;
           default:
              break;
@@ -238,6 +240,10 @@ public class basicDetailsPage extends commonMethods {
 
 		explicitWait(btn_SaveChanges, "elementToBeClickable", 10);
 		clickElement(btn_SaveChanges, "Save Changes button");
+	}
+
+	public boolean isBasicDetailsSaved(){
+		return explicitWaitForTextInElement(dlg_basicDetailsAdded,"Changes applied",20);
 	}
 
 }

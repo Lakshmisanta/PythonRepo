@@ -134,7 +134,6 @@ public class BasicDetailsSteps extends commonMethods {
 
 	@Then("I should see details are saved")
 	public void i_should_see_details_are_saved() {
-    // Write code here that turns the phrase above into concrete actions
-    throw new io.cucumber.java.PendingException();
+		softAssert.assertTrue(objbasicdetailsPage.isBasicDetailsSaved());
 	}
 }

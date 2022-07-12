@@ -94,12 +94,7 @@ public class EmergencyContactDetailsSteps extends commonMethods {
 
 		emergencyContactDtlPage.updateEmergencyContactDetails(table);
 	}
-/*
-  @When("^I update (.*) as (.*) in emergency contact details$")
-  public void i_update_last_name_as_user_in_emergency_contact_details(String fieldname , String value) throws InterruptedException {
-    emergencyContactDtlPage.updateEmergencyContactDetails(fieldname, value);
-  }
-*/
+
   @When("I update emergency contact details")
   public void i_update_emergency_contact_details(DataTable contactDetails) {
       // Write code here that turns the phrase above into concrete actions
