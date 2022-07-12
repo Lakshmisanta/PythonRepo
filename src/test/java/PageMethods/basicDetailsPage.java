@@ -111,7 +111,7 @@ public class basicDetailsPage extends commonMethods {
 
 	public boolean is_BasicDetails_Landing_Displayed() {
 
-		if (btn_EditDetails.isDisplayed()) {
+		if (explicitWait(btn_EditDetails,"elementToBeClickable", 30)) {
 			cucumberLogs.info("Basic Contact landing details page displayed");
 			return true;
 		}

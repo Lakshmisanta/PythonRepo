@@ -1,4 +1,4 @@
-@inprogress
+
 Feature: Basic Details
   In order to update my basic details
 	As a logged user
@@ -8,10 +8,11 @@ Feature: Basic Details
   	Given I am logged onto UCL as a registered user
   	Then I navigate to mydetails page
 
+  @inprogress
   Scenario: User can discard editing existing basic details
 
     When I navigate to basic details
-    Then basic details landing page is displayed
+    #Then basic details landing page is displayed
   	When I choose to edit basic details
     Then basic details page is displayed
     And title first name last name are disabled

@@ -514,7 +514,7 @@ public class mydetailsPage extends commonMethods {
 	public void Verify_Emergency_page() {
 
 		if (EmergencyContacts.isDisplayed()) {
-			cucumberLogs.info("AddEmergencyAddress details page displayed");
+			cucumberLogs.info("Add Emergency Address details page displayed");
 		}
 	}
 

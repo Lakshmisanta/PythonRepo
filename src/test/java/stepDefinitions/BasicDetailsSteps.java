@@ -57,12 +57,6 @@ public class BasicDetailsSteps extends commonMethods {
 		//objbasicdetailsPage.reviewChanges();
 	}
 
-	@Then("I click on Cancel then continue editing")
-	public void i_click_on_cancel_then_continue_editing() {
-
-		//objbasicdetailsPage.cancel_Details();
-	}
-
 	@Then("I click on Cancel")
 	public void i_click_on_cancel() {
 
