@@ -17,7 +17,7 @@ Feature: Basic Details
     Then basic details page is displayed
     And title first name last name are disabled
     And date of birth ni number nationality are disabled
-  	When no details entered
+  	When no details are entered
     Then I can not review changes
   	When I enter optional basic contact details
       |  Preferred First Name  | Test   |
@@ -32,7 +32,7 @@ Feature: Basic Details
     Then basic details landing page is displayed
   	When I choose to edit basic details
     Then basic details page is displayed
-  	When  I enter optional basic contact details
+  	When I enter optional basic contact details
       |  Preferred First Name  | Test   |
       |  Preferred Last Name   | User   |
     And I choose to cancel editing of basic contact details

@@ -89,7 +89,7 @@ public class basicDetailsPage extends commonMethods {
   @FindBy(xpath = "//button[contains(text(),'Review changes')]")
 	WebElement btn_reviewChanges;
 
-  @FindBy(xpath = "//*[@type = 'button']/div")
+  @FindBy(xpath = "//div[@id='b1-popupReviewChanges']//button[@class='btn btn-primary OSFillParent']")
 	WebElement btn_SaveChanges;
 
 	public basicDetailsPage(WebDriver driver) {

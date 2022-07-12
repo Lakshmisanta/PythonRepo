@@ -65,7 +65,7 @@ public class BasicDetailsSteps extends commonMethods {
 
 	@Then("basic details landing page is displayed")
 	public void basic_details_landing_page_is_displayed() {
-		
+
 		softAssert.assertEquals(objbasicdetailsPage.is_BasicDetails_Landing_Displayed(),true,
 														"Basic details page is not displayed");
 	}
@@ -82,8 +82,8 @@ public class BasicDetailsSteps extends commonMethods {
 	}
 
 
-	@When("no details entered")
-	public void no_details_entered() {
+	@When("no details are entered")
+	public void no_details_are_entered() {
     // See if preferred first and last name are empty
 		softAssert.assertEquals(objbasicdetailsPage.getTextBoxValue("Preferred First Name"),new String(""));
 		softAssert.assertEquals(objbasicdetailsPage.getTextBoxValue("Preferred Last Name"),new String(""));
@@ -121,14 +121,17 @@ public class BasicDetailsSteps extends commonMethods {
 	public void again_decide_to_continue_editing_of_basic_contact_details() {
 		objbasicdetailsPage.continueEditingContactDetails();
 	}
+
 	@When("I review changes in basic details")
 	public void i_review_changes_in_basic_details() {
 	  objbasicdetailsPage.clickReviewChanges();
 	}
+
 	@When("I save changes as final")
 	public void i_save_changes_as_final() {
 	  objbasicdetailsPage.SaveReviewChanges();
 	}
+
 	@Then("I should see details are saved")
 	public void i_should_see_details_are_saved() {
     // Write code here that turns the phrase above into concrete actions
