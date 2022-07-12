@@ -65,9 +65,9 @@ public class BasicDetailsSteps extends commonMethods {
 
 	@Then("basic details landing page is displayed")
 	public void basic_details_landing_page_is_displayed() {
+		
 		softAssert.assertEquals(objbasicdetailsPage.is_BasicDetails_Landing_Displayed(),true,
 														"Basic details page is not displayed");
-
 	}
 
 	@When("I choose to edit basic details")
