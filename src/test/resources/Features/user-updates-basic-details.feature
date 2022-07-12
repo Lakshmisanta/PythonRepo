@@ -8,18 +8,34 @@ Feature: Basic Details
   	Given I am logged onto UCL as a registered user
   	Then I navigate to mydetails page
 
-  Scenario: User can update basic details
+  Scenario: User can discard editing existing basic details
 
     When I navigate to basic details
     Then basic details landing page is displayed
   	When I choose to edit basic details
     Then basic details page is displayed
-    And Title Firstname Lastname are disabled
-    And DOB NI number Nationality are disabled
-    #And date of brith ni number Nationality are disabled
-  	#When No details entered then review changes is disabled
-  	#Then I should enter optional basic details
-  	#Then review changes button is Enabled
-  	#Then I click on Cancel then continue editing
-  	#Then I click on review changes
-  	#And I click on Save changes
+    And title first name last name are disabled
+    And date of birth ni number nationality are disabled
+  	When no details entered
+    Then I can not review changes
+  	When I enter optional basic contact details
+      |  Preferred First Name  | Test   |
+      |  Preferred Last Name   | User   |
+    And I choose to cancel editing of basic contact details
+    And decide to discard entered basic contact details
+    Then basic details landing page is displayed
+
+  Scenario: User can review and save new basic contact details
+
+    When I navigate to basic details
+    Then basic details landing page is displayed
+  	When I choose to edit basic details
+    Then basic details page is displayed
+  	When  I enter optional basic contact details
+      |  Preferred First Name   | Test   |
+      |  Preferred Last Name   | User   |
+    And I choose to cancel editing of basic contact details
+    But again decide to continue editing of basic contact details
+    And I review changes in basic details
+    And I save changes as final
+    Then I should see details are saved

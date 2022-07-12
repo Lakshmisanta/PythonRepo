@@ -39,10 +39,10 @@ public class basicDetailsPage extends commonMethods {
 	WebElement txt_Title;
 
 	@FindBy(xpath = "//*[@id = 'Input_FirstName_Edit']")
-	WebElement txt_Firstname;
+	WebElement txt_FirstName;
 
 	@FindBy(xpath = "//*[@id = 'Input_LastName_Edit']")
-	WebElement txt_Lastname;
+	WebElement txt_LastName;
 
 	@FindBy(xpath = "//*[@id = 'Input_DateOfBirth_Edit']")
 	WebElement txt_DOB;
@@ -54,16 +54,43 @@ public class basicDetailsPage extends commonMethods {
 	WebElement txt_Nationality;
 
 	@FindBy(xpath = "//*[@id = 'Input_FirstNamePreferred_Edit']")
-	WebElement txt_PreferredName;
+	WebElement txt_PreferredFirstName;
+
+	@FindBy(xpath = "//form[@id='b1-Form1']//button[@class='btn']")
+  WebElement btn_Cancel;
 
 	@FindBy(xpath = "//*[@id = 'Input_LastNamePreferred_Edit']")
-	WebElement txt_PreferredLastname;
+	WebElement txt_PreferredLastName;
 
 	@FindBy(xpath = "//*[@id='b1-Form1']")
 	WebElement frm_BasicDetails;
 
+	@FindBy(xpath = "//*[@id='b1-popupDiscardChanges']//a[contains(text(),'Discard')]")
+  WebElement btn_discard;
+
+  @FindBy(xpath = "//*[@id='b1-popupDiscardChanges']//a[contains(text(),'Continue editing')]")
+  WebElement btn_ContinueEditing;
+
 	SoftAssert softAssert = new SoftAssert();
 	DateUtils date = new DateUtils();
+
+  @FindBy(xpath = "//div[@class='portal-class']")
+  public WebElement dlg_ContactAdded;
+
+	@FindBy(xpath = "//div[@class='popup-dialog popup-dialog']")
+	public WebElement dlg_DiscardChanges;
+
+	@FindBy(xpath = "//div[@id='b1-popupReviewChanges']")
+	public WebElement dlg_ReviewChanges;
+
+	@FindBy(xpath = "//div[@class='popup-dialog popup-dialog']")
+	public WebElement dlg_SavingChanges;
+
+  @FindBy(xpath = "//button[contains(text(),'Review changes')]")
+	WebElement btn_reviewChanges;
+
+  @FindBy(xpath = "//*[@type = 'button']/div")
+	WebElement btn_SaveChanges;
 
 	public basicDetailsPage(WebDriver driver) {
 
@@ -72,8 +99,8 @@ public class basicDetailsPage extends commonMethods {
 
 	public void basic_details() {
 
-			commonMethods.explicitWait(link_BasicDetails, "elementToBeClickable", 40);
-			commonMethods.clickElement(link_BasicDetails, "Basic Details");
+		commonMethods.explicitWait(link_BasicDetails, "elementToBeClickable", 40);
+		commonMethods.clickElement(link_BasicDetails, "Basic Details");
 	}
 
 	public void edit_details() {
@@ -100,19 +127,14 @@ public class basicDetailsPage extends commonMethods {
 		return false;
 	}
 
-	public boolean enterUserDetails() {
+	public void enterPreferredLastName(String name){
+		clearText(txt_PreferredLastName);
+		enterText(txt_PreferredLastName, name);
+	}
 
-		if (!(txt_Title.isEnabled() && txt_Firstname.isEnabled() && txt_Lastname.isEnabled())) {
-
-			cucumberLogs.info("Title/Firstname/Lastname is not getting Editable");
-			return true;
-		} else {
-
-			cucumberLogs.fail("Title/Firstname/Lastname is getting Editable");
-			return false;
-
-		}
-
+	public void enterPreferredFirstName(String name){
+		clearText(txt_PreferredFirstName);
+		enterText(txt_PreferredFirstName, name);
 	}
 
 	public boolean enterSubDetails() {
@@ -125,93 +147,97 @@ public class basicDetailsPage extends commonMethods {
 			cucumberLogs.fail("DOB/Number/Nationality is getting Editable");
 			return false;
 		}
-
 	}
 
-	public void enterOptionalDetails() {
+	public boolean enterUserDetails() {
 
-		explicitWait(btn_EditDetails, "visibilityOf", 20);
-		clearText(txt_PreferredName);
-		enterText(txt_PreferredName, "txt_PreferredName");
-		explicitWait(txt_PreferredLastname, "visibilityOf", 20);
-		clearText(txt_PreferredLastname);
-		enterText(txt_PreferredLastname, "txt_PreferredLastname");
+		if (!(txt_Title.isEnabled() && txt_FirstName.isEnabled() && txt_LastName.isEnabled())) {
+
+			cucumberLogs.info("Title/Firstname/Lastname is not getting Editable");
+			return true;
+		}
+		else {
+			cucumberLogs.fail("Title/Firstname/Lastname is getting Editable");
+			return false;
+		}
 	}
-/*
-	public void reviewChanges() {
+
+	public String getTextBoxValue(String elementName){
+
+		String value = new String("");
+		switch(elementName.toLowerCase()){
+       case "preferred first name":
+			   value = txt_PreferredFirstName.getAttribute("value");
+			   break;
+			 case "preferred last name":
+			   value = txt_PreferredLastName.getAttribute("value");
+			   break;
+		}
+		return value;
+	}
+
+	public boolean isReviewChangesEnabled() {
 
 		if (btn_reviewChanges.isEnabled()) {
-
 			cucumberLogs.info("Review Changes is enabled as optional details are entered");
-		} else {
+			return true;
+		}
+		else {
 			cucumberLogs.info("Review Changes is not enabled as optional details are not entered");
+			return false;
 		}
 	}
 
-	public void cancelDetails() {
+	public void updateBasicContactDetails(DataTable contactDetails ) {
 
+     int totalRows = contactDetails.height();
+     //Write the code to handle Data Table
+     for(int i=0;i<totalRows;i++){
+
+        switch(contactDetails.cell(i,0).toLowerCase()){
+          case "preferred first name":
+            enterPreferredFirstName(contactDetails.cell(i,1));
+            break;
+          case "preferred last name":
+            enterPreferredLastName(contactDetails.cell(i,1));
+            break;
+          default:
+             break;
+        }
+      }
+  }
+
+	public void cancelBasicContactDetails() {
 		moveToElement(btn_Cancel);
-		clickElement(btn_Cancel, "btn_Cancel");
-		if (btn_Discard.size() > 0) {
-			explicitWait(btn_Discard.get(0), "elementToBeClickable", 20);
-			clickElement(btn_Discard.get(0), "btn_Discard");
-		}
-		if (Delete.size() > 0) {
-			explicitWait(Delete.get(2), "elementToBeClickable", 20);
-			clickElement(Delete.get(2), "btn_Discard");
-			clickElement(btn_Cancel, "btn_Cancel");
-		}
+		explicitWait(btn_Cancel, "elementToBeClickable", 20);
+		clickElement(btn_Cancel, "Cancel button");
 	}
 
-	public void cancel_Details() {
+	public void DiscardContactDetails() {
 
-		moveToElement(btn_Cancel);
-		clickElement(btn_Cancel, "btn_Cancel");
+		explicitWait(dlg_DiscardChanges, "visibilityOf", 120);
+		explicitWait(btn_discard, "elementToBeClickable", 20);
+		clickElement(btn_discard, "Discard link");
+	}
+
+	public void continueEditingContactDetails() {
+
+		explicitWait(dlg_DiscardChanges, "visibilityOf", 120);
 		explicitWait(btn_ContinueEditing, "elementToBeClickable", 20);
-		clickElement(btn_ContinueEditing, "btn_Discard");
+		clickElement(btn_ContinueEditing, "Continue editing link");
 	}
 
-	public void contact_details() {
+	public void clickReviewChanges() {
 
-		explicitWait(link_ContactDetails, "elementToBeClickable", 30);
-		clickElement(link_ContactDetails, "link_ContactDetails");
-
+		scrolldownbrowser(btn_reviewChanges);
+		explicitWait(btn_reviewChanges, "elementToBeClickable", 10);
+		clickElement(btn_reviewChanges, "Review Changes button");
 	}
 
-	public void enterOptionalContactDetails() {
+  public void SaveReviewChanges()  {
 
-		explicitWait(txt_personalmail, "elementToBeClickable", 20);
-		clearText(txt_personalmail);
-		enterText(txt_personalmail, "txt_personalmail");
-
+		explicitWait(btn_SaveChanges, "elementToBeClickable", 10);
+		clickElement(btn_SaveChanges, "Save Changes button");
 	}
 
-	public void enterAddress(String address1, String address2) {
-
-		explicitWait(txt_address1, "elementToBeClickable", 20);
-		clearText(txt_address1);
-		enterText(txt_address1, address1);
-		clearText(txt_address2);
-		explicitWait(txt_address2, "elementToBeClickable", 20);
-		enterText(txt_address2, address2);
-	}
-
-	public void addAlternativeAddress(String address3) throws InterruptedException {
-
-		moveToElement(btn_alternativeAddress);
-		clickElement1(btn_alternateAddress, "btn_alternateAddress");
-		sleepWait(30);
-		explicitWait(txt_altAddress3.get(1), "elementToBeClickable", 20);
-		clearText(txt_altAddress3.get(1));
-		enterText(txt_altAddress3.get(1), address3);
-
-	}
-
-	public void deleteAlternateAddress() {
-
-		explicitWait(btn_deleteAltAddress, "elementToBeClickable", 40);
-		clickElement(btn_deleteAltAddress, "btn_deleteAltAddress");
-	}
-
-	*/
 }
