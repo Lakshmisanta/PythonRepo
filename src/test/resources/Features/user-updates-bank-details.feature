@@ -44,3 +44,6 @@ Feature: Bank Details
     And I review changes in bank details
     And I cancel reviewed changes in bank details
     Then bank details page is displayed
+    When again I review changes in bank details
+    And I save changes as final
+    Then I should see bank details are saved
