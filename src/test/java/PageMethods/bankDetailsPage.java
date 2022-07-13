@@ -43,6 +43,12 @@ public class bankDetailsPage extends commonMethods {
 	@FindBy(xpath = "//*[@id = 'Input_SortCode']")
 	WebElement txt_SortNumber;
 
+	@FindBy(xpath = "//*[@id = 'Input_BankName']")
+	WebElement txt_bankName;
+
+	@FindBy(xpath = "//*[@id = 'Input_Branch']")
+	WebElement txt_branch;
+
 	@FindBy(xpath = "//button[@class='btn'][contains(text(),'Cancel')]")
   WebElement btn_Cancel;
 
@@ -50,16 +56,13 @@ public class bankDetailsPage extends commonMethods {
 	WebElement frm_BankDetails;
 
 	@FindBy(xpath = "//*[@id='b1-popupDiscardChanges']//a[contains(text(),'Discard')]")
-  WebElement btn_discard;
+  WebElement lnk_discard;
 
   @FindBy(xpath = "//*[@id='b1-popupDiscardChanges']//a[contains(text(),'Continue editing')]")
-  WebElement btn_ContinueEditing;
+  WebElement lnk_ContinueEditing;
 
 	SoftAssert softAssert = new SoftAssert();
 	DateUtils date = new DateUtils();
-
-  @FindBy(xpath = "//div[@class='portal-class']")
-  public WebElement dlg_basicDetailsAdded;
 
 	@FindBy(xpath = "//div[@class='popup-dialog popup-dialog']")
 	public WebElement dlg_DiscardChanges;
@@ -123,6 +126,7 @@ public class bankDetailsPage extends commonMethods {
 		this.accountNumber = accountNumber ;
 		enterText(txt_AccountNumber, accountNumber);
 	}
+
   public void enterSortCode(String sortNumber) {
 		clearText(txt_SortNumber);
 		this.sortNumber = sortNumber ;
@@ -155,6 +159,37 @@ public class bankDetailsPage extends commonMethods {
 		explicitWait(btn_Cancel, "elementToBeClickable", 20);
 		moveToElement(btn_Cancel);
 		clickElement(btn_Cancel, "Cancel button");
+	}
+
+	public boolean isBankNameEnabled() {
+
+		if ( txt_bankName.isEnabled() ) {
+			cucumberLogs.info("Bank Name is not editable");
+			return true;
+		}
+		else {
+			cucumberLogs.fail("Bank Name is editable");
+			return false;
+		}
+	}
+
+	public boolean isBranchEnabled() {
+
+		if ( txt_bankName.isEnabled() ) {
+			cucumberLogs.info("Branch is not editable");
+			return true;
+		}
+		else {
+			cucumberLogs.fail("Branch is editable");
+			return false;
+		}
+	}
+
+	public void discardBankDetails() {
+
+		explicitWait(dlg_DiscardChanges, "visibilityOf", 120);
+		explicitWait(lnk_discard, "elementToBeClickable", 20);
+		clickElement(lnk_discard, "Discard link");
 	}
 
 }

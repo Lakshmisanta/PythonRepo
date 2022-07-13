@@ -79,5 +79,15 @@ public class BankDetailsSteps extends commonMethods {
     objbankdetailsPage.edit_details();
 	}
 
+	@Then("bank name and branch is disabled")
+	public void bank_name_and_branch_name_is_disabled() {
+		softAssert.assertFalse(objbankdetailsPage.isBankNameEnabled());
+		softAssert.assertFalse(objbankdetailsPage.isBranchEnabled());
+		softAssert.assertAll();
+	}
+	@When("decide to discard entered bank details")
+	public void decide_to_discard_entered_bank_details() {
+		objbankdetailsPage.discardBankDetails();
+	}
 
 }
