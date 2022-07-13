@@ -46,43 +46,42 @@ Scenario: User can discard emergency contact details
   Then I should see emergency contact details
   When I click add emergency contact
   Then I enter mandatory details
-    | Fields                 | Values              |
-    | Relationship           | Brother             |
-    | Last Name              | Luke               |
-    | Address Line1               | 35 A                |
-    | Address Line2               | Foxhole Rd          |
+    | Fields                 | Values     |
+    | Relationship           | Brother    |
+    | Last Name              | Luke       |
+    | Address Line1          | 35 A       |
+    | Address Line2          | Foxhole Rd |
   Then I enter optional details
-    | Fields                 | Values              |
-    | Title            		   | Mr              	   |
-    | First Name             | Peter               |
+    | Fields                 | Values                      |
+    | Title            		   | Mr              	           |
+    | First Name             | Peter                       |
     | Email Address          | EmergencyContacts@gmail.com |
-    | Primary home number    | 	01278 457474       |
-    | Personal mobile        | 	01278 457474       |
-    | Work number            | 	01278 457474       |
-    | Address3               | Near River Bank     |
-    | City                   | Chorley             |
-    | County                 | Lancashire          |
-    | Postcode               | PR7 1NY             |
+    | Primary home number    | 	01278 457474               |
+    | Personal mobile        | 	01278 457474               |
+    | Work number            | 	01278 457474               |
+    | Address3               | Near River Bank             |
+    | City                   | Chorley                     |
+    | County                 | Lancashire                  |
+    | Postcode               | PR7 1NY                     |
   And I choose to cancel contact details
   And decide to discard contact details
   Then I am redirected to emergency contact landing page
 
 Scenario: User can update emergency contact details
-
   Given I navigate to emergency contact details
   Then I should see emergency contact details
   When I edit an existing emergency contact
   And I update emergency contact details
-    | First Name             | Peter               |
-    | Last Name              | Jean                |
-    | Email Address          | helpemergencycontacts@gmail.com |
-    | Primary home number    | 	01278 457476       |
-    | Personal mobile        | 	01278 457476       |
-    | Work number            | 	01278 457476       |
-    | Postcode               | PR7 1BD             |
-    | Relationship           | Husband             |
-    | Address Line1               | 36                |
-    | Address Line2               | Newgate Street          |
+      | First Name              | Peter                           |
+      | Last Name               | Jean                            |
+      | Email Address           | helpemergencycontacts@gmail.com |
+      | Primary home number     | 	01278 457476                  |
+      | Personal mobile         | 	01278 457476                  |
+      | Work number             | 	01278 457476                  |
+      | Postcode                | PR7 1BD                         |
+      | Relationship            | Husband                         |
+      | Address Line1           |  36                             |
+      | Address Line2           | Newgate Street                  |
   When I choose to review changes
-	And I save changes to add contact details
+  And I save changes to add contact details
   Then I am redirected to emergency contact landing page

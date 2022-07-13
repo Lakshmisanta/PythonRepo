@@ -54,22 +54,17 @@ public class mydetailsSteps extends commonMethods {
 		objmydetailsPage.my_details();
 	}
 
-	@Given("I click on basic details")
+	@Given("I navigate to basic details")
 	public void i_click_on_basic_details() {
 
 		objmydetailsPage.basic_details();
 	}
 
+/*
 	@When("I click on Edit details")
 	public void i_click_on_edit_details() {
 
 		objmydetailsPage.edit_details();
-	}
-
-	@Then("Title Firstname Lastname should not get edited")
-	public void title_firstname_lastname_should_not_get_edited() {
-
-		objmydetailsPage.enterUserDetails();
 	}
 
 	@And("DOB NI number Nationality should not get edited")
@@ -78,11 +73,6 @@ public class mydetailsSteps extends commonMethods {
 		objmydetailsPage.enterSubDetails();
 	}
 
-	@When("No details entered then review changes is disabled")
-	public void no_details_entered_then_review_changes_button_is_disabled() {
-
-		objmydetailsPage.reviewChanges();
-	}
 
 	@When("I should enter optional basic details")
 	public void i_should_enter_optional_basic_details() {
@@ -106,7 +96,7 @@ public class mydetailsSteps extends commonMethods {
 
 		objmydetailsPage.cancelDetails();
 	}
-
+*/
 	@Given("I click on Contact details")
 	public void i_click_on_contact_details() {
 

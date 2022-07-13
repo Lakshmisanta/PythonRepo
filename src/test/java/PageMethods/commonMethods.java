@@ -128,14 +128,14 @@ public class commonMethods {
 
 		try {
 			elem.click();
-			System.out.println(elementName + " Element is clicked");
+			System.out.println(elementName + " is clicked");
 		} catch (ElementClickInterceptedException e) {
 
 			((JavascriptExecutor) driver).executeScript("arguments[0].style.border='3px solid red'", elem);
 			JavascriptExecutor executor = (JavascriptExecutor) driver;
 			executor.executeScript("arguments[0].click();", elem);
-			cucumberLogs.info(elementName + " Element is clicked by javascript");
-			System.out.println(elementName + " Element is clicked by javascript");
+			cucumberLogs.info(elementName + " is clicked by javascript");
+			System.out.println(elementName + " is clicked by javascript");
 
 		}
 

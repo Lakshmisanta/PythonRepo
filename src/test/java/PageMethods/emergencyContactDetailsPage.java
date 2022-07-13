@@ -57,7 +57,7 @@ public class emergencyContactDetailsPage extends commonMethods {
 	WebElement txt_workNumber;
 
   @FindBy(xpath = "//input[contains(@id,'Input_MainAddressLine1_Edit')]")
-  	WebElement txt_Emergency_address1;
+	WebElement txt_Emergency_address1;
 
 	@FindBy(xpath = "//input[contains(@id,'Input_MainAddressLine2_Edit')]")
 	WebElement txt_Emergency_address2;
@@ -103,6 +103,12 @@ public class emergencyContactDetailsPage extends commonMethods {
   @FindBy(xpath = "//*[@type = 'button']/div")
 	WebElement btn_SaveChanges;
 
+  @FindBy(xpath = "//*[@id='b1-conReadOnlyDetails']")
+  WebElement lbl_emergencyContactDetails;
+
+  String relationship, lastName, addressLine1, addressLine2, title, firstName, emailAddress,
+         primaryHomeNumber, personalMobile, workNumber, addressLine3, city, county, postcode;
+
   public emergencyContactDetailsPage(WebDriver driver) {
 
 		PageFactory.initElements(driver, this);
@@ -112,50 +118,59 @@ public class emergencyContactDetailsPage extends commonMethods {
   public void enterLastName(String name){
     clearText(txt_EmergencyLastname);
     enterText(txt_EmergencyLastname, name);
+    this.lastName = name;
   }
 
   public void enterFirstName(String name){
     clearText(txt_EmergencyFirstname);
     enterText(txt_EmergencyFirstname, name);
+    this.firstName = name;
   }
 
   public void selectTitle(String title){
     selectDropdown(drpdwn_Title, "selectByVisiblTtext",title);
+    this.title = title;
   }
 
   public void selectRelationship(String relationship){
     selectDropdown(drpdwn_Relationship, "selectByVisiblTtext",relationship);
+    this.relationship = relationship;
   }
 
   public void selectCounty(String county){
     selectDropdown(drpdwn_County, "selectByVisiblTtext",county);
+    this.county = county;
   }
 
   public void enterEmailAddress(String emailaddress){
     clearText(txt_Email);
     enterText(txt_Email, emailaddress);
+    this.emailAddress = emailAddress;
   }
 
   public void enterPrimaryhomeNumber(String primaryHomeNumber){
     clearText(txt_primaryHomeNumber);
     enterText(txt_primaryHomeNumber, primaryHomeNumber);
+    this.primaryHomeNumber = primaryHomeNumber;
   }
 
   public void enterPersonalMobile(String personalMobile){
     clearText(txt_personalMobile);
     enterText(txt_personalMobile, personalMobile);
+    this.personalMobile = personalMobile;
   }
 
   public void enterWorkNumber(String workNumber){
-
     clearText(txt_workNumber);
     enterText(txt_workNumber, workNumber);
+    this.workNumber = workNumber;
   }
 
   public void enterCity(String city){
 
     clearText(txt_City);
     enterText(txt_City, city);
+    this.city = city;
   }
 
   public void setPrimaryContact(String isPrimary){
@@ -167,21 +182,25 @@ public class emergencyContactDetailsPage extends commonMethods {
 
     clearText(txt_Postcode);
     enterText(txt_Postcode, postcode);
+    this.postcode = postcode;
   }
 
   public void enterAddressLine1(String addressline){
     clearText(txt_Emergency_address1);
     enterText(txt_Emergency_address1,  addressline);
+    this.addressLine1 = addressline;
   }
 
   public void enterAddressLine2(String addressline){
     clearText(txt_Emergency_address2);
     enterText(txt_Emergency_address2,  addressline);
+    this.addressLine2 = addressline;
   }
 
   public void enterAddressLine3(String addressline){
     clearText(txt_Emergency_address3);
     enterText(txt_Emergency_address3,  addressline);
+    this.addressLine3 = addressline;
   }
 
   public void cancelContactDetails() {
@@ -205,9 +224,12 @@ public class emergencyContactDetailsPage extends commonMethods {
 	}
 
   //verify on pop up contact is added
-  public void isEmergencyContactAdded(){
-		explicitWait(dlg_ContactAdded, "visibilityOf", 30);
-		explicitWaitForTextInElement(dlg_ContactAdded,"Changes applied",10);
+  public boolean isFirstNameUpdated(){
+    return explicitWaitForTextInElement(lbl_emergencyContactDetails,this.firstName,20);
+  }
+
+  public boolean isPostcodeUpdated(){
+		return explicitWaitForTextInElement(lbl_emergencyContactDetails,this.postcode,20);
 	}
 
   public void cancelReviewChanges() {
@@ -322,7 +344,7 @@ public class emergencyContactDetailsPage extends commonMethods {
   public void clickReviewChanges() {
 
 		scrolldownbrowser(btn_reviewChanges);
-		explicitWait(btn_reviewChanges, "elementToBeClickable", 10);
+		explicitWait(btn_reviewChanges, "elementToBeClickable", 20);
 		clickElement(btn_reviewChanges, "Review changes");
 	}
 
