@@ -215,8 +215,6 @@ public class commonMethods {
 
 		WebDriverWait waitForElement;
 		waitForElement = new WebDriverWait(driver, seconds);
-		System.out.println(textToBePresent);
-		System.out.println(elem.getText());
 		return waitForElement.until(ExpectedConditions.textToBePresentInElement(elem,textToBePresent));
 	}
 

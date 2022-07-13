@@ -1,4 +1,4 @@
-
+@inprogress
 Feature: Basic Details
   In order to update my basic details
 	As a logged user
@@ -25,7 +25,7 @@ Feature: Basic Details
     And decide to discard entered basic contact details
     Then basic details landing page is displayed
 
-  @inprogress
+
   Scenario: User can review and save new basic contact details
 
     When I navigate to basic details
