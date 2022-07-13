@@ -205,9 +205,8 @@ public class emergencyContactDetailsPage extends commonMethods {
 	}
 
   //verify on pop up contact is added
-  public void isEmergencyContactAdded(){
-		//explicitWait(dlg_ContactAdded, "visibilityOf", 30);
-		explicitWaitForTextInElement(dlg_ContactAdded,"Changes applied",10);
+  public boolean isEmergencyContactAdded(){
+		return explicitWaitForTextInElement(dlg_ContactAdded,"Changes applied",10);
 	}
 
   public void cancelReviewChanges() {

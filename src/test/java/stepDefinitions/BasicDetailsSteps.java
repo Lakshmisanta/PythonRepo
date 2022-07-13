@@ -134,6 +134,8 @@ public class BasicDetailsSteps extends commonMethods {
 
 	@Then("I should see details are saved")
 	public void i_should_see_details_are_saved() {
-		softAssert.assertTrue(objbasicdetailsPage.isBasicDetailsSaved());
+		softAssert.assertTrue(objbasicdetailsPage.isPrefferedLastNameUpdated());
+		softAssert.assertTrue(objbasicdetailsPage.isPrefferedFirstNameUpdated());
+		softAssert.assertAll();
 	}
 }

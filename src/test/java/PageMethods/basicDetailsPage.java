@@ -97,7 +97,11 @@ public class basicDetailsPage extends commonMethods {
 	@FindBy(xpath = "//div[@id='conPreferredLastName']")
 	WebElement lbl_PreferredLastName;
 
-  String PreferredLastName;
+	@FindBy(xpath = "//div[@id='conPreferredFirstName']")
+	WebElement lbl_PreferredFirstName;
+
+
+  String PreferredLastName, PreferredFirstName;
 
 	public basicDetailsPage(WebDriver driver) {
 
@@ -115,6 +119,7 @@ public class basicDetailsPage extends commonMethods {
 		commonMethods.explicitWait(btn_EditDetails, "elementToBeClickable", 20);
 		commonMethods.clickElement(btn_EditDetails, "Edit Details button");
 	}
+
 
 	public boolean is_BasicDetails_Landing_Displayed() {
 
@@ -143,7 +148,8 @@ public class basicDetailsPage extends commonMethods {
 
 	public void enterPreferredFirstName(String name){
 		clearText(txt_PreferredFirstName);
-		enterText(txt_PreferredFirstName, name);
+		this.PreferredFirstName = new String(name + StringUtils.generateRandomChars("abcdefghijklmnopqrstuvxyz", 5));
+		enterText(txt_PreferredFirstName, this.PreferredFirstName);
 	}
 
 	public boolean enterSubDetails() {
@@ -249,8 +255,13 @@ public class basicDetailsPage extends commonMethods {
 		clickElement(btn_SaveChanges, "Save Changes button");
 	}
 
-	public boolean isBasicDetailsSaved(){
-		return explicitWaitForTextInElement(lbl_PreferredLastName,this.PreferredLastName,20);
+	public boolean isPrefferedFirstNameUpdated() {
+		return explicitWaitForTextInElement(lbl_PreferredFirstName,this.PreferredFirstName,20);
+	}
+
+	public boolean isPrefferedLastNameUpdated() {
+
+		return  explicitWaitForTextInElement(lbl_PreferredLastName,this.PreferredLastName,20);
 	}
 
 }

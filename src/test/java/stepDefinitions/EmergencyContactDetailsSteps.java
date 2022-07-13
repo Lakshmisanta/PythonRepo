@@ -69,8 +69,7 @@ public class EmergencyContactDetailsSteps extends commonMethods {
 
   @Then("emergency contact is added")
 	public void emergency_contact_is_added() {
-	    // Verify on
-      emergencyContactDtlPage.isEmergencyContactAdded();
+      softAssert.assertTrue(emergencyContactDtlPage.isEmergencyContactAdded());
 	}
 
   @Then("decide to discard contact details")
