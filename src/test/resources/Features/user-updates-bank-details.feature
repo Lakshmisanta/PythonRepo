@@ -12,12 +12,12 @@ Feature: Bank Details
 
     When I navigate to bank details
     Then bank details landing page is displayed
-#  	When I choose to edit bank details
-#    Then bank details page is displayed
-#  	When I enter optional basic contact details
-#    |  Account holder's name  | Test User |
-#    And I choose to cancel editing of bank contact details
-#    Then bank details landing page is displayed
+  	When I choose to edit bank details
+    Then bank details page is displayed
+  	When I enter bank contact details
+       |  Account holder's name  | Test User |
+    And I choose to cancel editing of bank contact details
+    Then bank details landing page is displayed
 #    When I again choose to edit bank details
 #    When I enter bank  details
 #      |  Account holder's name  | Test User |

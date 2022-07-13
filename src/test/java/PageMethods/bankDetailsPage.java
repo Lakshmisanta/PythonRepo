@@ -82,12 +82,17 @@ public class bankDetailsPage extends commonMethods {
 	@FindBy(xpath = "//div[@id='conPreferredFirstName']")
 	WebElement lbl_PreferredFirstName;
 
-
-  public String PreferredLastName, PreferredFirstName;
+  public String accountHolderName, accountNumber, sortNumber;
 
 	public bankDetailsPage(WebDriver driver) {
 
 		PageFactory.initElements(driver, this);
+	}
+
+	public void edit_details() {
+
+		commonMethods.explicitWait(btn_EditDetails, "elementToBeClickable", 20);
+		commonMethods.clickElement(btn_EditDetails, "Edit Details button");
 	}
 
 	public boolean is_BankDetails_Landing_Displayed() {
@@ -96,6 +101,60 @@ public class bankDetailsPage extends commonMethods {
 			return true;
 		}
 		return false;
+	}
+
+	public boolean is_BankDetails_Displayed() {
+
+		if (frm_BankDetails.isDisplayed()) {
+			cucumberLogs.info("Bank details page displayed");
+			return true;
+		}
+		return false;
+	}
+
+  public void enterAccountHolderName(String name ) {
+		clearText(txt_AccountHolderName);
+		this.accountHolderName = name ;
+		enterText(txt_AccountHolderName, name);
+	}
+
+	public void enterAccountNumber(String accountNumber) {
+		clearText(txt_AccountNumber);
+		this.accountNumber = accountNumber ;
+		enterText(txt_AccountNumber, accountNumber);
+	}
+  public void enterSortNumber(String sortNumber) {
+		clearText(txt_SortNumber);
+		this.sortNumber = sortNumber ;
+		enterText(txt_SortNumber, sortNumber);
+	}
+
+	public void updateBasicContactDetails(DataTable bankDetails ) {
+
+     int totalRows = bankDetails.height();
+     //Write the code to handle Data Table
+     for(int i=0;i<totalRows;i++){
+
+        switch(bankDetails.cell(i,0).toLowerCase()){
+          case "account holder's name":
+            enterAccountHolderName(bankDetails.cell(i,1) );
+            break;
+          case "account number":
+            enterAccountNumber(bankDetails.cell(i,1) );
+            break;
+					case "sort number":
+            enterSortNumber(bankDetails.cell(i,1) );
+            break;
+          default:
+             break;
+        }
+      }
+  }
+
+	public void cancelBasicContactDetails() {
+		explicitWait(btn_Cancel, "elementToBeClickable", 20);
+		moveToElement(btn_Cancel);
+		clickElement(btn_Cancel, "Cancel button");
 	}
 
 }

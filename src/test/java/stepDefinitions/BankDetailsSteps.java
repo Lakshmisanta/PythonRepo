@@ -46,5 +46,33 @@ public class BankDetailsSteps extends commonMethods {
 														"Basic details page is not displayed");
 	}
 
+	@When("I choose to edit bank details")
+	public void i_choose_to_edit_bank_details() {
+		objbankdetailsPage.edit_details();
+	}
+
+	@Then("bank details page is displayed")
+	public void bank_details_page_is_displayed() {
+		softAssert.assertEquals(objbankdetailsPage.is_BankDetails_Displayed(),true,
+														"Basic details page is not displayed");
+	}
+
+	@When("I enter bank contact details")
+	public void i_enter_bank_contact_details(io.cucumber.datatable.DataTable dataTable) {
+			// Write code here that turns the phrase above into concrete actions
+			// For automatic transformation, change DataTable to one of
+			// E, List<E>, List<List<E>>, List<Map<K,V>>, Map<K,V> or
+			// Map<K, List<V>>. E,K,V must be a String, Integer, Float,
+			// Double, Byte, Short, Long, BigInteger or BigDecimal.
+			//
+			// For other transformations you can register a DataTableType.
+			objbankdetailsPage.updateBasicContactDetails(dataTable);
+	}
+
+	@When("I choose to cancel editing of bank contact details")
+	public void i_choose_to_cancel_editing_of_bank_contact_details() {
+		objbankdetailsPage. cancelBasicContactDetails();
+	}
+
 
 }
