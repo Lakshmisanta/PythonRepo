@@ -344,7 +344,7 @@ public class emergencyContactDetailsPage extends commonMethods {
   public void clickReviewChanges() {
 
 		scrolldownbrowser(btn_reviewChanges);
-		explicitWait(btn_reviewChanges, "elementToBeClickable", 10);
+		explicitWait(btn_reviewChanges, "elementToBeClickable", 20);
 		clickElement(btn_reviewChanges, "Review changes");
 	}
 
