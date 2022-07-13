@@ -8,7 +8,7 @@ Feature: Bank Details
   	Given I am logged onto UCL as a registered user
   	Then I navigate to mydetails page
 
-  Scenario: User can cancel and discard editing existing basic details
+  Scenario: User can cancel and discard editing existing bank details
 
     When I navigate to bank details
     Then bank details landing page is displayed
