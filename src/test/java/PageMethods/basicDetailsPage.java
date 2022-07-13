@@ -101,7 +101,7 @@ public class basicDetailsPage extends commonMethods {
 	WebElement lbl_PreferredFirstName;
 
 
-  String PreferredLastName, PreferredFirstName;
+  public String PreferredLastName, PreferredFirstName;
 
 	public basicDetailsPage(WebDriver driver) {
 
@@ -261,7 +261,7 @@ public class basicDetailsPage extends commonMethods {
 
 	public boolean isPrefferedLastNameUpdated() {
 
-		return  explicitWaitForTextInElement(lbl_PreferredLastName,this.PreferredLastName,20);
+		return explicitWaitForTextInElement(lbl_PreferredLastName,this.PreferredLastName,20);
 	}
 
 }

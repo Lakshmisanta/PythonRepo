@@ -85,8 +85,8 @@ public class BasicDetailsSteps extends commonMethods {
 	@When("no details are entered")
 	public void no_details_are_entered() {
     // See if preferred first and last name are empty
-		softAssert.assertEquals(objbasicdetailsPage.getTextBoxValue("Preferred First Name"),new String(""));
-		softAssert.assertEquals(objbasicdetailsPage.getTextBoxValue("Preferred Last Name"),new String(""));
+		softAssert.assertNotEquals(objbasicdetailsPage.getTextBoxValue("Preferred First Name"),objbasicdetailsPage.PreferredLastName);
+		softAssert.assertNotEquals(objbasicdetailsPage.getTextBoxValue("Preferred Last Name"),objbasicdetailsPage.PreferredLastName);
 		softAssert.assertAll();
 	}
 
