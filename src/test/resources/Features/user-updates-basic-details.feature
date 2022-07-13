@@ -1,4 +1,4 @@
-@inprogress
+@wip
 Feature: Basic Details
   In order to update my basic details
 	As a logged user
