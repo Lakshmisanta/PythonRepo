@@ -90,4 +90,21 @@ public class BankDetailsSteps extends commonMethods {
 		objbankdetailsPage.discardBankDetails();
 	}
 
+	@When("continue editing entered bank details")
+	public void continue_editing_entered_bank_details() {
+		objbankdetailsPage.continueEditingContactDetails();
+	}
+
+	@When("I review changes in bank details")
+	public void i_review_changes_in_bank_details() {
+	  objbankdetailsPage.clickReviewChanges();
+	}
+
+	@When("I cancel reviewed changes in bank details")
+	public void i_cancel_reviewed_changes_in_bank_details() {
+	  objbankdetailsPage.cancelReviewChanges();  
+	}
+
+
+
 }

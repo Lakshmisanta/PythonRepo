@@ -27,3 +27,20 @@ Feature: Bank Details
     When I choose to cancel editing of bank contact details
     And decide to discard entered bank details
     Then bank details landing page is displayed
+
+
+  Scenario: User can continue editing bank details and save after reviewing changes
+
+    When I navigate to bank details
+    Then bank details landing page is displayed
+  	When I choose to edit bank details
+    Then bank details page is displayed
+    When I enter bank details as
+      |  Account holder's name  | Test User |
+      |  Account number         | 29823529  |
+      |  Sort code              | 902127    |
+    When I choose to cancel editing of bank contact details
+    But continue editing entered bank details
+    And I review changes in bank details
+    And I cancel reviewed changes in bank details
+    Then bank details page is displayed

@@ -260,7 +260,6 @@ public class basicDetailsPage extends commonMethods {
 	}
 
 	public boolean isPrefferedLastNameUpdated() {
-
 		return explicitWaitForTextInElement(lbl_PreferredLastName,this.PreferredLastName,20);
 	}
 

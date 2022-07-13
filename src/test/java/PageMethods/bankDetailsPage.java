@@ -79,6 +79,9 @@ public class bankDetailsPage extends commonMethods {
   @FindBy(xpath = "//div[@id='b1-popupReviewChanges']//button[@class='btn btn-primary OSFillParent']")
 	WebElement btn_SaveChanges;
 
+	@FindBy(xpath = "//div[@id='b1-popupReviewChanges']//button[@class='btn OSFillParent']")
+	public WebElement btn_cancelReviewChanges;
+
 	@FindBy(xpath = "//div[@id='conPreferredLastName']")
 	WebElement lbl_PreferredLastName;
 
@@ -190,6 +193,20 @@ public class bankDetailsPage extends commonMethods {
 		explicitWait(dlg_DiscardChanges, "visibilityOf", 120);
 		explicitWait(lnk_discard, "elementToBeClickable", 20);
 		clickElement(lnk_discard, "Discard link");
+	}
+
+	public void clickReviewChanges() {
+
+		scrolldownbrowser(btn_reviewChanges);
+		explicitWait(btn_reviewChanges, "elementToBeClickable", 10);
+		clickElement(btn_reviewChanges, "Review Changes button");
+	}
+
+	public void clickReviewChanges() {
+
+		scrolldownbrowser(btn_cancelReviewChanges);
+		explicitWait(btn_cancelReviewChanges, "elementToBeClickable", 10);
+		clickElement(btn_cancelReviewChanges, "Cancel on Review Changes dialogue");
 	}
 
 }
