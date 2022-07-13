@@ -57,7 +57,7 @@ public class BankDetailsSteps extends commonMethods {
 														"Basic details page is not displayed");
 	}
 
-	@When("I enter bank contact details")
+	@When("I enter bank details as")
 	public void i_enter_bank_contact_details(io.cucumber.datatable.DataTable dataTable) {
 			// Write code here that turns the phrase above into concrete actions
 			// For automatic transformation, change DataTable to one of
@@ -66,12 +66,17 @@ public class BankDetailsSteps extends commonMethods {
 			// Double, Byte, Short, Long, BigInteger or BigDecimal.
 			//
 			// For other transformations you can register a DataTableType.
-			objbankdetailsPage.updateBasicContactDetails(dataTable);
+			objbankdetailsPage.updateBankDetails(dataTable);
 	}
 
 	@When("I choose to cancel editing of bank contact details")
 	public void i_choose_to_cancel_editing_of_bank_contact_details() {
-		objbankdetailsPage. cancelBasicContactDetails();
+		objbankdetailsPage.cancelBankDetails();
+	}
+
+	@When("I again choose to edit bank details")
+	public void i_again_choose_to_edit_bank_details() {
+    objbankdetailsPage.edit_details();
 	}
 
 

@@ -14,15 +14,15 @@ Feature: Bank Details
     Then bank details landing page is displayed
   	When I choose to edit bank details
     Then bank details page is displayed
-  	When I enter bank contact details
+  	When I enter bank details as
        |  Account holder's name  | Test User |
     And I choose to cancel editing of bank contact details
     Then bank details landing page is displayed
-#    When I again choose to edit bank details
-#    When I enter bank  details
-#      |  Account holder's name  | Test User |
-#      |  Account number         | 29823529  |
-#      |  Sort code              | 902127    |
+    When I again choose to edit bank details
+    When I enter bank details as 
+      |  Account holder's name  | Test User |
+      |  Account number         | 29823529  |
+      |  Sort code              | 902127    |
 #    Then bank name and branch name is disabled
 #    When I choose to cancel editing of bank contact details
 #    And decide to discard entered bank details

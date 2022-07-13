@@ -123,13 +123,13 @@ public class bankDetailsPage extends commonMethods {
 		this.accountNumber = accountNumber ;
 		enterText(txt_AccountNumber, accountNumber);
 	}
-  public void enterSortNumber(String sortNumber) {
+  public void enterSortCode(String sortNumber) {
 		clearText(txt_SortNumber);
 		this.sortNumber = sortNumber ;
 		enterText(txt_SortNumber, sortNumber);
 	}
 
-	public void updateBasicContactDetails(DataTable bankDetails ) {
+	public void updateBankDetails(DataTable bankDetails ) {
 
      int totalRows = bankDetails.height();
      //Write the code to handle Data Table
@@ -142,8 +142,8 @@ public class bankDetailsPage extends commonMethods {
           case "account number":
             enterAccountNumber(bankDetails.cell(i,1) );
             break;
-					case "sort number":
-            enterSortNumber(bankDetails.cell(i,1) );
+					case "sort code":
+            enterSortCode(bankDetails.cell(i,1) );
             break;
           default:
              break;
@@ -151,7 +151,7 @@ public class bankDetailsPage extends commonMethods {
       }
   }
 
-	public void cancelBasicContactDetails() {
+	public void cancelBankDetails() {
 		explicitWait(btn_Cancel, "elementToBeClickable", 20);
 		moveToElement(btn_Cancel);
 		clickElement(btn_Cancel, "Cancel button");
