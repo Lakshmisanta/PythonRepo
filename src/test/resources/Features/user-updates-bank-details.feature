@@ -36,7 +36,7 @@ Feature: Bank Details
   	When I choose to edit bank details
     Then bank details page is displayed
     When I enter bank details as
-      |  Account holder's name  | Test User |
+      |  Account holders name  | Test User |
       |  Account number         | 29823529  |
       |  Sort code              | 90-21-27    |
     When I choose to cancel editing of bank contact details

@@ -41,7 +41,7 @@ public class bankDetailsPage extends commonMethods {
 	WebElement txt_AccountNumber;
 
 	@FindBy(xpath = "//*[@id = 'Input_SortCode']")
-	WebElement txt_SortNumber;
+	WebElement txt_SortCode;
 
 	@FindBy(xpath = "//*[@id = 'Input_BankName']")
 	WebElement txt_bankName;
@@ -131,9 +131,9 @@ public class bankDetailsPage extends commonMethods {
 	}
 
   public void enterSortCode(String sortNumber) {
-		clearText(txt_SortNumber);
+		clearText(txt_SortCode);
 		this.sortNumber = sortNumber ;
-		enterText(txt_SortNumber, sortNumber);
+		enterText(txt_SortCode, sortNumber);
 	}
 
 	public void updateBankDetails(DataTable bankDetails ) {
@@ -143,7 +143,7 @@ public class bankDetailsPage extends commonMethods {
      for(int i=0;i<totalRows;i++){
 
         switch(bankDetails.cell(i,0).toLowerCase()){
-          case "account holder's name":
+          case "account holders name":
             enterAccountHolderName(bankDetails.cell(i,1) );
             break;
           case "account number":
