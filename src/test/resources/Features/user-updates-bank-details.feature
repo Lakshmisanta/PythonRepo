@@ -22,7 +22,7 @@ Feature: Bank Details
     When I enter bank details as
       |  Account holder's name  | Test User |
       |  Account number         | 29823529  |
-      |  Sort code              | 902127    |
+      |  Sort code              | 90-21-27    |
     Then bank name and branch is disabled
     When I choose to cancel editing of bank contact details
     And decide to discard entered bank details
@@ -38,7 +38,7 @@ Feature: Bank Details
     When I enter bank details as
       |  Account holder's name  | Test User |
       |  Account number         | 29823529  |
-      |  Sort code              | 902127    |
+      |  Sort code              | 90-21-27    |
     When I choose to cancel editing of bank contact details
     But continue editing entered bank details
     And I review changes in bank details
