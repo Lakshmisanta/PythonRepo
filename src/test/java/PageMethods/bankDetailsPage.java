@@ -195,17 +195,23 @@ public class bankDetailsPage extends commonMethods {
 		clickElement(lnk_discard, "Discard link");
 	}
 
-	public void clickReviewChanges() {
+	public void continueEditingContactDetails() {
 
-		scrolldownbrowser(btn_reviewChanges);
-		explicitWait(btn_reviewChanges, "elementToBeClickable", 10);
-		clickElement(btn_reviewChanges, "Review Changes button");
+		explicitWait(dlg_DiscardChanges, "visibilityOf", 120);
+		explicitWait(lnk_ContinueEditing, "elementToBeClickable", 20);
+		clickElement(lnk_ContinueEditing, "Continue editing link");
 	}
 
 	public void clickReviewChanges() {
 
-		scrolldownbrowser(btn_cancelReviewChanges);
+		explicitWait(btn_reviewChanges, "elementToBeClickable", 10);
+		scrolldownbrowser(btn_reviewChanges);
+		clickElement(btn_reviewChanges, "Review Changes button");
+	}
+
+	public void cancelReviewChanges() {
 		explicitWait(btn_cancelReviewChanges, "elementToBeClickable", 10);
+		scrolldownbrowser(btn_cancelReviewChanges);
 		clickElement(btn_cancelReviewChanges, "Cancel on Review Changes dialogue");
 	}
 

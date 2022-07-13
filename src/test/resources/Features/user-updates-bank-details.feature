@@ -1,4 +1,4 @@
-@inprogress
+
 Feature: Bank Details
   In order to update my bank details
 	As a logged user
@@ -28,7 +28,7 @@ Feature: Bank Details
     And decide to discard entered bank details
     Then bank details landing page is displayed
 
-
+  @inprogress
   Scenario: User can continue editing bank details and save after reviewing changes
 
     When I navigate to bank details
