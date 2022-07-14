@@ -82,11 +82,14 @@ public class bankDetailsPage extends commonMethods {
 	@FindBy(xpath = "//div[@id='b1-popupReviewChanges']//button[@class='btn OSFillParent']")
 	public WebElement btn_cancelReviewChanges;
 
-	@FindBy(xpath = "//div[@id='conPreferredLastName']")
-	WebElement lbl_PreferredLastName;
+	@FindBy(xpath = "//div[@id='conAccountHolderName']")
+	WebElement lbl_AccountHolderName;
 
-	@FindBy(xpath = "//div[@id='conPreferredFirstName']")
-	WebElement lbl_PreferredFirstName;
+	@FindBy(xpath = "//div[@id='conAccountNumber']")
+	WebElement lbl_AccountNumber;
+
+	@FindBy(xpath = "//div[@id='conSortCode']")
+	WebElement lbl_SortCode;
 
   public String accountHolderName, accountNumber, sortNumber;
 
@@ -213,6 +216,23 @@ public class bankDetailsPage extends commonMethods {
 		explicitWait(btn_cancelReviewChanges, "elementToBeClickable", 10);
 		scrolldownbrowser(btn_cancelReviewChanges);
 		clickElement(btn_cancelReviewChanges, "Cancel on Review Changes dialogue");
+	}
+
+  public void SaveReviewChanges()  {
+		explicitWait(btn_SaveChanges, "elementToBeClickable", 10);
+		clickElement(btn_SaveChanges, "Save Changes button");
+	}
+
+	public boolean isAccountHolderNameUpdated() {
+		return explicitWaitForTextInElement(lbl_AccountHolderName,this.accountHolderName,20);
+	}
+
+	public boolean isAccountNumberUpdated() {
+		return explicitWaitForTextInElement(lbl_AccountNumber,this.accountNumber,20);
+	}
+
+	public boolean isSortCodeUpdated() {
+		return explicitWaitForTextInElement(lbl_SortCode,this.sortNumber,20);
 	}
 
 }

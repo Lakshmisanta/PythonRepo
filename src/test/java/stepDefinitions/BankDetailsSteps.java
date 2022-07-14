@@ -102,9 +102,25 @@ public class BankDetailsSteps extends commonMethods {
 
 	@When("I cancel reviewed changes in bank details")
 	public void i_cancel_reviewed_changes_in_bank_details() {
-	  objbankdetailsPage.cancelReviewChanges();  
+	  objbankdetailsPage.cancelReviewChanges();
 	}
 
+	@When("again I review changes in bank details")
+	public void again_i_review_changes_in_bank_details() {
+	  objbankdetailsPage.clickReviewChanges();
+	}
 
+	@When("I save changes in bank details as final")
+	public void i_save_changes_in_bank_details_as_final() {
+	  objbankdetailsPage.SaveReviewChanges();
+	}
+
+	@Then("I should see bank details are saved")
+	public void i_should_see_bank_details_are_saved() {
+		softAssert.assertTrue(objbankdetailsPage.isAccountHolderNameUpdated());
+		softAssert.assertTrue(objbankdetailsPage.isAccountNumberUpdated());
+		softAssert.assertTrue(objbankdetailsPage.isSortCodeUpdated());
+		softAssert.assertAll();
+	}
 
 }
