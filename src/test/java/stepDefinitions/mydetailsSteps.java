@@ -60,12 +60,6 @@ public class mydetailsSteps extends commonMethods {
 		objmydetailsPage.basic_details();
 	}
 
-/*
-	@When("I click on Edit details")
-	public void i_click_on_edit_details() {
-
-		objmydetailsPage.edit_details();
-	}
 
 	@And("DOB NI number Nationality should not get edited")
 	public void DOB_NI_number_nationality_should_not_get_edited() {
@@ -91,12 +85,7 @@ public class mydetailsSteps extends commonMethods {
 		objmydetailsPage.cancel_Details();
 	}
 
-	@Then("I click on Cancel")
-	public void i_click_on_cancel() {
 
-		objmydetailsPage.cancelDetails();
-	}
-*/
 	@Given("I click on Contact details")
 	public void i_click_on_contact_details() {
 
@@ -317,19 +306,9 @@ public class mydetailsSteps extends commonMethods {
 		objmydetailsPage.edit_work_locations();
 	}
 
-	@Given("I click on Bank details")
+	@Given("I navigate to bank details")
 	public void i_click_on_bank_details() {
-		objmydetailsPage.Bank_details();
-	}
-
-	@When("I click on Edit Bank details")
-	public void i_click_on_edit_bank_details() throws InterruptedException {
-		objmydetailsPage.Edit();
-	}
-
-	@When("I should Edit Bank details")
-	public void i_should_edit_bank_details() {
-		objmydetailsPage.edit_Bank_details();
+		objmydetailsPage.bank_details();
 	}
 
 	@Given("I click on skills")

@@ -52,17 +52,6 @@ public class BasicDetailsSteps extends commonMethods {
 		softAssert.assertTrue(objbasicdetailsPage.enterSubDetails());
 	}
 
-	@Then("review changes button is Enabled")
-	public void review_changes_button_is_enabled() {
-		//objbasicdetailsPage.reviewChanges();
-	}
-
-	@Then("I click on Cancel")
-	public void i_click_on_cancel() {
-
-	//	objbasicdetailsPage.cancelDetails();
-	}
-
 	@Then("basic details landing page is displayed")
 	public void basic_details_landing_page_is_displayed() {
 

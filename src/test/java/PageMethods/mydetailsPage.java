@@ -343,14 +343,8 @@ public class mydetailsPage extends commonMethods {
 	@FindBy(xpath = "//*[@id= 'AddressLine2']")
 	WebElement OffCampus_AddressLine2;
 
-	@FindBy(xpath = "//*[contains(text(),'Bank details')]")
-	WebElement Bankdetails;
-
-	@FindBy(xpath = "//*[@id= 'Input_AccountHolderName']")
-	WebElement txt_AccountHolderName;
-
-	@FindBy(xpath = "//*[@id= 'Input_AccountNumber']")
-	WebElement AccountNumber;
+	@FindBy(xpath = "//*[@class='OSFillParent'][contains(text(),'Bank details')]")
+	WebElement lnk_bankDetails;
 
 	@FindBy(xpath = "//*[contains(text(),'Skills')]")
 	WebElement skills;
@@ -853,19 +847,12 @@ public class mydetailsPage extends commonMethods {
 		// sleepWait(5);
 	}
 
-	public void Bank_details() {
-		explicitWait(Bankdetails, "elementToBeClickable", 10);
-		clickElement1(Bankdetails, "Bankdetails");
+	public void bank_details() {
+		explicitWait(lnk_bankDetails, "elementToBeClickable", 10);
+		clickElement1(lnk_bankDetails, "Bank details link");
 	}
 
-	public void edit_Bank_details() {
 
-		clearText(txt_AccountHolderName);
-		enterText(txt_AccountHolderName, "ABC" + Integer.toString(((new Random().nextInt(10)) + 1)));
-		clearText(AccountNumber);
-		enterText(AccountNumber, "88882345" + Integer.toString(((new Random().nextInt(10)) + 1)));
-		// sleepWait(5);
-	}
 
 	public void skills() {
 		explicitWait(skills, "elementToBeClickable", 10);
