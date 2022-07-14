@@ -126,7 +126,7 @@ public class contactDetailsPage extends commonMethods {
 
   public String accountHolderName, accountNumber, sortNumber;
 
-	public bankDetailsPage(WebDriver driver) {
+	public contactDetailsPage(WebDriver driver) {
 
 		PageFactory.initElements(driver, this);
 	}
@@ -137,15 +137,15 @@ public class contactDetailsPage extends commonMethods {
 		commonMethods.clickElement(btn_EditDetails, "Edit Details button");
 	}
 
-	public boolean is_BankDetails_Landing_Displayed() {
+	public boolean is_ContactDetails_Landing_Displayed() {
 		if (explicitWait(btn_EditDetails,"elementToBeClickable", 30)) {
-			cucumberLogs.info("Bank Details landing details page displayed");
+			cucumberLogs.info("Contact Details landing details page displayed");
 			return true;
 		}
 		return false;
 	}
 
-	public boolean is_BankDetails_Displayed() {
+	public boolean is_ContactDetails_Displayed() {
 
 		if (frm_BankDetails.isDisplayed()) {
 			cucumberLogs.info("Bank details page displayed");

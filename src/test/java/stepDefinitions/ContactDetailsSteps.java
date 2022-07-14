@@ -39,22 +39,15 @@ public class ContactDetailsSteps extends commonMethods {
 
 	}
 
-	@When("I navigate to contact details")
-	public void i_navigate_to_contact_details() {
-	    // Write code here that turns the phrase above into concrete actions
-	    throw new io.cucumber.java.PendingException();
-	}
-
 	@Then("contact details landing page is displayed")
 	public void contact_details_landing_page_is_displayed() {
-	    // Write code here that turns the phrase above into concrete actions
-	    throw new io.cucumber.java.PendingException();
+		softAssert.assertEquals(objcontactdetailsPage.is_ContactDetails_Landing_Displayed(),true,
+																"Basic details page is not displayed");
 	}
 
 	@When("I choose to edit contact details")
 	public void i_choose_to_edit_contact_details() {
-	    // Write code here that turns the phrase above into concrete actions
-	    throw new io.cucumber.java.PendingException();
+	  objcontactdetailsPage.edit_details();  
 	}
 
 	@Then("contact details page is displayed")

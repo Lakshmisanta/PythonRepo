@@ -86,9 +86,8 @@ public class mydetailsSteps extends commonMethods {
 	}
 
 
-	@Given("I click on Contact details")
-	public void i_click_on_contact_details() {
-
+	@Given("I navigate to contact details")
+	public void i_navigate_to_contact_details() {
 		objmydetailsPage.contact_details();
 	}
 
