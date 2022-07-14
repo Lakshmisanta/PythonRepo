@@ -68,10 +68,10 @@ public class contactDetailsPage extends commonMethods {
 	WebElement txt_AlternateAddressCity;
 
 	@FindBy(xpath = "(//select[@class='dropdown-display dropdown'])[1]")
-	WebElement txt_MainAddressCounty;
+	WebElement drpdwn_MainAddressCounty;
 
 	@FindBy(xpath = "(//select[@class='dropdown-display dropdown'])[2]")
-	WebElement txt_AlternateAddressCounty;
+	WebElement drpdwn_AlternateAddressCounty;
 
 	@FindBy(xpath = "(//form//descendant::div[contains(@id,'Postcode_Input')])[1]")
 	WebElement txt_MainAddressPostcode;
@@ -115,16 +115,10 @@ public class contactDetailsPage extends commonMethods {
 	@FindBy(xpath = "//div[@id='b1-popupReviewChanges']//button[@class='btn OSFillParent']")
 	public WebElement btn_cancelReviewChanges;
 
-	@FindBy(xpath = "//div[@id='conAccountHolderName']")
-	WebElement lbl_AccountHolderName;
-
-	@FindBy(xpath = "//div[@id='conAccountNumber']")
-	WebElement lbl_AccountNumber;
-
-	@FindBy(xpath = "//div[@id='conSortCode']")
-	WebElement lbl_SortCode;
-
-  public String accountHolderName, accountNumber, sortNumber;
+  public String mainaddressLine1, mainaddressLine2,
+							   mainaddressLine3, mainaddressCounty, mainaddressCity,
+							   mainaddressPostcode, altaddressLine1, altaddressLine2,
+							   altaddressLine3, altaddresCounty, altaddressCity, altaddressPostcode;
 
 	public contactDetailsPage(WebDriver driver) {
 
@@ -133,8 +127,8 @@ public class contactDetailsPage extends commonMethods {
 
 	public void edit_details() {
 
-		commonMethods.explicitWait(btn_EditDetails, "elementToBeClickable", 20);
-		commonMethods.clickElement(btn_EditDetails, "Edit Details button");
+		explicitWait(btn_EditDetails, "elementToBeClickable", 20);
+		clickElement(btn_EditDetails, "Edit Details button");
 	}
 
 	public boolean is_ContactDetails_Landing_Displayed() {
@@ -154,11 +148,86 @@ public class contactDetailsPage extends commonMethods {
 		return false;
 	}
 
-  public void enterAccountHolderName(String name ) {
-		/*clearText(txt_AccountHolderName);
-		this.accountHolderName = name ;
-		enterText(txt_AccountHolderName, name);
-		*/
+	public void enterMainAddressLine1(String addressline ) {
+
+		clearText(txt_MainAddressAddressLine1);
+		this.mainaddressLine1 = addressline ;
+		enterText(txt_MainAddressAddressLine1, addressline);
+	}
+
+	public void enterMainAddressLine2(String addressline ) {
+
+		clearText(txt_MainAddressAddressLine1);
+		this.mainaddressLine2 = addressline ;
+		enterText(txt_MainAddressAddressLine1, addressline);
+	}
+
+	public void enterMainAddressLine3(String addressline ) {
+
+		clearText(txt_MainAddressAddressLine3);
+		this.mainaddressLine3 = addressline ;
+		enterText(txt_MainAddressAddressLine3, addressline);
+	}
+
+	public void enterMainAddressCounty(String county ) {
+
+		selectDropdown(drpdwn_MainAddressCounty, "selectByVisiblTtext",county);
+		this.mainaddressCounty = county ;
+	}
+
+	public void enterMainAddressCity(String city ) {
+
+		clearText(txt_MainAddressCity);
+		this.mainaddressCity = city ;
+		enterText(txt_AlternateAddressAddressLine2, city);
+	}
+
+	public void enterMainAddressPostcode(String postcode ) {
+
+		clearText(txt_MainAddressPostcode);
+		this.mainaddressPostcode = postcode ;
+		enterText(txt_MainAddressPostcode, postcode);
+	}
+
+  public void enterAlternateAddressLine1(String addressline ) {
+
+		clearText(txt_AlternateAddressAddressLine1);
+		this.altaddressLine1 = addressline ;
+		enterText(txt_AlternateAddressAddressLine1, addressline);
+	}
+
+	public void enterAlternateAddressLine2(String addressline ) {
+
+		clearText(txt_AlternateAddressAddressLine2);
+		this.altaddressLine2 = addressline ;
+		enterText(txt_AlternateAddressAddressLine2, addressline);
+	}
+
+	public void enterAlternateAddressLine3(String addressline ) {
+
+		clearText(txt_AlternateAddressAddressLine3);
+		this.altaddressLine3 = addressline ;
+		enterText(txt_AlternateAddressAddressLine3, addressline);
+	}
+
+	public void enterAlternateAddressCounty(String county ) {
+
+		selectDropdown(drpdwn_AlternateAddressCounty, "selectByVisiblTtext",county);
+		this.altaddresCounty = county ;
+	}
+
+	public void enterAlternateAddressCity(String city ) {
+
+		clearText(txt_AlternateAddressAddressLine2);
+		this.altaddressCity = city ;
+		enterText(txt_AlternateAddressAddressLine2, city);
+	}
+
+	public void enterAlternateAddressPostcode(String postcode ) {
+
+		clearText(txt_AlternateAddressPostcode);
+		this.altaddressPostcode = postcode;
+		enterText(txt_AlternateAddressPostcode, postcode);
 	}
 
 	public void updateAlternateAdressDetails(DataTable addressDetails ) {
@@ -178,12 +247,12 @@ public class contactDetailsPage extends commonMethods {
 						enterAlternateAddressLine3(addressDetails.cell(i,1) );
 						break;
 					case "county":
-						enterAlternateCounty(addressDetails.cell(i,1) );
+						enterAlternateAddressCounty(addressDetails.cell(i,1) );
 						break;
 					case "postcocde":
-						enterAlternatePostcode(addressDetails.cell(i,1) );
+						enterAlternateAddressPostcode(addressDetails.cell(i,1) );
 					case "city":
-						enterAlternateCity(addressDetails.cell(i,1) );
+						enterAlternateAddressCity(addressDetails.cell(i,1) );
 						break;
 					default:
 						 break;
@@ -192,7 +261,7 @@ public class contactDetailsPage extends commonMethods {
 	}
 
 
-	public void updateAdressDetails(DataTable addressDetails ) {
+	public void updateMainAdressDetails(DataTable addressDetails ) {
 
      int totalRows = addressDetails.height();
      //Write the code to handle Data Table
@@ -209,12 +278,12 @@ public class contactDetailsPage extends commonMethods {
 					  enterMainAddressLine3(addressDetails.cell(i,1) );
             break;
           case "county":
-					  enterMainCounty(addressDetails.cell(i,1) );
+					  enterMainAddressCounty(addressDetails.cell(i,1) );
             break;
 					case "postcocde":
-	          enterMainPostcode(addressDetails.cell(i,1) );
+	          enterMainAddressPostcode(addressDetails.cell(i,1) );
 					case "city":
-            enterMainCity(addressDetails.cell(i,1) );
+            enterMainAddressCity(addressDetails.cell(i,1) );
             break;
           default:
              break;
@@ -222,37 +291,13 @@ public class contactDetailsPage extends commonMethods {
       }
   }
 
-	public void cancelBankDetails() {
+	public void cancelContactDetails() {
 		explicitWait(btn_Cancel, "elementToBeClickable", 20);
 		moveToElement(btn_Cancel);
 		clickElement(btn_Cancel, "Cancel button");
 	}
 
-	public boolean isBankNameEnabled() {
-/*
-		if ( txt_bankName.isEnabled() ) {
-			cucumberLogs.info("Bank Name is not editable");
-			return true;
-		}
-		else {
-			cucumberLogs.fail("Bank Name is editable");
-			return false;
-		}
-*/
-	}
 
-	public boolean isBranchEnabled() {
-/*
-		if ( txt_bankName.isEnabled() ) {
-			cucumberLogs.info("Branch is not editable");
-			return true;
-		}
-		else {
-			cucumberLogs.fail("Branch is editable");
-			return false;
-		}
-*/
-	}
 
 	public void discardBankDetails() {
 
@@ -286,16 +331,5 @@ public class contactDetailsPage extends commonMethods {
 		clickElement(btn_SaveChanges, "Save Changes button");
 	}
 
-	public boolean isAccountHolderNameUpdated() {
-		//return explicitWaitForTextInElement(lbl_AccountHolderName,this.accountHolderName,20);
-	}
-
-	public boolean isAccountNumberUpdated() {
-		//return explicitWaitForTextInElement(lbl_AccountNumber,this.accountNumber,20);
-	}
-
-	public boolean isSortCodeUpdated() {
-		//return explicitWaitForTextInElement(lbl_SortCode,this.sortNumber,20);
-	}
 
 }

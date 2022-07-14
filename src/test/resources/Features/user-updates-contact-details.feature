@@ -1,4 +1,4 @@
-@inprogress
+
 Feature: Contact Details
   In order to update my contact details
 	As a logged user
@@ -8,6 +8,7 @@ Feature: Contact Details
   	Given I am logged onto UCL as a registered user
   	Then I navigate to mydetails page
 
+@inprogress
   Scenario: User can discard editing existing contact details
 
     When I navigate to contact details
