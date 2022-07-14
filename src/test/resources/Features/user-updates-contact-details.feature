@@ -1,4 +1,4 @@
-@wip
+@inprogress
 Feature: Contact Details
   In order to update my contact details
 	As a logged user
