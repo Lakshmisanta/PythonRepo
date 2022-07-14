@@ -86,7 +86,7 @@ public class contactDetailsPage extends commonMethods {
   WebElement btn_Cancel;
 
 	@FindBy(xpath = "//*[@id='b1-Form1']")
-	WebElement frm_BankDetails;
+	WebElement frm_ContactDetails;
 
 	@FindBy(xpath = "//*[@id='b1-popupDiscardChanges']//a[contains(text(),'Discard')]")
   WebElement lnk_discard;
@@ -147,46 +147,74 @@ public class contactDetailsPage extends commonMethods {
 
 	public boolean is_ContactDetails_Displayed() {
 
-		if (frm_BankDetails.isDisplayed()) {
-			cucumberLogs.info("Bank details page displayed");
+		if (frm_ContactDetails.isDisplayed()) {
+			cucumberLogs.info("Contact details page displayed");
 			return true;
 		}
 		return false;
 	}
 
   public void enterAccountHolderName(String name ) {
-		clearText(txt_AccountHolderName);
+		/*clearText(txt_AccountHolderName);
 		this.accountHolderName = name ;
 		enterText(txt_AccountHolderName, name);
+		*/
 	}
 
-	public void enterAccountNumber(String accountNumber) {
-		clearText(txt_AccountNumber);
-		this.accountNumber = accountNumber ;
-		enterText(txt_AccountNumber, accountNumber);
+	public void updateAlternateAdressDetails(DataTable addressDetails ) {
+
+		 int totalRows = addressDetails.height();
+		 //Write the code to handle Data Table
+		 for(int i=0;i<totalRows;i++){
+
+				switch(addressDetails.cell(i,0).toLowerCase()){
+					case "Address Line1":
+						enterAlternateAddressLine1(addressDetails.cell(i,1) );
+						break;
+					case "Address Line2":
+						enterAlternateAddressLine2(addressDetails.cell(i,1) );
+						break;
+					case "Address Line3":
+						enterAlternateAddressLine3(addressDetails.cell(i,1) );
+						break;
+					case "county":
+						enterAlternateCounty(addressDetails.cell(i,1) );
+						break;
+					case "postcocde":
+						enterAlternatePostcode(addressDetails.cell(i,1) );
+					case "city":
+						enterAlternateCity(addressDetails.cell(i,1) );
+						break;
+					default:
+						 break;
+				}
+			}
 	}
 
-  public void enterSortCode(String sortNumber) {
-		clearText(txt_SortCode);
-		this.sortNumber = sortNumber ;
-		enterText(txt_SortCode, sortNumber);
-	}
 
-	public void updateBankDetails(DataTable bankDetails ) {
+	public void updateAdressDetails(DataTable addressDetails ) {
 
-     int totalRows = bankDetails.height();
+     int totalRows = addressDetails.height();
      //Write the code to handle Data Table
      for(int i=0;i<totalRows;i++){
 
-        switch(bankDetails.cell(i,0).toLowerCase()){
-          case "account holders name":
-            enterAccountHolderName(bankDetails.cell(i,1) );
+        switch(addressDetails.cell(i,0).toLowerCase()){
+          case "Address Line1":
+					  enterMainAddressLine1(addressDetails.cell(i,1) );
             break;
-          case "account number":
-            enterAccountNumber(bankDetails.cell(i,1) );
+					case "Address Line2":
+					  enterMainAddressLine2(addressDetails.cell(i,1) );
             break;
-					case "sort code":
-            enterSortCode(bankDetails.cell(i,1) );
+					case "Address Line3":
+					  enterMainAddressLine3(addressDetails.cell(i,1) );
+            break;
+          case "county":
+					  enterMainCounty(addressDetails.cell(i,1) );
+            break;
+					case "postcocde":
+	          enterMainPostcode(addressDetails.cell(i,1) );
+					case "city":
+            enterMainCity(addressDetails.cell(i,1) );
             break;
           default:
              break;
@@ -201,7 +229,7 @@ public class contactDetailsPage extends commonMethods {
 	}
 
 	public boolean isBankNameEnabled() {
-
+/*
 		if ( txt_bankName.isEnabled() ) {
 			cucumberLogs.info("Bank Name is not editable");
 			return true;
@@ -210,10 +238,11 @@ public class contactDetailsPage extends commonMethods {
 			cucumberLogs.fail("Bank Name is editable");
 			return false;
 		}
+*/
 	}
 
 	public boolean isBranchEnabled() {
-
+/*
 		if ( txt_bankName.isEnabled() ) {
 			cucumberLogs.info("Branch is not editable");
 			return true;
@@ -222,6 +251,7 @@ public class contactDetailsPage extends commonMethods {
 			cucumberLogs.fail("Branch is editable");
 			return false;
 		}
+*/
 	}
 
 	public void discardBankDetails() {
@@ -257,15 +287,15 @@ public class contactDetailsPage extends commonMethods {
 	}
 
 	public boolean isAccountHolderNameUpdated() {
-		return explicitWaitForTextInElement(lbl_AccountHolderName,this.accountHolderName,20);
+		//return explicitWaitForTextInElement(lbl_AccountHolderName,this.accountHolderName,20);
 	}
 
 	public boolean isAccountNumberUpdated() {
-		return explicitWaitForTextInElement(lbl_AccountNumber,this.accountNumber,20);
+		//return explicitWaitForTextInElement(lbl_AccountNumber,this.accountNumber,20);
 	}
 
 	public boolean isSortCodeUpdated() {
-		return explicitWaitForTextInElement(lbl_SortCode,this.sortNumber,20);
+		//return explicitWaitForTextInElement(lbl_SortCode,this.sortNumber,20);
 	}
 
 }

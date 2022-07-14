@@ -7,9 +7,7 @@ import org.openqa.selenium.TakesScreenshot;
 import org.openqa.selenium.WebDriver;
 
 import PageMethods.commonMethods;
-import PageMethods.homePageMethod;
-import PageMethods.loginLogoutPage;
-import PageMethods.bankDetailsPage;
+import PageMethods.contactDetailsPage;
 import io.cucumber.datatable.DataTable;
 import io.cucumber.java.After;
 import io.cucumber.java.Before;
@@ -30,7 +28,7 @@ public class ContactDetailsSteps extends commonMethods {
 
 	@Before
 	public void setUp() {
-		objcontactdetailsPage = new objcontactdetailsPage(commonMethods.driver);
+		objcontactdetailsPage = new contactDetailsPage(commonMethods.driver);
 		softAssert = new SoftAssert();
 	}
 
@@ -47,13 +45,13 @@ public class ContactDetailsSteps extends commonMethods {
 
 	@When("I choose to edit contact details")
 	public void i_choose_to_edit_contact_details() {
-	  objcontactdetailsPage.edit_details();  
+	  objcontactdetailsPage.edit_details();
 	}
 
 	@Then("contact details page is displayed")
 	public void contact_details_page_is_displayed() {
-	    // Write code here that turns the phrase above into concrete actions
-	    throw new io.cucumber.java.PendingException();
+		softAssert.assertEquals(objcontactdetailsPage.is_ContactDetails_Displayed(),true,
+																"Basic details page is not displayed");
 	}
 
 	@When("I enter contact details as below")
@@ -74,46 +72,9 @@ public class ContactDetailsSteps extends commonMethods {
 	    throw new io.cucumber.java.PendingException();
 	}
 
-	@Then("contact details landing page is displayed")
-	public void contact_details_landing_page_is_displayed() {
-	    // Write code here that turns the phrase above into concrete actions
-	    throw new io.cucumber.java.PendingException();
-	}
-
-	@When("I choose to edit contact details")
-	public void i_choose_to_edit_contact_details() {
-	    // Write code here that turns the phrase above into concrete actions
-	    throw new io.cucumber.java.PendingException();
-	}
-
-	@Then("contact details page is displayed")
-	public void contact_details_page_is_displayed() {
-	    // Write code here that turns the phrase above into concrete actions
-	    throw new io.cucumber.java.PendingException();
-	}
-
-	@When("I enter contact details as below")
-	public void i_enter_contact_details_as_below(io.cucumber.datatable.DataTable dataTable) {
-	    // Write code here that turns the phrase above into concrete actions
-	    // For automatic transformation, change DataTable to one of
-	    // E, List<E>, List<List<E>>, List<Map<K,V>>, Map<K,V> or
-	    // Map<K, List<V>>. E,K,V must be a String, Integer, Float,
-	    // Double, Byte, Short, Long, BigInteger or BigDecimal.
-	    //
-	    // For other transformations you can register a DataTableType.
-	    throw new io.cucumber.java.PendingException();
-	}
-
 	@When("I enter main address contact details as below")
 	public void i_enter_main_address_contact_details_as_below(io.cucumber.datatable.DataTable dataTable) {
-	    // Write code here that turns the phrase above into concrete actions
-	    // For automatic transformation, change DataTable to one of
-	    // E, List<E>, List<List<E>>, List<Map<K,V>>, Map<K,V> or
-	    // Map<K, List<V>>. E,K,V must be a String, Integer, Float,
-	    // Double, Byte, Short, Long, BigInteger or BigDecimal.
-	    //
-	    // For other transformations you can register a DataTableType.
-	    throw new io.cucumber.java.PendingException();
+	    objcontactdetailsPage.updateMainAdressDetails(dataTable);
 	}
 
 	@When("I add alternative address")
@@ -124,14 +85,7 @@ public class ContactDetailsSteps extends commonMethods {
 
 	@When("I enter alternative address contact details as below")
 	public void i_enter_alternative_address_contact_details_as_below(io.cucumber.datatable.DataTable dataTable) {
-	    // Write code here that turns the phrase above into concrete actions
-	    // For automatic transformation, change DataTable to one of
-	    // E, List<E>, List<List<E>>, List<Map<K,V>>, Map<K,V> or
-	    // Map<K, List<V>>. E,K,V must be a String, Integer, Float,
-	    // Double, Byte, Short, Long, BigInteger or BigDecimal.
-	    //
-	    // For other transformations you can register a DataTableType.
-	    throw new io.cucumber.java.PendingException();
+	    objcontactdetailsPage.updateAlternateAdressDetails(dataTable);
 	}
 
 	@When("delete alternative address")

@@ -13,7 +13,7 @@ Feature: Contact Details
     When I navigate to contact details
     Then contact details landing page is displayed
   	When I choose to edit contact details
-#    Then contact details page is displayed
+    Then contact details page is displayed
 #    When I enter contact details as below
 #      |  Primary Home Number | 412147856   |
 #      |  Personal Mobile     | 58964752368 |
