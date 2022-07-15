@@ -10,6 +10,7 @@ import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
+import org.openqa.selenium.By;
 import org.testng.asserts.SoftAssert;
 
 import io.cucumber.datatable.DataTable;
@@ -146,24 +147,32 @@ public class contactDetailsPage extends commonMethods {
 		return false;
 	}
 
-  public void addAlternateAddress() {
+  public boolean addAlternateAddress() {
 
-		if (lnk_deletealternatedetails.isDisplayed()) {
-			scrolldownbrowser(lnk_deletealternatedetails);
-			lnk_deletealternatedetails.click();
-			explicitWait(lnk_addalternatedetails,"elementToBeClickable", 20);
-			lnk_addalternatedetails.click();
+		try {
+			if ( lnk_addalternatedetails.isDisplayed() ){
+				lnk_addalternatedetails.click();
+			}
 		}
-		else if (lnk_addalternatedetails.isDisplayed()) {
-			scrolldownbrowser(lnk_addalternatedetails);
-			lnk_addalternatedetails.click();
-		}
+		catch (Exception e) {
+			return false ;
+    }
+		return true;
 	}
 
-	public void deleteAlternateAddress() {
-		if (lnk_deletealternatedetails.isDisplayed()){
-			lnk_deletealternatedetails.click();
+	public boolean deleteAlternateAddress() {
+
+		try {
+			if ( lnk_deletealternatedetails.isDisplayed() ){
+				scrolldownbrowser(lnk_deletealternatedetails);
+				lnk_deletealternatedetails.click();
+			}
 		}
+		catch (Exception e) {
+			return false ;
+		}
+		return true;
+
 	}
 
 	public boolean is_ContactDetails_Displayed() {

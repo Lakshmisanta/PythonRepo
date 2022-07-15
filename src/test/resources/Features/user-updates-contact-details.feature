@@ -53,9 +53,9 @@ Feature: Contact Details
     But again decide to continue editing of contact details
     And I add alternative address
     When I enter alternative address contact details as below
-      |  Address line 1    | London100   |
-      |  Address line 2    | cheshire add |
-      |  Adress line 3     |  darkshire  |
+      |  Address line1    | London100   |
+      |  Address line2    | cheshire add |
+      |  Adress line3     |  darkshire  |
       |  City              |      Woking |
       |  County            | Dorset      |
       | Postcode           | GX4 4DR     |

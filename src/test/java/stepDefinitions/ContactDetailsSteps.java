@@ -68,7 +68,16 @@ public class ContactDetailsSteps extends commonMethods {
 
 	@When("I add alternative address")
 	public void i_add_alternative_address() {
-	   objcontactdetailsPage.addAlternateAddress();
+	   boolean clicked = objcontactdetailsPage.addAlternateAddress();
+		 if( clicked ) {
+			 System.out.println("Alternate address link is clicked.");
+			 cucumberLogs.info("Alternate address link is clicked.");
+		 }
+		 else {
+			 System.out.println("Alternate address link is not visible.");
+			 cucumberLogs.info("Alternate address link is not visible.");
+		 }
+
 	}
 
 	@When("I enter alternative address contact details as below")
@@ -78,8 +87,7 @@ public class ContactDetailsSteps extends commonMethods {
 
 	@When("delete alternative address")
 	public void delete_alternative_address() {
-	    // Write code here that turns the phrase above into concrete actions
-	    throw new io.cucumber.java.PendingException();
+	  objcontactdetailsPage.deleteAlternateAddress();
 	}
 
 	@When("I choose to cancel editing of contact details")
@@ -89,20 +97,17 @@ public class ContactDetailsSteps extends commonMethods {
 
 	@When("again decide to continue editing of contact details")
 	public void again_decide_to_continue_editing_of_contact_details() {
-	    // Write code here that turns the phrase above into concrete actions
-	    throw new io.cucumber.java.PendingException();
+	  objcontactdetailsPage.continueEditingContactDetails();
 	}
 
 	@When("I review changes in contact details")
 	public void i_review_changes_in_contact_details() {
-	    // Write code here that turns the phrase above into concrete actions
-	    throw new io.cucumber.java.PendingException();
+	   objcontactdetailsPage.clickReviewChanges();
 	}
 
 	@When("I save changes in contact details as final")
 	public void i_save_changes_in_contact_details_as_final() {
-	    // Write code here that turns the phrase above into concrete actions
-	    throw new io.cucumber.java.PendingException();
+	    objcontactdetailsPage.SaveReviewChanges();
 	}
 
 	@Then("I should see contact details are saved")
