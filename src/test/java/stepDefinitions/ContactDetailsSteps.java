@@ -112,8 +112,14 @@ public class ContactDetailsSteps extends commonMethods {
 
 	@Then("I should see contact details are saved")
 	public void i_should_see_contact_details_are_saved() {
-	    // Write code here that turns the phrase above into concrete actions
-	    throw new io.cucumber.java.PendingException();
+		softAssert.assertTrue(objcontactdetailsPage.isMainCityUpdated());
+		softAssert.assertTrue(objcontactdetailsPage.isMainCountyUpdated());
+		softAssert.assertTrue(objcontactdetailsPage.isMainPostcodeUpdated());
+
+		softAssert.assertTrue(objcontactdetailsPage.isaltCityUpdated());
+		softAssert.assertTrue(objcontactdetailsPage.isaltCountyUpdated());
+		softAssert.assertTrue(objcontactdetailsPage.isaltPostcodeUpdated());
+		softAssert.assertAll();
 	}
 
 }

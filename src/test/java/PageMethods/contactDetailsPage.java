@@ -122,13 +122,16 @@ public class contactDetailsPage extends commonMethods {
 	@FindBy(xpath = "//div[@id='b1-popupReviewChanges']//button[@class='btn OSFillParent']")
 	public WebElement btn_cancelReviewChanges;
 
-	@FindBy(xpath = "//div[@id='conPreferredFirstName']")
-	WebElement lbl_addressDetails;
+	@FindBy(xpath = "//div[@id='AddressList']/div[contains(@id,'conAddressItem')][1]")
+	WebElement lbl_mainAddressDetails;
+
+	@FindBy(xpath = "//div[@id='AddressList']/div[contains(@id,'conAddressItem')][2]")
+	WebElement lbl_alternateAddressDetails;
 
   public String mainaddressLine1, mainaddressLine2,
 							   mainaddressLine3, mainaddressCounty, mainaddressCity,
 							   mainaddressPostcode, altaddressLine1, altaddressLine2,
-							   altaddressLine3, altaddresCounty, altaddressCity, altaddressPostcode,
+							   altaddressLine3, altaddressCounty, altaddressCity, altaddressPostcode,
 								 emailAddress,primaryHomeNumber, personalMobile;
 
 	public contactDetailsPage(WebDriver driver) {
@@ -273,7 +276,7 @@ public class contactDetailsPage extends commonMethods {
 	public void enterAlternateAddressCounty(String county ) {
 
 		selectDropdown(drpdwn_AlternateAddressCounty, "selectByVisiblTtext",county);
-		this.altaddresCounty = county ;
+		this.altaddressCounty = county ;
 	}
 
 	public void enterAlternateAddressCity(String city ) {
@@ -287,6 +290,7 @@ public class contactDetailsPage extends commonMethods {
 
 		clearText(txt_AlternateAddressPostcode);
 		this.altaddressPostcode = postcode;
+		System.out.println("alternate postocde "+ this.altaddressPostcode);
 		enterText(txt_AlternateAddressPostcode, postcode);
 	}
 
@@ -331,8 +335,10 @@ public class contactDetailsPage extends commonMethods {
 					case "county":
 						enterAlternateAddressCounty(addressDetails.cell(i,1) );
 						break;
-					case "postcocde":
+					case "postcode":
+						System.out.println("before");
 						enterAlternateAddressPostcode(addressDetails.cell(i,1) );
+						System.out.println("after");
 						break;
 					case "city":
 						enterAlternateAddressCity(addressDetails.cell(i,1) );
@@ -414,14 +420,24 @@ public class contactDetailsPage extends commonMethods {
 	}
 
 
+	public boolean isMainCityUpdated() {
+		return explicitWaitForTextInElement(lbl_mainAddressDetails,this.mainaddressCity,20);
+	}
+	public boolean isMainPostcodeUpdated() {
+		return explicitWaitForTextInElement(lbl_mainAddressDetails,this.mainaddressPostcode,20);
+	}
+	public boolean isMainCountyUpdated() {
+		return explicitWaitForTextInElement(lbl_mainAddressDetails,this.mainaddressCounty,20);
+	}
+
 	public boolean isaltCityUpdated() {
-		return explicitWaitForTextInElement(lbl_addressDetails,this.altaddressCity,20);
+		return explicitWaitForTextInElement(lbl_alternateAddressDetails,this.altaddressCity,20);
 	}
 	public boolean isaltPostcodeUpdated() {
-		return explicitWaitForTextInElement(lbl_addressDetails,this.altaddressPostcode,20);
+		return explicitWaitForTextInElement(lbl_alternateAddressDetails,this.altaddressPostcode,20);
 	}
 	public boolean isaltCountyUpdated() {
-		return explicitWaitForTextInElement(lbl_addressDetails,this.altaddresCounty,20);
+		return explicitWaitForTextInElement(lbl_alternateAddressDetails,this.altaddressCounty,20);
 	}
 
 }

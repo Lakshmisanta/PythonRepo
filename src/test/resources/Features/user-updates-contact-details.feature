@@ -22,7 +22,7 @@ Feature: Contact Details
     And decide to discard entered basic contact details
     Then contact details landing page is displayed
 
-  @inprogress
+@inprogress
   Scenario: User can  contact details
 
     When I navigate to contact details
@@ -55,10 +55,10 @@ Feature: Contact Details
     When I enter alternative address contact details as below
       |  Address line1    | London100   |
       |  Address line2    | cheshire add |
-      |  Adress line3     |  darkshire  |
-      |  City              |      Woking |
-      |  County            | Dorset      |
-      | Postcode           | GX4 4DR     |
+      |  Address line3    |  darkshire  |
+      |  City             |      Woking |
+      |  County           | Dorset      |
+      |  Postcode         | GX4 4DR     |
     And I review changes in contact details
     And I save changes in contact details as final
     Then I should see contact details are saved
