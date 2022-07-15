@@ -122,6 +122,9 @@ public class contactDetailsPage extends commonMethods {
 	@FindBy(xpath = "//div[@id='b1-popupReviewChanges']//button[@class='btn OSFillParent']")
 	public WebElement btn_cancelReviewChanges;
 
+	@FindBy(xpath = "//div[@id='conPreferredFirstName']")
+	WebElement lbl_addressDetails;
+
   public String mainaddressLine1, mainaddressLine2,
 							   mainaddressLine3, mainaddressCounty, mainaddressCity,
 							   mainaddressPostcode, altaddressLine1, altaddressLine2,
@@ -410,5 +413,15 @@ public class contactDetailsPage extends commonMethods {
 		clickElement(btn_SaveChanges, "Save Changes button");
 	}
 
+
+	public boolean isaltCityUpdated() {
+		return explicitWaitForTextInElement(lbl_addressDetails,this.altaddressCity,20);
+	}
+	public boolean isaltPostcodeUpdated() {
+		return explicitWaitForTextInElement(lbl_addressDetails,this.altaddressPostcode,20);
+	}
+	public boolean isaltCountyUpdated() {
+		return explicitWaitForTextInElement(lbl_addressDetails,this.altaddresCounty,20);
+	}
 
 }
