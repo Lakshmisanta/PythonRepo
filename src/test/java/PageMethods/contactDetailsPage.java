@@ -122,6 +122,9 @@ public class contactDetailsPage extends commonMethods {
 	@FindBy(xpath = "//div[@id='b1-popupReviewChanges']//button[@class='btn OSFillParent']")
 	public WebElement btn_cancelReviewChanges;
 
+	@FindBy(xpath = "//div[@id='PhoneList']")
+	WebElement lbl_phonelist;
+
 	@FindBy(xpath = "//div[@id='AddressList']/div[contains(@id,'conAddressItem')][1]")
 	WebElement lbl_mainAddressDetails;
 
@@ -336,9 +339,7 @@ public class contactDetailsPage extends commonMethods {
 						enterAlternateAddressCounty(addressDetails.cell(i,1) );
 						break;
 					case "postcode":
-						System.out.println("before");
 						enterAlternateAddressPostcode(addressDetails.cell(i,1) );
-						System.out.println("after");
 						break;
 					case "city":
 						enterAlternateAddressCity(addressDetails.cell(i,1) );
@@ -439,5 +440,9 @@ public class contactDetailsPage extends commonMethods {
 	public boolean isaltCountyUpdated() {
 		return explicitWaitForTextInElement(lbl_alternateAddressDetails,this.altaddressCounty,20);
 	}
+	public boolean isPersonalMobileUpdated() {
+		return explicitWaitForTextInElement(lbl_phonelist,this.personalMobile,20);
+	}
+
 
 }
