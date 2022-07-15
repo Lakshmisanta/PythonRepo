@@ -100,7 +100,8 @@ public class commonMethods {
 	}
 
 	public static void clearText(WebElement elem) {
-
+		WebDriverWait waitForElement = new WebDriverWait(driver, 10);
+		waitForElement.until(ExpectedConditions.visibilityOf(elem));
 		elem.clear();
 	}
 
@@ -150,7 +151,7 @@ public class commonMethods {
 	}
 
 	public static void enterText(WebElement elem, String enterText) {
-
+		elem.clear();
 		elem.sendKeys(enterText);
 		cucumberLogs.info(enterText + " is entered");
 

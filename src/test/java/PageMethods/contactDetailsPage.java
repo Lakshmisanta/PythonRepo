@@ -43,28 +43,28 @@ public class contactDetailsPage extends commonMethods {
 	@FindBy(xpath = "//*[@id = 'Input_PersonalEmailAddress_Edit']")
 	WebElement txt_EmailAddress;
 
-	@FindBy(xpath = "(//form//descendant::div[contains(@id,'AddressLine1_Input')])[1]")
+	@FindBy(xpath = "(//form//descendant::div[contains(@id,'AddressLine1_Input')])[1]//input")
 	WebElement txt_MainAddressAddressLine1;
 
-	@FindBy(xpath = "(//form//descendant::div[contains(@id,'AddressLine1_Input')])[2]")
+	@FindBy(xpath = "(//form//descendant::div[contains(@id,'AddressLine1_Input')])[2]//input")
 	WebElement txt_AlternateAddressAddressLine1;
 
-	@FindBy(xpath = "(//form//descendant::div[contains(@id,'AddressLine2_Input')])[1]")
+	@FindBy(xpath = "(//form//descendant::div[contains(@id,'AddressLine2_Input')])[1]//input")
 	WebElement txt_MainAddressAddressLine2;
 
-	@FindBy(xpath = "(//form//descendant::div[contains(@id,'AddressLine2_Input')])[2]")
+	@FindBy(xpath = "(//form//descendant::div[contains(@id,'AddressLine2_Input')])[2]//input")
 	WebElement txt_AlternateAddressAddressLine2;
 
-	@FindBy(xpath = "(//form//descendant::div[contains(@id,'AddressLine3_Input')])[1]")
+	@FindBy(xpath = "(//form//descendant::div[contains(@id,'AddressLine3_Input')])[1]//input")
 	WebElement txt_MainAddressAddressLine3;
 
-	@FindBy(xpath = "(//form//descendant::div[contains(@id,'AddressLine3_Input')])[2]")
+	@FindBy(xpath = "(//form//descendant::div[contains(@id,'AddressLine3_Input')])[2]//input")
 	WebElement txt_AlternateAddressAddressLine3;
 
-	@FindBy(xpath = "(//form//descendant::div[contains(@id,'TownCity_Input')])[1]")
+	@FindBy(xpath = "(//form//descendant::div[contains(@id,'TownCity_Input')])[1]//input")
 	WebElement txt_MainAddressCity;
 
-	@FindBy(xpath = "(//form//descendant::div[contains(@id,'TownCity_Input')])[2]")
+	@FindBy(xpath = "(//form//descendant::div[contains(@id,'TownCity_Input')])[2]//input")
 	WebElement txt_AlternateAddressCity;
 
 	@FindBy(xpath = "(//select[@class='dropdown-display dropdown'])[1]")
@@ -73,10 +73,10 @@ public class contactDetailsPage extends commonMethods {
 	@FindBy(xpath = "(//select[@class='dropdown-display dropdown'])[2]")
 	WebElement drpdwn_AlternateAddressCounty;
 
-	@FindBy(xpath = "(//form//descendant::div[contains(@id,'Postcode_Input')])[1]")
+	@FindBy(xpath = "(//form//descendant::div[contains(@id,'Postcode_Input')])[1]//input")
 	WebElement txt_MainAddressPostcode;
 
-	@FindBy(xpath = "(//form//descendant::div[contains(@id,'Postcode_Input')])[2]")
+	@FindBy(xpath = "(//form//descendant::div[contains(@id,'Postcode_Input')])[2]//input")
 	WebElement txt_AlternateAddressPostcode;
 
 	@FindBy(xpath = "//*[@id = 'Input_Branch']")
@@ -87,6 +87,12 @@ public class contactDetailsPage extends commonMethods {
 
 	@FindBy(xpath = "//*[@id='b1-Form1']")
 	WebElement frm_ContactDetails;
+
+	@FindBy(xpath = "//*[@id='conAddAltAddress_Edit']/a")
+	WebElement lnk_addalternatedetails;
+
+	@FindBy(xpath = "//*[@id='conDeleteAltAddress_Edit']/a")
+	WebElement lnk_deletealternatedetails;
 
 	@FindBy(xpath = "//*[@id='b1-popupDiscardChanges']//a[contains(text(),'Discard')]")
   WebElement lnk_discard;
@@ -118,7 +124,8 @@ public class contactDetailsPage extends commonMethods {
   public String mainaddressLine1, mainaddressLine2,
 							   mainaddressLine3, mainaddressCounty, mainaddressCity,
 							   mainaddressPostcode, altaddressLine1, altaddressLine2,
-							   altaddressLine3, altaddresCounty, altaddressCity, altaddressPostcode;
+							   altaddressLine3, altaddresCounty, altaddressCity, altaddressPostcode,
+								 emailAddress,primaryHomeNumber, personalMobile;
 
 	public contactDetailsPage(WebDriver driver) {
 
@@ -139,6 +146,26 @@ public class contactDetailsPage extends commonMethods {
 		return false;
 	}
 
+  public void addAlternateAddress() {
+
+		if (lnk_deletealternatedetails.isDisplayed()) {
+			scrolldownbrowser(lnk_deletealternatedetails);
+			lnk_deletealternatedetails.click();
+			explicitWait(lnk_addalternatedetails,"elementToBeClickable", 20);
+			lnk_addalternatedetails.click();
+		}
+		else if (lnk_addalternatedetails.isDisplayed()) {
+			scrolldownbrowser(lnk_addalternatedetails);
+			lnk_addalternatedetails.click();
+		}
+	}
+
+	public void deleteAlternateAddress() {
+		if (lnk_deletealternatedetails.isDisplayed()){
+			lnk_deletealternatedetails.click();
+		}
+	}
+
 	public boolean is_ContactDetails_Displayed() {
 
 		if (frm_ContactDetails.isDisplayed()) {
@@ -146,6 +173,27 @@ public class contactDetailsPage extends commonMethods {
 			return true;
 		}
 		return false;
+	}
+
+	public void enterPrimaryHomeNumber(String number ) {
+
+		clearText(txt_PrimaryHomeNumber);
+		this.primaryHomeNumber = number ;
+		enterText(txt_PrimaryHomeNumber, number);
+	}
+
+	public void enterPersonalMobile(String number ) {
+
+		clearText(txt_PersonalMobile);
+		this.personalMobile = number ;
+		enterText(txt_PersonalMobile, number);
+	}
+
+	public void enterPersonalEmailAddress(String email ) {
+
+		clearText(txt_EmailAddress);
+		this.emailAddress = email ;
+		enterText(txt_EmailAddress, email);
 	}
 
 	public void enterMainAddressLine1(String addressline ) {
@@ -157,9 +205,9 @@ public class contactDetailsPage extends commonMethods {
 
 	public void enterMainAddressLine2(String addressline ) {
 
-		clearText(txt_MainAddressAddressLine1);
+		clearText(txt_MainAddressAddressLine2);
 		this.mainaddressLine2 = addressline ;
-		enterText(txt_MainAddressAddressLine1, addressline);
+		enterText(txt_MainAddressAddressLine2, addressline);
 	}
 
 	public void enterMainAddressLine3(String addressline ) {
@@ -179,7 +227,7 @@ public class contactDetailsPage extends commonMethods {
 
 		clearText(txt_MainAddressCity);
 		this.mainaddressCity = city ;
-		enterText(txt_AlternateAddressAddressLine2, city);
+		enterText(txt_MainAddressCity, city);
 	}
 
 	public void enterMainAddressPostcode(String postcode ) {
@@ -218,9 +266,9 @@ public class contactDetailsPage extends commonMethods {
 
 	public void enterAlternateAddressCity(String city ) {
 
-		clearText(txt_AlternateAddressAddressLine2);
+		clearText(txt_AlternateAddressCity);
 		this.altaddressCity = city ;
-		enterText(txt_AlternateAddressAddressLine2, city);
+		enterText(txt_AlternateAddressCity, city);
 	}
 
 	public void enterAlternateAddressPostcode(String postcode ) {
@@ -230,6 +278,28 @@ public class contactDetailsPage extends commonMethods {
 		enterText(txt_AlternateAddressPostcode, postcode);
 	}
 
+	public void updatePhoneEmailDetails(DataTable phonemailDetails ) {
+
+		 int totalRows = phonemailDetails.height();
+		 //Write the code to handle Data Table
+		 for(int i=0;i<totalRows;i++){
+
+				switch(phonemailDetails.cell(i,0).toLowerCase()){
+					case "primary home number":
+						enterPrimaryHomeNumber(phonemailDetails.cell(i,1) );
+						break;
+					case "personal mobile":
+						enterPersonalMobile(phonemailDetails.cell(i,1) );
+						break;
+					case "personal email address":
+						enterPersonalEmailAddress(phonemailDetails.cell(i,1) );
+						break;
+					default:
+						 break;
+				}
+			}
+	}
+
 	public void updateAlternateAdressDetails(DataTable addressDetails ) {
 
 		 int totalRows = addressDetails.height();
@@ -237,13 +307,13 @@ public class contactDetailsPage extends commonMethods {
 		 for(int i=0;i<totalRows;i++){
 
 				switch(addressDetails.cell(i,0).toLowerCase()){
-					case "Address Line1":
+					case "address line1":
 						enterAlternateAddressLine1(addressDetails.cell(i,1) );
 						break;
-					case "Address Line2":
+					case "address line2":
 						enterAlternateAddressLine2(addressDetails.cell(i,1) );
 						break;
-					case "Address Line3":
+					case "address line3":
 						enterAlternateAddressLine3(addressDetails.cell(i,1) );
 						break;
 					case "county":
@@ -251,6 +321,7 @@ public class contactDetailsPage extends commonMethods {
 						break;
 					case "postcocde":
 						enterAlternateAddressPostcode(addressDetails.cell(i,1) );
+						break;
 					case "city":
 						enterAlternateAddressCity(addressDetails.cell(i,1) );
 						break;
@@ -268,20 +339,21 @@ public class contactDetailsPage extends commonMethods {
      for(int i=0;i<totalRows;i++){
 
         switch(addressDetails.cell(i,0).toLowerCase()){
-          case "Address Line1":
+          case "address line1":
 					  enterMainAddressLine1(addressDetails.cell(i,1) );
             break;
-					case "Address Line2":
+					case "address line2":
 					  enterMainAddressLine2(addressDetails.cell(i,1) );
             break;
-					case "Address Line3":
+					case "address line3":
 					  enterMainAddressLine3(addressDetails.cell(i,1) );
             break;
           case "county":
 					  enterMainAddressCounty(addressDetails.cell(i,1) );
             break;
-					case "postcocde":
+					case "postcode":
 	          enterMainAddressPostcode(addressDetails.cell(i,1) );
+						break;
 					case "city":
             enterMainAddressCity(addressDetails.cell(i,1) );
             break;
@@ -291,13 +363,11 @@ public class contactDetailsPage extends commonMethods {
       }
   }
 
-	public void cancelContactDetails() {
+	public void cancelEditingContactDetails() {
 		explicitWait(btn_Cancel, "elementToBeClickable", 20);
 		moveToElement(btn_Cancel);
 		clickElement(btn_Cancel, "Cancel button");
 	}
-
-
 
 	public void discardBankDetails() {
 

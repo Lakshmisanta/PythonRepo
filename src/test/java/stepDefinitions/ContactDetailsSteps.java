@@ -54,22 +54,21 @@ public class ContactDetailsSteps extends commonMethods {
 																"Basic details page is not displayed");
 	}
 
-	@When("I enter contact details as below")
-	public void i_enter_contact_details_as_below(io.cucumber.datatable.DataTable dataTable) {
-
+	@When("I enter phone contact details as below")
+	public void i_enter_phone_contact_details_as_below(io.cucumber.datatable.DataTable dataTable) {
+		objcontactdetailsPage.updatePhoneEmailDetails(dataTable);
 	}
 
 
 
 	@When("I enter main address contact details as below")
 	public void i_enter_main_address_contact_details_as_below(io.cucumber.datatable.DataTable dataTable) {
-	    objcontactdetailsPage.updateMainAdressDetails(dataTable);
+	  objcontactdetailsPage.updateMainAdressDetails(dataTable);
 	}
 
 	@When("I add alternative address")
 	public void i_add_alternative_address() {
-	    // Write code here that turns the phrase above into concrete actions
-	    throw new io.cucumber.java.PendingException();
+	   objcontactdetailsPage.addAlternateAddress();
 	}
 
 	@When("I enter alternative address contact details as below")
@@ -85,8 +84,7 @@ public class ContactDetailsSteps extends commonMethods {
 
 	@When("I choose to cancel editing of contact details")
 	public void i_choose_to_cancel_editing_of_contact_details() {
-	    // Write code here that turns the phrase above into concrete actions
-	    throw new io.cucumber.java.PendingException();
+	  objcontactdetailsPage.cancelEditingContactDetails();
 	}
 
 	@When("again decide to continue editing of contact details")
