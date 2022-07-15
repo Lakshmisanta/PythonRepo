@@ -119,6 +119,8 @@ public class ContactDetailsSteps extends commonMethods {
 		softAssert.assertTrue(objcontactdetailsPage.isaltCityUpdated());
 		softAssert.assertTrue(objcontactdetailsPage.isaltCountyUpdated());
 		softAssert.assertTrue(objcontactdetailsPage.isaltPostcodeUpdated());
+		softAssert.assertTrue(objcontactdetailsPage.isPersonalMobileUpdated());
+
 		softAssert.assertAll();
 	}
 

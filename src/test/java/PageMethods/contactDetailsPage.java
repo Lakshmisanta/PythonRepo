@@ -23,15 +23,6 @@ import utilities.globalvariables;
 public class contactDetailsPage extends commonMethods {
 
 
-	@FindBy(xpath = "//*[@class ='inside-ucl-large-tile__text OSFillParent']")
-	public List<WebElement> link_MyDetails;
-
-	@FindBy(xpath = "//div[@class ='osui-gallery']")
-	WebElement link_Gallery;
-
-	@FindBy(xpath = "//*[contains(text(),'Bank details')]")
-	WebElement link_BankDetails;
-
 	@FindBy(xpath = "//*[@class='btn OSFillParent'][@type = 'button']")
 	WebElement btn_EditDetails;
 
@@ -80,9 +71,6 @@ public class contactDetailsPage extends commonMethods {
 	@FindBy(xpath = "(//form//descendant::div[contains(@id,'Postcode_Input')])[2]//input")
 	WebElement txt_AlternateAddressPostcode;
 
-	@FindBy(xpath = "//*[@id = 'Input_Branch']")
-	WebElement txt_branch;
-
 	@FindBy(xpath = "//button[@class='btn'][contains(text(),'Cancel')]")
   WebElement btn_Cancel;
 
@@ -102,7 +90,6 @@ public class contactDetailsPage extends commonMethods {
   WebElement lnk_ContinueEditing;
 
 	SoftAssert softAssert = new SoftAssert();
-	DateUtils date = new DateUtils();
 
 	@FindBy(xpath = "//div[@class='popup-dialog popup-dialog']")
 	public WebElement dlg_DiscardChanges;
@@ -314,7 +301,7 @@ public class contactDetailsPage extends commonMethods {
 						enterPersonalEmailAddress(phonemailDetails.cell(i,1) );
 						break;
 					default:
-						 break;
+						break;
 				}
 			}
 	}
@@ -349,7 +336,6 @@ public class contactDetailsPage extends commonMethods {
 				}
 			}
 	}
-
 
 	public void updateMainAdressDetails(DataTable addressDetails ) {
 

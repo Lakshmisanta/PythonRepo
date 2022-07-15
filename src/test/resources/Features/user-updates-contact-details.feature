@@ -1,8 +1,8 @@
-
+@inprogress
 Feature: Contact Details
   In order to update my contact details
 	As a logged user
-	should be able to update contact details
+	should be able to update phone , main and alternate contact details
 
   Background:
   	Given I am logged onto UCL as a registered user
