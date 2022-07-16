@@ -17,16 +17,13 @@ public class PersonDetails {
                     "Hertfordshire",
                     "Derbyshire",
                     "Sussex"
-                   }
+                  };
   }
-  public getCity() {
+  public String getCity() {
     Random generator = new Random();
     int randomNumber = generator.nextInt(city.length);
     System.out.println(city[randomNumber]);
     return city[randomNumber];
   }
 
-  public static void main (String [] args) {
-      this.getCity();
-  }
 }
