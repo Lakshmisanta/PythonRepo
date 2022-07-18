@@ -163,6 +163,14 @@ public class InterestsPage extends commonMethods {
 	 return false;
  }
 
+ public boolean isAddedInterestDisplayed() {
+	 WebElement interest = searchInterest();
+	 if( interest != null ){
+		 return true;
+	 }
+	 return false;
+ }
+
  public void confirmDeleteInterest() {
 	 explicitWait(dlg_Delete, "visibilityOf", 120);
 	 explicitWait(lnk_Delete, "elementToBeClickable", 20);
@@ -189,16 +197,12 @@ public class InterestsPage extends commonMethods {
 		clickElement(btn_cancelReviewChanges, "Cancel on Review Changes dialogue");
 	}
 
-  public void SaveReviewChanges()  {
+  public void SaveChanges()  {
 		explicitWait(btn_SaveChanges, "elementToBeClickable", 10);
 		clickElement(btn_SaveChanges, "Save Changes button");
 	}
 
 
-	public boolean isMainCityUpdated() {
-		return true;
-		//return explicitWaitForTextInElement(lbl_mainAddressDetails,this.mainaddressCity,20);
-	}
 
 
 }

@@ -98,4 +98,15 @@ public class InterestsSteps extends commonMethods {
 		softAssert.assertTrue(objinterestsPage.isDeletedInterestDisplayed());
 	}
 
+	@When("I save changes in intersts as final")
+	public void i_save_changes_in_intersts_as_final() {
+		objinterestsPage.SaveChanges();
+	}
+
+	@Then("I should see interest is added")
+	public void i_should_see_interest_is_added() {
+			softAssert.assertTrue(objinterestsPage.isAddedInterestDisplayed());
+	}
+
+
 }
