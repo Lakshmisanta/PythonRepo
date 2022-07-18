@@ -55,16 +55,7 @@ public class InterestsPage extends commonMethods {
 	@FindBy(xpath = "//div[@class='popup-dialog popup-dialog'][@id='popupDeleteItem']")
 	public WebElement dlg_Delete;
 
-	@FindBy(xpath = "//div[@id='b1-popupReviewChanges']")
-	public WebElement dlg_ReviewChanges;
-
-	@FindBy(xpath = "//div[@class='popup-dialog popup-dialog']")
-	public WebElement dlg_SavingChanges;
-
-  @FindBy(xpath = "//button[contains(text(),'Review changes')]")
-	WebElement btn_reviewChanges;
-
-  @FindBy(xpath = "//div[@id='b1-popupReviewChanges']//button[@class='btn btn-primary OSFillParent']")
+  @FindBy(xpath = "//div[@class='drop-overlay-bottom']//button[@class='btn btn-primary']")
 	WebElement btn_SaveChanges;
 
 	@FindBy(xpath = "//div[@id='b1-popupReviewChanges']//button[@class='btn OSFillParent']")
@@ -182,19 +173,6 @@ public class InterestsPage extends commonMethods {
 		explicitWait(dlg_DiscardChanges, "visibilityOf", 120);
 		explicitWait(lnk_ContinueEditing, "elementToBeClickable", 20);
 		clickElement(lnk_ContinueEditing, "Continue editing link");
-	}
-
-	public void clickReviewChanges() {
-
-		explicitWait(btn_reviewChanges, "elementToBeClickable", 10);
-		scrolldownbrowser(btn_reviewChanges);
-		clickElement(btn_reviewChanges, "Review Changes button");
-	}
-
-	public void cancelReviewChanges() {
-		explicitWait(btn_cancelReviewChanges, "elementToBeClickable", 10);
-		scrolldownbrowser(btn_cancelReviewChanges);
-		clickElement(btn_cancelReviewChanges, "Cancel on Review Changes dialogue");
 	}
 
   public void SaveChanges()  {
