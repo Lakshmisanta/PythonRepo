@@ -1,4 +1,4 @@
-@inprogress
+@wip
 Feature: Contact Details
   In order to update my contact details
 	As a logged user
@@ -15,8 +15,8 @@ Feature: Contact Details
   	When I choose to edit contact details
     Then contact details page is displayed
     When I enter phone contact details as below
-      |  Primary Home Number | 412147856   |
-      |  Personal Mobile     | 58964752368 |
+      |  Primary Home Number | random   |
+      |  Personal Mobile     | random |
       |  Personal email address     | testuser@gmail.com |
     And I choose to cancel editing of contact details
     And decide to discard entered basic contact details
@@ -29,8 +29,8 @@ Feature: Contact Details
     When I choose to edit contact details
     Then contact details page is displayed
     When I enter phone contact details as below
-      |  Primary Home Number    | 412147856          |
-      |  Personal Mobile        | 58964752368        |
+      |  Primary Home Number    | random          |
+      |  Personal Mobile        | random        |
       |  Personal email address | testuser@gmail.com |
     When I enter main address contact details as below
       |  Address line1  |  100 Bake Street |
@@ -55,7 +55,7 @@ Feature: Contact Details
       |  Address line1    | London100   |
       |  Address line2    | cheshire add |
       |  Address line3    |  darkshire  |
-      |  City             |      Woking |
+      |  City             |  Woking |
       |  County           | Dorset      |
       |  Postcode         | GX4 4DR     |
     And I review changes in contact details
