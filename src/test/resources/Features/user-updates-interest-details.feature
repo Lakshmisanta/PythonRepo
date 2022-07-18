@@ -8,7 +8,7 @@ Feature: Interest Details
   	Given I am logged onto UCL as a registered user
   	Then I navigate to mydetails page
 
- @test
+
   Scenario: User can discard editing interests
 
     When I navigate to interests
@@ -20,13 +20,15 @@ Feature: Interest Details
     And decide to discard entered interests
     Then I am redirected to interests landing page
 
+@test
   Scenario: User can continue editing and save changes in Interests
 
-  When I navigate to interests
-  Then interests landing page is displayed
-  When I choose to edit interests
-  Then edit interests page is displayed
-  When I add my interest details
-  And I choose to cancel editing of interest details
-  But again decide to continue editing of interests
-  And I delete recently added interest
+    When I navigate to interests
+    Then interests landing page is displayed
+    When I choose to edit interests
+    Then edit interests page is displayed
+    When I add my interest details
+    And I choose to cancel editing of interest details
+    But again decide to continue editing of interests
+    And I delete recently added interest
+    Then interest should not be displayed in list

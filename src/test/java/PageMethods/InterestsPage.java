@@ -41,13 +41,19 @@ public class InterestsPage extends commonMethods {
 	@FindBy(xpath = "//*[@id='popupDiscardChanges']//a[contains(text(),'Discard')]")
   WebElement lnk_discard;
 
-  @FindBy(xpath = "//*[@id='b1-popupDiscardChanges']//a[contains(text(),'Continue editing')]")
+  @FindBy(xpath = "//*[@id='popupDiscardChanges']//a[contains(text(),'Continue editing')]")
   WebElement lnk_ContinueEditing;
+
+	@FindBy(xpath = "//div[@id='popupDeleteItem']//a[contains(text(),'Delete')]")
+	public WebElement lnk_Delete;
 
 	SoftAssert softAssert = new SoftAssert();
 
 	@FindBy(xpath = "//div[@class='popup-dialog popup-dialog']")
 	public WebElement dlg_DiscardChanges;
+
+	@FindBy(xpath = "//div[@class='popup-dialog popup-dialog'][@id='popupDeleteItem']")
+	public WebElement dlg_Delete;
 
 	@FindBy(xpath = "//div[@id='b1-popupReviewChanges']")
 	public WebElement dlg_ReviewChanges;
@@ -64,7 +70,10 @@ public class InterestsPage extends commonMethods {
 	@FindBy(xpath = "//div[@id='b1-popupReviewChanges']//button[@class='btn OSFillParent']")
 	public WebElement btn_cancelReviewChanges;
 
-	String interests;
+	@FindBy(xpath ="//div[@class='list-item']")
+	public List<WebElement> interestsList;
+
+	String interest;
 
 	public InterestsPage(WebDriver driver) {
 
@@ -100,8 +109,8 @@ public class InterestsPage extends commonMethods {
 	}
 
 	public void addInterests() {
-		this.interests = new String(StringUtils.generateRandomChars("abcdefghijklmnopqrstuvxyz", 5));
-		enterInterests(this.interests);
+		this.interest = new String(StringUtils.generateRandomChars("abcdefghijklmnopqrstuvxyz", 5));
+		enterInterests(this.interest);
 		clickElement(btn_addInterest, "Add interest");
 	}
 
@@ -117,6 +126,36 @@ public class InterestsPage extends commonMethods {
 		explicitWait(lnk_discard, "elementToBeClickable", 20);
 		clickElement(lnk_discard, "Discard link");
 	}
+
+	public WebElement searchInterest() {
+		int nosOfInterests = interestsList.size();
+		for( int i = 0 ; i <= nosOfInterests ; i++) {
+			try {
+				boolean found = explicitWaitForTextInElement(interestsList.get(i),this.interest,20);
+				if (found ){
+					 return interestsList.get(i);
+				}
+			}
+			catch(Exception e){
+				//do nothing but interate completely
+			}
+		}
+		return null;
+	}
+
+ public void deleteLatestInterest() {
+	 WebElement interest = searchInterest();
+	 if( interest != null ){
+		 WebElement	deleteIcon = interest.findElement(By.xpath("//child::i"));
+		 deleteIcon.click();
+	 }
+ }
+
+ public void confirmDeleteInterest() {
+	 explicitWait(dlg_Delete, "visibilityOf", 120);
+	 explicitWait(lnk_Delete, "elementToBeClickable", 20);
+	 clickElement(lnk_Delete, "Delete link");
+ }
 
 	public void continueEditingContactDetails() {
 

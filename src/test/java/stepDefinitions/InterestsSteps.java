@@ -81,5 +81,15 @@ public class InterestsSteps extends commonMethods {
 
 	}
 
+	@When("again decide to continue editing of interests")
+	public void again_decide_to_continue_editing_of_interests() {
+		objinterestsPage.continueEditingContactDetails();
+	}
+	@When("I delete recently added interest")
+	public void i_delete_recently_added_interest() {
+		objinterestsPage.deleteLatestInterest();
+		objinterestsPage.confirmDeleteInterest();
+	}
+
 
 }
