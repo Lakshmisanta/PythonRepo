@@ -129,10 +129,10 @@ public class InterestsPage extends commonMethods {
 
 	public WebElement searchInterest() {
 		int nosOfInterests = interestsList.size();
-		for( int i = 0 ; i <= nosOfInterests ; i++) {
+		for( int i = 0 ; i < nosOfInterests ; i++) {
 			try {
-				boolean found = explicitWaitForTextInElement(interestsList.get(i),this.interest,10);
-				if (found ){
+
+				if (explicitWaitForTextInElement(interestsList.get(i),this.interest,10) ){
 					 System.out.println("found intrest added");
 					 return interestsList.get(i);
 				}

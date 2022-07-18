@@ -32,3 +32,6 @@ Feature: Interest Details
     But again decide to continue editing of interests
     And I delete recently added interest
     Then interest should not be displayed in list
+    When I add my interest details
+    #And I save changes in intersts as final
+    #Then I should see interest is added
