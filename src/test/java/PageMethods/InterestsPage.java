@@ -123,7 +123,7 @@ public class InterestsPage extends commonMethods {
 		for( int i = 0 ; i < nosOfInterests ; i++) {
 			try {
 
-				if (explicitWaitForTextInElement(interestsList.get(i),this.interest,10) ){
+				if (explicitWaitForTextInElement(interestsList.get(i),this.interest,3) ){
 					 System.out.println("found intrest added");
 					 return interestsList.get(i);
 				}
@@ -140,6 +140,7 @@ public class InterestsPage extends commonMethods {
 	 WebElement interest = searchInterest();
 	 if( interest != null ){
 		 WebElement	deleteIcon = interest.findElement(By.xpath(".//child::i"));
+		 scrolldownbrowser(deleteIcon);
 		 deleteIcon.click();
 		 return true;
 	 }
