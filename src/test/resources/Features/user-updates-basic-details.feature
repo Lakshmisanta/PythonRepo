@@ -1,7 +1,7 @@
 @wip
 Feature: Basic Details
   In order to update my basic details
-	As a logged user
+	As a logged in user
 	should be able to update basic details
 
   Background:

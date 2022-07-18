@@ -1,7 +1,7 @@
 @wip
 Feature: Bank Details
   In order to update my bank details
-	As a logged user
+	As a logged in user
 	should be able to update bank details
 
   Background:

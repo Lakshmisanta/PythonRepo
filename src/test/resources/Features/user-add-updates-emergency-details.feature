@@ -1,7 +1,7 @@
 @wip
 Feature: Emergency Details
   In order to update my details
-	As a logged user
+	As a logged in user
 	should be able to add , edit and cancel emergency details
 
 Background:
