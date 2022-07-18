@@ -133,6 +133,7 @@ public class InterestsPage extends commonMethods {
 			try {
 				boolean found = explicitWaitForTextInElement(interestsList.get(i),this.interest,20);
 				if (found ){
+					 System.out.println("found intrest added");
 					 return interestsList.get(i);
 				}
 			}
@@ -140,6 +141,8 @@ public class InterestsPage extends commonMethods {
 				//do nothing but interate completely
 			}
 		}
+		System.out.println("no intrest added found");
+
 		return null;
 	}
 
@@ -149,6 +152,7 @@ public class InterestsPage extends commonMethods {
 		 WebElement	deleteIcon = interest.findElement(By.xpath("//child::i"));
 		 deleteIcon.click();
 	 }
+
  }
 
  public void confirmDeleteInterest() {
