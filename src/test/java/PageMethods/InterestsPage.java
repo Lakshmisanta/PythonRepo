@@ -26,6 +26,8 @@ public class InterestsPage extends commonMethods {
 
 	@FindBy(xpath = "//*[@class='btn OSFillParent'][@type = 'button']")
 	WebElement btn_EditDetails;
+	@FindBy(xpath = "//*[@class='btn OSFillParent'][@type = 'button'][contains(text(),'Add interest')]")
+	WebElement btn_addInterest;
 
 	@FindBy(xpath = "//button[@class='btn'][contains(text(),'Cancel')]")
   WebElement btn_Cancel;
@@ -36,7 +38,7 @@ public class InterestsPage extends commonMethods {
 	@FindBy(xpath = "//input[@id='Input_CurrentInterest2']")
 	WebElement	txt_Interest;
 
-	@FindBy(xpath = "//*[@id='b1-popupDiscardChanges']//a[contains(text(),'Discard')]")
+	@FindBy(xpath = "//*[@id='popupDiscardChanges']//a[contains(text(),'Discard')]")
   WebElement lnk_discard;
 
   @FindBy(xpath = "//*[@id='b1-popupDiscardChanges']//a[contains(text(),'Continue editing')]")
@@ -92,20 +94,24 @@ public class InterestsPage extends commonMethods {
 		return false;
 	}
 
-	public void enterInterest(String interest ) {
-
+	public void enterInterests(String interest ) {
 		clearText(txt_Interest);
-		this.interests = interest ;
 		enterText(txt_Interest, interest);
 	}
 
-	public void cancelEditingContactDetails() {
-		explicitWait(btn_Cancel, "elementToBeClickable", 20);
-		moveToElement(btn_Cancel);
-		clickElement(btn_Cancel, "Cancel button");
+	public void addInterests() {
+		this.interests = new String(StringUtils.generateRandomChars("abcdefghijklmnopqrstuvxyz", 5));
+		enterInterests(this.interests);
+		clickElement(btn_addInterest, "Add interest");
 	}
 
-	public void discardBankDetails() {
+	public void cancelAddingInterest() {
+		explicitWait(btn_Cancel, "elementToBeClickable", 20);
+		clickElement(btn_Cancel, "Cancel button");
+		moveToElement(btn_Cancel);
+	}
+
+	public void discardInterests() {
 
 		explicitWait(dlg_DiscardChanges, "visibilityOf", 120);
 		explicitWait(lnk_discard, "elementToBeClickable", 20);

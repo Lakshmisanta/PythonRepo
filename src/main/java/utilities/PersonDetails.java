@@ -25,6 +25,8 @@ public class PersonDetails {
                   };
 
   }
+
+  
   public String getCity() {
     Random generator = new Random();
     int randomNumber = generator.nextInt(city.length);

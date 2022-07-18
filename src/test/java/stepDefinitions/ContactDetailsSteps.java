@@ -110,7 +110,7 @@ public class ContactDetailsSteps extends commonMethods {
 	    objcontactdetailsPage.SaveReviewChanges();
 	}
 
-	@When("decide to discard entered basic contact details")
+	@When("decide to discard entered contact details")
 	public void decide_to_discard_entered_contact_details() {
 		objcontactdetailsPage.DiscardContactDetails();
 	}

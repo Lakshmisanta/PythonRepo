@@ -9,7 +9,7 @@ Feature: Interest Details
   	Then I navigate to mydetails page
 
  @test
-  Scenario: User can discard editing existing contact details
+  Scenario: User can discard editing interests
 
     When I navigate to interests
     Then interests landing page is displayed
@@ -17,45 +17,16 @@ Feature: Interest Details
     Then edit interests page is displayed
     When I add my interest details
     And I choose to cancel editing of interest details
-    And decide to discard entered interest details
-    Then I am on interest details landing page
+    And decide to discard entered interests
+    Then I am redirected to interests landing page
 
-  Scenario: User can discard and save changes in main and alternate address contact details
+  Scenario: User can continue editing and save changes in Interests
 
-    When I navigate to contact details
-    Then contact details landing page is displayed
-    When I choose to edit contact details
-    Then contact details page is displayed
-    When I enter phone contact details as below
-      |  Primary Home Number    | random          |
-      |  Personal Mobile        | random        |
-      |  Personal email address | testuser@gmail.com |
-    When I enter main address contact details as below
-      |  Address line1  |  100 Bake Street |
-      |  Address line2  |  cheshire add    |
-      |  Address line3  |  darkshire       |
-      |  City           |  Woking          |
-      |  County         |  Dorset          |
-      | Postcode        | GX4 4DR          |
-    And I add alternative address
-    When I enter alternative address contact details as below
-      |  Address line1  | 72 Great North Road |
-      |  Address line2  | Manor Close |
-      |  Address line3  | Darkshire   |
-      |  City           | Butterton   |
-      |  County         | Dorset      |
-      | Postcode        | B61 7LP     |
-    And delete alternative address
-    And I choose to cancel editing of contact details
-    But again decide to continue editing of contact details
-    And I add alternative address
-    When I enter alternative address contact details as below
-      |  Address line1    | London100   |
-      |  Address line2    | cheshire add |
-      |  Address line3    |  darkshire  |
-      |  City             |  Woking |
-      |  County           | Dorset      |
-      |  Postcode         | GX4 4DR     |
-    And I review changes in contact details
-    And I save changes in contact details as final
-    Then I should see contact details are saved
+  When I navigate to interests
+  Then interests landing page is displayed
+  When I choose to edit interests
+  Then edit interests page is displayed
+  When I add my interest details
+  And I choose to cancel editing of interest details
+  But again decide to continue editing of interests
+  And I delete recently added interest

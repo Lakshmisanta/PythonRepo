@@ -59,5 +59,27 @@ public class InterestsSteps extends commonMethods {
 		objinterestsPage.addInterests();
 	}
 
+	@When("I choose to cancel editing of interest details")
+	public void i_choose_to_cancel_editing_of_interest_details() {
+		objinterestsPage.cancelAddingInterest();
+	}
+
+	@Then("I am on interest details landing page")
+	public void i_am_on_interest_details_landing_page() {
+
+	}
+
+	@When("decide to discard entered interests")
+	public void decide_to_discard_entered_interest_details() {
+		objinterestsPage.discardInterests();
+	}
+
+	@Then("I am redirected to interests landing page")
+	public void i_am_redirected_to_interests_landing_page() {
+		softAssert.assertEquals(objinterestsPage.is_InterestDetails_Landing_Displayed(),true,
+																"Interest details page is not displayed");
+
+	}
+
 
 }
