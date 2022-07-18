@@ -16,6 +16,7 @@ import org.testng.asserts.SoftAssert;
 import io.cucumber.datatable.DataTable;
 import utilities.DateUtils;
 import utilities.StringUtils;
+import utilities.PersonDetails;
 
 import utilities.cucumberLogs;
 import utilities.globalvariables;
@@ -123,10 +124,12 @@ public class contactDetailsPage extends commonMethods {
 							   mainaddressPostcode, altaddressLine1, altaddressLine2,
 							   altaddressLine3, altaddressCounty, altaddressCity, altaddressPostcode,
 								 emailAddress,primaryHomeNumber, personalMobile;
+	PersonDetails personaldetails;
 
 	public contactDetailsPage(WebDriver driver) {
 
 		PageFactory.initElements(driver, this);
+		personaldetails = new PersonDetails();
 	}
 
 	public void edit_details() {
@@ -182,13 +185,18 @@ public class contactDetailsPage extends commonMethods {
 
 	public void enterPrimaryHomeNumber(String number ) {
 
+		if(number.toLowerCase().equals("random") ){
+			number = personaldetails.getPhoneNumber();
+		}
 		clearText(txt_PrimaryHomeNumber);
 		this.primaryHomeNumber = number ;
 		enterText(txt_PrimaryHomeNumber, number);
 	}
 
 	public void enterPersonalMobile(String number ) {
-
+		if(number.toLowerCase().equals("random") ){
+			number = personaldetails.getPhoneNumber();
+		}
 		clearText(txt_PersonalMobile);
 		this.personalMobile = number ;
 		enterText(txt_PersonalMobile, number);
