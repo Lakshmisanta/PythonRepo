@@ -85,11 +85,17 @@ public class InterestsSteps extends commonMethods {
 	public void again_decide_to_continue_editing_of_interests() {
 		objinterestsPage.continueEditingContactDetails();
 	}
+
 	@When("I delete recently added interest")
 	public void i_delete_recently_added_interest() {
-		objinterestsPage.deleteLatestInterest();
+		softAssert.assertTrue(objinterestsPage.deleteLatestInterest());
 		objinterestsPage.confirmDeleteInterest();
+		softAssert.assertAll();
 	}
 
+	@Then("interest should not be displayed in list")
+	public void interest_should_not_be_displayed_in_list() {
+		softAssert.assertTrue(objinterestsPage.isDeletedInterestDisplayed());
+	}
 
 }

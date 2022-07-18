@@ -131,7 +131,7 @@ public class InterestsPage extends commonMethods {
 		int nosOfInterests = interestsList.size();
 		for( int i = 0 ; i <= nosOfInterests ; i++) {
 			try {
-				boolean found = explicitWaitForTextInElement(interestsList.get(i),this.interest,20);
+				boolean found = explicitWaitForTextInElement(interestsList.get(i),this.interest,10);
 				if (found ){
 					 System.out.println("found intrest added");
 					 return interestsList.get(i);
@@ -141,18 +141,26 @@ public class InterestsPage extends commonMethods {
 				//do nothing but interate completely
 			}
 		}
-		System.out.println("no intrest added found");
 
 		return null;
 	}
 
- public void deleteLatestInterest() {
+ public boolean deleteLatestInterest() {
 	 WebElement interest = searchInterest();
 	 if( interest != null ){
-		 WebElement	deleteIcon = interest.findElement(By.xpath("//child::i"));
+		 WebElement	deleteIcon = interest.findElement(By.xpath(".//child::i"));
 		 deleteIcon.click();
+		 return true;
 	 }
+   return false;
+ }
 
+ public boolean isDeletedInterestDisplayed() {
+	 WebElement interest = searchInterest();
+	 if( interest == null ){
+		 return true;
+	 }
+	 return false;
  }
 
  public void confirmDeleteInterest() {
