@@ -67,6 +67,7 @@ Scenario: User can discard emergency contact details
   And decide to discard contact details
   Then I am redirected to emergency contact landing page
 
+@test
 Scenario: User can update emergency contact details
   Given I navigate to emergency contact details
   Then I should see emergency contact details
@@ -75,9 +76,9 @@ Scenario: User can update emergency contact details
       | First Name              | Peter                           |
       | Last Name               | Jean                            |
       | Email Address           | helpemergencycontacts@gmail.com |
-      | Primary home number     | 	01278 457476                  |
-      | Personal mobile         | 	01278 457476                  |
-      | Work number             | 	01278 457476                  |
+      | Primary home number     | 	random                  |
+      | Personal mobile         | 	random                  |
+      | Work number             | 	random                  |
       | Postcode                | PR7 1BD                         |
       | Relationship            | Husband                         |
       | Address Line1           |  36                             |

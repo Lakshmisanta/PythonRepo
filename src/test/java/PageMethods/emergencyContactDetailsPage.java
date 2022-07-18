@@ -15,6 +15,8 @@ import org.testng.asserts.SoftAssert;
 
 import io.cucumber.datatable.DataTable;
 import utilities.DateUtils;
+import utilities.PersonDetails;
+
 import utilities.cucumberLogs;
 import utilities.globalvariables;
 
@@ -109,8 +111,10 @@ public class emergencyContactDetailsPage extends commonMethods {
   String relationship, lastName, addressLine1, addressLine2, title, firstName, emailAddress,
          primaryHomeNumber, personalMobile, workNumber, addressLine3, city, county, postcode;
 
-  public emergencyContactDetailsPage(WebDriver driver) {
+  PersonDetails personaldetails;
 
+  public emergencyContactDetailsPage(WebDriver driver) {
+    personaldetails = new PersonDetails();
 		PageFactory.initElements(driver, this);
 	}
 
@@ -149,18 +153,27 @@ public class emergencyContactDetailsPage extends commonMethods {
   }
 
   public void enterPrimaryhomeNumber(String primaryHomeNumber){
+    if(primaryHomeNumber.toLowerCase().equals("random")){
+      primaryHomeNumber = personaldetails.getPhoneNumber();
+    }
     clearText(txt_primaryHomeNumber);
     enterText(txt_primaryHomeNumber, primaryHomeNumber);
     this.primaryHomeNumber = primaryHomeNumber;
   }
 
   public void enterPersonalMobile(String personalMobile){
+    if(personalMobile.toLowerCase().equals("random")){
+      personalMobile = personaldetails.getPhoneNumber();
+    }
     clearText(txt_personalMobile);
     enterText(txt_personalMobile, personalMobile);
     this.personalMobile = personalMobile;
   }
 
   public void enterWorkNumber(String workNumber){
+    if(workNumber.toLowerCase().equals("random")){
+      workNumber = personaldetails.getPhoneNumber();
+    }
     clearText(txt_workNumber);
     enterText(txt_workNumber, workNumber);
     this.workNumber = workNumber;
