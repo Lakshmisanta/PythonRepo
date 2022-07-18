@@ -8,13 +8,13 @@ Feature: Interest Details
   	Given I am logged onto UCL as a registered user
   	Then I navigate to mydetails page
 
-  @test
+ @test
   Scenario: User can discard editing existing contact details
 
-    When I navigate to interest details
-    Then contact interest landing page is displayed
-  	When I choose to edit interest details
-    Then interest details page is displayed
+    When I navigate to interests
+    Then interests landing page is displayed
+  	When I choose to edit interests
+    Then edit interests page is displayed
     When I add my interest details
     And I choose to cancel editing of interest details
     And decide to discard entered interest details

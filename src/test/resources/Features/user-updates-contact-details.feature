@@ -19,7 +19,7 @@ Feature: Contact Details
       |  Personal Mobile     | random |
       |  Personal email address     | testuser@gmail.com |
     And I choose to cancel editing of contact details
-    And decide to discard entered basic contact details
+    And decide to discard entered contact details
     Then contact details landing page is displayed
 
   Scenario: User can discard and save changes in main and alternate address contact details

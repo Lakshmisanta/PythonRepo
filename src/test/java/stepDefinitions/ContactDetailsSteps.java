@@ -40,7 +40,7 @@ public class ContactDetailsSteps extends commonMethods {
 	@Then("contact details landing page is displayed")
 	public void contact_details_landing_page_is_displayed() {
 		softAssert.assertEquals(objcontactdetailsPage.is_ContactDetails_Landing_Displayed(),true,
-																"Basic details page is not displayed");
+																"Contact details page is not displayed");
 	}
 
 	@When("I choose to edit contact details")
@@ -51,7 +51,7 @@ public class ContactDetailsSteps extends commonMethods {
 	@Then("contact details page is displayed")
 	public void contact_details_page_is_displayed() {
 		softAssert.assertEquals(objcontactdetailsPage.is_ContactDetails_Displayed(),true,
-																"Basic details page is not displayed");
+																"Contact details page is not displayed");
 	}
 
 	@When("I enter phone contact details as below")
@@ -108,6 +108,11 @@ public class ContactDetailsSteps extends commonMethods {
 	@When("I save changes in contact details as final")
 	public void i_save_changes_in_contact_details_as_final() {
 	    objcontactdetailsPage.SaveReviewChanges();
+	}
+
+	@When("decide to discard entered basic contact details")
+	public void decide_to_discard_entered_contact_details() {
+		objcontactdetailsPage.DiscardContactDetails();
 	}
 
 	@Then("I should see contact details are saved")

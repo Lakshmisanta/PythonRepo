@@ -67,7 +67,6 @@ Scenario: User can discard emergency contact details
   And decide to discard contact details
   Then I am redirected to emergency contact landing page
 
-@test
 Scenario: User can update emergency contact details
   Given I navigate to emergency contact details
   Then I should see emergency contact details
