@@ -1,4 +1,4 @@
-@test
+@wip
 Feature: Interest Details
   In order to update my interest details
 	As a logged in user

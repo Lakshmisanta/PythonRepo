@@ -865,7 +865,7 @@ public class mydetailsPage extends commonMethods {
 
 	public void skills() {
 		explicitWait(skills, "elementToBeClickable", 10);
-		clickElement1(skills, "skills");
+		clickElement(skills, "Skills link");
 	}
 
 	public void addSkills() {
