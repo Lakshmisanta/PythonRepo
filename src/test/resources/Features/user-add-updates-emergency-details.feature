@@ -1,7 +1,7 @@
 @wip
 Feature: Emergency Details
   In order to update my details
-	As a logged user
+	As a logged in user
 	should be able to add , edit and cancel emergency details
 
 Background:
@@ -67,7 +67,6 @@ Scenario: User can discard emergency contact details
   And decide to discard contact details
   Then I am redirected to emergency contact landing page
 
-@test
 Scenario: User can update emergency contact details
   Given I navigate to emergency contact details
   Then I should see emergency contact details

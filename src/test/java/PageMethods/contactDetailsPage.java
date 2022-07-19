@@ -382,7 +382,7 @@ public class contactDetailsPage extends commonMethods {
 		clickElement(btn_Cancel, "Cancel button");
 	}
 
-	public void discardBankDetails() {
+	public void DiscardContactDetails() {
 
 		explicitWait(dlg_DiscardChanges, "visibilityOf", 120);
 		explicitWait(lnk_discard, "elementToBeClickable", 20);

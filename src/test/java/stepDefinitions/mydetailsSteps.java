@@ -122,6 +122,14 @@ public class mydetailsSteps extends commonMethods {
 		objmydetailsPage.Emergency_details();
 	}
 
+
+	@When("I navigate to interests")
+	public void i_am_navigating_to_interest_details() {
+
+		objmydetailsPage.Interests_details();
+	}
+
+
 	@Then("I should see emergency contact details")
 	public void i_should_see_emergency_contact_details() {
 

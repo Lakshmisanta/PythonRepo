@@ -1,7 +1,7 @@
 @wip
 Feature: Basic Details
   In order to update my basic details
-	As a logged user
+	As a logged in user
 	should be able to update basic details
 
   Background:
@@ -25,6 +25,7 @@ Feature: Basic Details
     And decide to discard entered basic contact details
     Then basic details landing page is displayed
 
+# remove contact word throught all scenarios here.
 
   Scenario: User can review and save new basic contact details
 

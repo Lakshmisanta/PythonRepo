@@ -136,6 +136,9 @@ public class mydetailsPage extends commonMethods {
 	@FindBy(xpath = "//*[contains(text(),'Emergency contact details')]")
 	WebElement link_EmergencyDetails;
 
+	@FindBy(xpath = "//*[contains(text(),'Interests')]")
+	WebElement link_Interests;
+
 	@FindBy(xpath = "//*[@id='b1-conReadyOnlyTitle']")
 	WebElement EmergencyContacts;
 
@@ -503,6 +506,12 @@ public class mydetailsPage extends commonMethods {
 
 		explicitWait(link_EmergencyDetails, "elementToBeClickable", 40);
 		clickElement(link_EmergencyDetails, "link_EmergencyDetails");
+	}
+
+	public void Interests_details() {
+
+		explicitWait(link_Interests, "elementToBeClickable", 40);
+		clickElement(link_Interests, "Interests link");
 	}
 
 	public void Verify_Emergency_page() {
