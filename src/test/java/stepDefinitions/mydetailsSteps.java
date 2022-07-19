@@ -180,15 +180,11 @@ public class mydetailsSteps extends commonMethods {
 		objmydetailsPage.editOptionalField();
 	}
 
-	@Given("I am navigating to EDI")
+	@Given("I navigate to equality, diversity and inclusion")
 	public void i_am_navigating_to_edi() {
 		objmydetailsPage.EDI();
 	}
 
-	@When("I click Edit EDI")
-	public void i_click_edit_edi() {
-		objmydetailsPage.Edit_EDI();
-	}
 
 	@Then("I edit EDI fields")
 	public void i_edit_edi_fields() throws InterruptedException {

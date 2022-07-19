@@ -1,3 +1,4 @@
+@wip
 Feature: Your professional skills
 
   In order to update my professional skills
@@ -19,7 +20,6 @@ Feature: Your professional skills
     And decide to discard entered skills
     Then I am redirected to skills landing page
 
-  @test
   Scenario: User can continue editing, delete and save changes in interests
 
     When I navigate to skills
