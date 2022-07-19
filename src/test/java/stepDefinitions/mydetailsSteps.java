@@ -129,6 +129,11 @@ public class mydetailsSteps extends commonMethods {
 		objmydetailsPage.Interests_details();
 	}
 
+	@Given("I navigate to skills")
+	public void i_click_on_skills() {
+		objmydetailsPage.skills();
+	}
+
 
 	@Then("I should see emergency contact details")
 	public void i_should_see_emergency_contact_details() {
@@ -318,10 +323,6 @@ public class mydetailsSteps extends commonMethods {
 		objmydetailsPage.bank_details();
 	}
 
-	@Given("I click on skills")
-	public void i_click_on_skills() {
-		objmydetailsPage.skills();
-	}
 
 	@When("I click on Edit Skills")
 	public void i_click_on_edit_skills() throws InterruptedException {
