@@ -64,6 +64,9 @@ public class InterestsPage extends commonMethods {
 	@FindBy(xpath ="//div[@class='list-item']")
 	public List<WebElement> interestsList;
 
+	@FindBy(xpath ="//div[@class='public-profile-content']//div[@class='list list-group OSFillParent']")
+	public List<WebElement> finalInterestsList;
+
 	String interest;
 
 	public InterestsPage(WebDriver driver) {
@@ -136,6 +139,24 @@ public class InterestsPage extends commonMethods {
 		return null;
 	}
 
+	public WebElement searchInFinalInterestList() {
+		int nosOfInterests = finalInterestsList.size();
+		for( int i = 0 ; i < nosOfInterests ; i++) {
+			try {
+
+				if (explicitWaitForTextInElement(finalInterestsList.get(i),this.interest,3) ){
+					 System.out.println("found intrest added");
+					 return interestsList.get(i);
+				}
+			}
+			catch(Exception e){
+				//do nothing but interate completely
+			}
+		}
+
+		return null;
+	}
+
  public boolean deleteLatestInterest() {
 	 WebElement interest = searchInterest();
 	 if( interest != null ){
@@ -156,7 +177,7 @@ public class InterestsPage extends commonMethods {
  }
 
  public boolean isAddedInterestDisplayed() {
-	 WebElement interest = searchInterest();
+	 WebElement interest = searchInFinalInterestList();
 	 if( interest != null ){
 		 return true;
 	 }
