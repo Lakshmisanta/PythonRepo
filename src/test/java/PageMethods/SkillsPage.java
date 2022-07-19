@@ -65,7 +65,7 @@ public class SkillsPage extends commonMethods {
 	public List<WebElement> skillsList;
 
 	@FindBy(xpath ="//div[@class='public-profile-content']//div[@class='list list-group OSFillParent']")
-	public List<WebElement> finalInterestsList;
+	public List<WebElement> finalSkillsList;
 
 	String skill;
 
@@ -124,87 +124,87 @@ public class SkillsPage extends commonMethods {
 		clickElement(lnk_discard, "Discard link");
 	}
 
-	// public WebElement searchSkill() {
-	// 	// int nosOfSkills = interestsList.size();
-	// 	// WebElement newSkill = null ;
-	// 	// for( int i = 0 ; i < nosOfSkills ; i++) {
-	// 	// 	try {
-	// 	// 			 cucumberLogs.info("Searching for recently added interest...");
-	// 	//
-	// 	// 			 if (explicitWaitForTextInElement(interestsList.get(i),this.interest,3) ){
-	// 	// 			 	newInterest=interestsList.get(i);
-	// 	// 			 	break;
-	// 	// 			}
-	// 	// 	}
-	// 	// 	catch(Exception e){
-	// 	// 		//do nothing but interate completely
-	// 	// 	}
-	// 	// }
-	// 	// return newInterest;
-	// }
- //
-	// public WebElement searchInFinalInterestList() {
-	// 	// int nosOfInterests = finalInterestsList.size();
-	// 	// for( int i = 0 ; i < nosOfInterests ; i++) {
-	// 	// 	try {
-	// 	//
-	// 	// 		if (explicitWaitForTextInElement(finalInterestsList.get(i),this.interest,3) ){
-	// 	// 			 cucumberLogs.info("found interest added");
-	// 	// 			 return interestsList.get(i);
-	// 	// 		}
-	// 	// 	}
-	// 	// 	catch(Exception e){
-	// 	// 		//do nothing but interate completely
-	// 	// 	}
-	// 	// }
-	// 	//
-	// 	 return null;
-	// }
- //
- // public boolean deleteLatestInterest() {
-	//  // WebElement interest = searchInterest();
-	//  // if( interest != null ){
-	// 	//  WebElement	deleteIcon = interest.findElement(By.xpath(".//child::i"));
-	// 	//  scrolldownbrowser(interest);
-	// 	//  deleteIcon.click();
-	// 	//  return true;
-	//  // }
- //    return false;
- // }
- //
- // public boolean isDeletedInterestDisplayed() {
-	//  // WebElement interest = searchInterest();
-	//  // if( interest == null ){
-	// 	//  return true;
-	//  // }
-	//   return false;
- // }
- //
- // public boolean isAddedInterestDisplayed() {
-	//  // WebElement interest = searchInFinalInterestList();
-	//  // if( interest != null ){
-	// 	//  return true;
-	//  // }
-	//   return false;
- // }
- //
- // public void confirmDeleteInterest() {
-	//  // explicitWait(dlg_Delete, "visibilityOf", 120);
-	//  // explicitWait(lnk_Delete, "elementToBeClickable", 20);
-	//  // clickElement(lnk_Delete, "Delete link");
- // }
- //
-	// public void continueEditingContactDetails() {
-	// 	//
-	// 	// explicitWait(dlg_DiscardChanges, "visibilityOf", 120);
-	// 	// explicitWait(lnk_ContinueEditing, "elementToBeClickable", 20);
-	// 	// clickElement(lnk_ContinueEditing, "Continue editing link");
-	// }
- //
- //  public void SaveChanges()  {
-	// 	// explicitWait(btn_SaveChanges, "elementToBeClickable", 10);
-	// 	// clickElement(btn_SaveChanges, "Save Changes button");
-	// }
+	public WebElement searchSkill() {
+		int nosOfSkills = skillsList.size();
+		WebElement newSkill = null ;
+		for( int i = 0 ; i < nosOfSkills ; i++) {
+			try {
+					 cucumberLogs.info("Searching for recently added skill...");
+
+					 if (explicitWaitForTextInElement(skillsList.get(i),this.skill,3) ){
+					 	newSkill = skillsList.get(i);
+					 	break;
+					}
+			}
+			catch(Exception e){
+				//do nothing but interate completely
+			}
+		}
+		return newSkill;
+	}
+
+	public WebElement searchInFinalSkillsList() {
+		int nosOfSkills = finalSkillsList.size();
+		for( int i = 0 ; i < nosOfSkills ; i++) {
+			try {
+
+				if (explicitWaitForTextInElement(finalSkillsList.get(i),this.skill,3) ){
+					 cucumberLogs.info("Found, latest skill added...");
+					 return finalSkillsList.get(i);
+				}
+			}
+			catch(Exception e){
+				//do nothing but interate completely
+			}
+		}
+
+		 return null;
+	}
+
+ public boolean deleteLatestSkill() {
+	 WebElement skill = searchSkill();
+	 if( skill != null ){
+		 WebElement	deleteIcon = skill.findElement(By.xpath(".//child::i"));
+		 scrolldownbrowser(skill);
+		 deleteIcon.click();
+		 return true;
+	 }
+    return false;
+ }
+
+	 public boolean isDeletedSkillDisplayed() {
+		 WebElement skill = searchSkill();
+		 if( skill == null ){
+			 return true;
+		 }
+		  return false;
+	 }
+
+	 public boolean isAddedSkillDisplayed() {
+		 WebElement skill = searchInFinalSkillsList();
+		 if( skill != null ){
+			 return true;
+		 }
+		  return false;
+	 }
+
+	 public void confirmDeleteSkill() {
+		 explicitWait(dlg_Delete, "visibilityOf", 120);
+		 explicitWait(lnk_Delete, "elementToBeClickable", 20);
+		 clickElement(lnk_Delete, "Delete link");
+	 }
+
+	public void continueEditingSkills() {
+
+		explicitWait(dlg_DiscardChanges, "visibilityOf", 120);
+		explicitWait(lnk_ContinueEditing, "elementToBeClickable", 20);
+		clickElement(lnk_ContinueEditing, "Continue editing link");
+	}
+
+  public void SaveChanges()  {
+		explicitWait(btn_SaveChanges, "elementToBeClickable", 10);
+		clickElement(btn_SaveChanges, "Save Changes button");
+	}
 
 
 }

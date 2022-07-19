@@ -86,28 +86,33 @@ public class SkillSteps extends commonMethods {
 	// public void again_decide_to_continue_editing_of_interests() {
 	// 	objinterestsPage.continueEditingContactDetails();
 	// }
-	//
-	// @When("I delete recently added interest")
-	// public void i_delete_recently_added_interest() {
-	// 	softAssert.assertTrue(objinterestsPage.deleteLatestInterest());
-	// 	objinterestsPage.confirmDeleteInterest();
-	// 	softAssert.assertAll();
-	// }
-	//
-	// @Then("interest should not be displayed in list")
-	// public void interest_should_not_be_displayed_in_list() {
-	// 	softAssert.assertTrue(objinterestsPage.isDeletedInterestDisplayed());
-	// }
-	//
-	// @When("I save changes in intersts as final")
-	// public void i_save_changes_in_intersts_as_final() {
-	// 	objinterestsPage.SaveChanges();
-	// }
-	//
-	// @Then("I should see interest is added")
-	// public void i_should_see_interest_is_added() {
-	// 		softAssert.assertTrue(objinterestsPage.isAddedInterestDisplayed());
-	// }
+
+	@When("again decide to continue editing of skills")
+	public void again_decide_to_continue_editing_of_skills() {
+		objskillsPage.continueEditingSkills();
+	}
+
+	@When("I delete recently added skill")
+	public void i_delete_recently_added_skill() {
+		softAssert.assertTrue(objskillsPage.deleteLatestSkill());
+		objskillsPage.confirmDeleteSkill();
+		softAssert.assertAll();
+	}
+
+	@Then("skill should not be displayed in list")
+	public void skill_should_not_be_displayed_in_list() {
+		softAssert.assertTrue(objskillsPage.isDeletedSkillDisplayed());
+	}
+
+	@When("I save changes in skill as final")
+	public void i_save_changes_in_skill_as_final() {
+		objskillsPage.SaveChanges();
+	}
+
+	@Then("I should see skill is added")
+	public void i_should_see_skill_is_added() {
+			softAssert.assertTrue(objskillsPage.isAddedSkillDisplayed());
+	}
 
 
 }
