@@ -1,4 +1,4 @@
-
+@test
 Feature: Interest Details
   In order to update my interest details
 	As a logged in user
@@ -20,8 +20,8 @@ Feature: Interest Details
     And decide to discard entered interests
     Then I am redirected to interests landing page
 
-@test
-  Scenario: User can continue editing and save changes in Interests
+
+  Scenario: User can continue editing, delete and save changes in interests
 
     When I navigate to interests
     Then interests landing page is displayed
