@@ -222,7 +222,7 @@ public class commonMethods {
 	// Method to Scroll Down
 	public void scrolldownbrowser(WebElement elem) {
 		JavascriptExecutor js = (JavascriptExecutor) driver;
-		js.executeScript("arguments[0].scrollIntoView();", elem);
+		js.executeScript("arguments[0].scrollIntoView({block: 'center', inline: 'nearest'});", elem);
 	}
 
 	// Alert Methods

@@ -5,6 +5,7 @@ import java.util.List;
 import java.util.NoSuchElementException;
 import java.util.Random;
 
+import org.openqa.selenium.interactions.Actions;
 import org.openqa.selenium.ElementNotInteractableException;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
@@ -104,8 +105,11 @@ public class InterestsPage extends commonMethods {
 
 	public void addInterests() {
 		this.interest = new String(StringUtils.generateRandomChars("abcdefghijklmnopqrstuvxyz", 5));
+
 		enterInterests(this.interest);
 		clickElement(btn_addInterest, "Add interest");
+		cucumberLogs.info(this.interest + " interest is added ");
+		System.out.println(this.interest + " interest is added ");
 	}
 
 	public void cancelAddingInterest() {
@@ -123,20 +127,21 @@ public class InterestsPage extends commonMethods {
 
 	public WebElement searchInterest() {
 		int nosOfInterests = interestsList.size();
+		WebElement newInterest = null ;
 		for( int i = 0 ; i < nosOfInterests ; i++) {
 			try {
+					 cucumberLogs.info("Searching for recently added interest...");
 
-				if (explicitWaitForTextInElement(interestsList.get(i),this.interest,3) ){
-					 System.out.println("found intrest added");
-					 return interestsList.get(i);
-				}
+					 if (explicitWaitForTextInElement(interestsList.get(i),this.interest,3) ){
+					 	newInterest=interestsList.get(i);
+					 	break;
+					}
 			}
 			catch(Exception e){
 				//do nothing but interate completely
 			}
 		}
-
-		return null;
+		return newInterest;
 	}
 
 	public WebElement searchInFinalInterestList() {
@@ -145,7 +150,7 @@ public class InterestsPage extends commonMethods {
 			try {
 
 				if (explicitWaitForTextInElement(finalInterestsList.get(i),this.interest,3) ){
-					 System.out.println("found intrest added");
+					 cucumberLogs.info("found interest added");
 					 return interestsList.get(i);
 				}
 			}
@@ -161,7 +166,7 @@ public class InterestsPage extends commonMethods {
 	 WebElement interest = searchInterest();
 	 if( interest != null ){
 		 WebElement	deleteIcon = interest.findElement(By.xpath(".//child::i"));
-		 scrolldownbrowser(deleteIcon);
+		 scrolldownbrowser(interest);
 		 deleteIcon.click();
 		 return true;
 	 }
