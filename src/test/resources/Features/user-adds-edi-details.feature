@@ -1,3 +1,4 @@
+@wip
 Feature: Equality, diversity and inclusion
 
   In order to update Equality, diversity and inclusion details
@@ -21,8 +22,7 @@ Scenario: User discards equality, diversity and inclusion details
     And decide to discard entered edi details
     Then I am redirected to edi landing page
 
- @test
-Scenario: User discards equality, diversity and inclusion details
+Scenario: User can continue editing equality, diversity and inclusion details
 
     When I navigate to equality, diversity and inclusion
     Then edi landing page is displayed
@@ -42,8 +42,7 @@ Scenario: User discards equality, diversity and inclusion details
     And I review changes in edi details
     And I save changes in edi details as final
 
-  @test
- Scenario: User discards equality, diversity and inclusion details
+ Scenario: User can cancel reviewed equality, diversity and inclusion details
 
     When I navigate to equality, diversity and inclusion
     Then edi landing page is displayed
