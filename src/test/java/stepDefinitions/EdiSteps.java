@@ -60,27 +60,21 @@ public class EdiSteps extends commonMethods {
 																"Skill details page is not displayed");
 	}
 
-	@When("I enter edit details as below")
+	@When("I enter edi details as below")
 	public void i_edi_details_as_below(io.cucumber.datatable.DataTable dataTable) {
 	    objediPage.updateEDIDetails(dataTable);
 	}
 
-
-	// @When("I add my professional skills")
-	// public void i_add_my_professional_skills() {
-	// 	objskillsPage.addSkill();
-	// }
-
 	@When("I choose to cancel entered of edi details")
+  public void i_choose_to_cancel_entered_of_edi_details() {
+	 	objediPage.cancelAddedEdiDetails();
+	}
+
+	@When("I choose to cancel editing of edi details")
   public void i_choose_to_cancel_editing_of_edi_details() {
 	 	objediPage.cancelAddedEdiDetails();
 	}
 
-	// // @Then("I am on interest details landing page")
-	// // public void i_am_on_interest_details_landing_page() {
-	// //
-	// // }
-	//
 	@When("decide to discard entered edi details")
 	public void decide_to_discard_entered_edi_details() {
 		objediPage.discardAddedEdiDetails();
@@ -92,38 +86,37 @@ public class EdiSteps extends commonMethods {
 																"EDI details page is not displayed");
 	}
 
-	// //
-	// // @When("again decide to continue editing of interests")
-	// // public void again_decide_to_continue_editing_of_interests() {
-	// // 	objinterestsPage.continueEditingContactDetails();
-	// // }
-	//
-	// @When("again decide to continue editing of skills")
-	// public void again_decide_to_continue_editing_of_skills() {
-	// 	objskillsPage.continueEditingSkills();
-	// }
-	//
-	// @When("I delete recently added skill")
-	// public void i_delete_recently_added_skill() {
-	// 	softAssert.assertTrue(objskillsPage.deleteLatestSkill());
-	// 	objskillsPage.confirmDeleteSkill();
-	// 	softAssert.assertAll();
-	// }
-	//
-	// @Then("skill should not be displayed in list")
-	// public void skill_should_not_be_displayed_in_list() {
-	// 	softAssert.assertTrue(objskillsPage.isDeletedSkillDisplayed());
-	// }
-	//
-	// @When("I save changes in skill as final")
-	// public void i_save_changes_in_skill_as_final() {
-	// 	objskillsPage.SaveChanges();
-	// }
-	//
-	// @Then("I should see skill is added")
-	// public void i_should_see_skill_is_added() {
-	// 		softAssert.assertTrue(objskillsPage.isAddedSkillDisplayed());
-	// }
+	@When("I review changes in edi details")
+	public void i_review_changes_in_edi_details() {
+	  objediPage.clickReviewChanges();
+	}
+
+	@When("again I review changes in edi details")
+	public void again_i_review_changes_in_edi_details() {
+	    objediPage.clickReviewChanges();
+	}
+
+	@When("I cancel reviewed changes in edi details")
+	public void i_cancel_reviewed_changes_in_edi_details() {
+	    objediPage.cancelReviewChanges();
+	}
+
+	@When("I save changes in edi details as final")
+	public void i_save_changes_in_edi_details_as_final() {
+	    objediPage.SaveReviewChanges();
+	}
+
+	@Then("I should see edi details are saved")
+	public void i_should_see_edi_details_are_saved() {
+		softAssert.assertTrue(objediPage.isEthnicOriginUpdated());
+		softAssert.assertTrue(objediPage.isGenderUpdated());
+		softAssert.assertAll();
+	}
+
+	@When("again decide to continue editing of edi details")
+	public void again_decide_to_continue_editing_of_edi_details() {
+		objediPage.continueEditingEDIDetails();
+	}
 
 
 }

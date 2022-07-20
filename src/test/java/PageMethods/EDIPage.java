@@ -37,7 +37,7 @@ public class EDIPage extends commonMethods {
 	@FindBy(xpath = "//select[@id='SexualOrientation2']")
 	WebElement drpdown_SexualOrientation;
 
-	@FindBy(xpath = "//select[@id='SexualOrientation2']")
+	@FindBy(xpath = "//select[@id='Gender']")
 	WebElement drpdown_Gender;
 
 	@FindBy(xpath = "//select[@id='GenderSameAsBirth']")
@@ -61,28 +61,39 @@ public class EDIPage extends commonMethods {
   @FindBy(xpath = "//*[@id='b1-popupDiscardChanges']//a[contains(text(),'Continue editing')]")
   WebElement lnk_ContinueEditing;
 
-	@FindBy(xpath = "//div[@id='popupDeleteItem']//a[contains(text(),'Delete')]")
-	public WebElement lnk_Delete;
+	@FindBy(xpath = "//div[@id='b1-popupDiscardChanges']")
+	public WebElement dlg_DiscardChanges;
+
+	@FindBy(xpath = "//div[@id='b1-popupReviewChanges']")
+	public WebElement dlg_ReviewChanges;
+
+  @FindBy(xpath = "//div[@id='b1-popupReviewChanges']//button[@class='btn btn-primary OSFillParent']")
+	WebElement btn_ConfirmReviewChanges;
+
+	@FindBy(xpath = "//div[@id='b1-popupReviewChanges']//button[@class='btn OSFillParent']")
+	WebElement btn_cancelReviewChanges;
 
 	SoftAssert softAssert = new SoftAssert();
 
-	@FindBy(xpath = "//div[@class='popup-dialog popup-dialog']")
-	public WebElement dlg_DiscardChanges;
+	@FindBy(xpath = "//div[@id='EthnicOrigin']")
+	WebElement lbl_ethnicOrigin;
 
-	@FindBy(xpath = "//div[@class='popup-dialog popup-dialog'][@id='popupDeleteItem']")
-	public WebElement dlg_Delete;
+	@FindBy(xpath = "//div[@id='Religion']")
+	WebElement lbl_religion;
 
-  @FindBy(xpath = "//div[@class='drop-overlay-bottom']//button[@class='btn btn-primary']")
-	WebElement btn_SaveChanges;
+	@FindBy(xpath = "//div[@id='SexualOrientation']")
+	WebElement lbl_sexOrientation;
 
+	@FindBy(xpath = "//div[@id='Sex']")
+	WebElement lbl_gender;
 
-	@FindBy(xpath ="//div[@class='list-item']")
-	public List<WebElement> skillsList;
+	@FindBy(xpath = "//div[@id='GenderSameAsAtBirth']")
+	WebElement lbl_gendersameasbirth;
 
-	@FindBy(xpath ="//div[@class='public-profile-content']//div[@class='list list-group OSFillParent']")
-	public List<WebElement> finalSkillsList;
+	@FindBy(xpath = "//div[@id='GenderDescription']")
+	WebElement lbl_genderDescription;
 
-	String skill;
+	String gender,ethnicorigin;
 
 	public EDIPage(WebDriver driver) {
 
@@ -165,11 +176,11 @@ public class EDIPage extends commonMethods {
 				case "sexual orientation":
 					setSexualOrientation(ediDetails.cell(i,1) );
 					break;
-				case "sex":
+				case "gender":
 					setGender(ediDetails.cell(i,1) );
 					break;
 				case "sex at birth":
-					setReligion(ediDetails.cell(i,1) );
+					setSexRegisteredatBirth(ediDetails.cell(i,1) );
 					break;
 				case "gender description":
 					setGenderDescription(ediDetails.cell(i,1) );
@@ -180,15 +191,6 @@ public class EDIPage extends commonMethods {
 		}
 
  }
-
-	// public void addSkill() {
-	// 	this.skill = new String(StringUtils.generateRandomChars("abcdefghijklmnopqrstuvxyz", 5));
- //
-	// 	enterSkill(this.skill);
-	// 	clickElement(btn_addSkill, "Add skill");
-	// 	cucumberLogs.info(this.skill + " skill is added ");
-	// 	System.out.println(this.skill + " skill is added ");
-	// }
 
 	public void cancelAddedEdiDetails() {
 		explicitWait(btn_Cancel, "elementToBeClickable", 20);
@@ -203,87 +205,38 @@ public class EDIPage extends commonMethods {
 		clickElement(lnk_discard, "Discard link");
 	}
 
-	// public WebElement searchSkill() {
-	// 	int nosOfSkills = skillsList.size();
-	// 	WebElement newSkill = null ;
-	// 	for( int i = 0 ; i < nosOfSkills ; i++) {
-	// 		try {
-	// 				 cucumberLogs.info("Searching for recently added skill...");
- //
-	// 				 if (explicitWaitForTextInElement(skillsList.get(i),this.skill,3) ){
-	// 				 	newSkill = skillsList.get(i);
-	// 				 	break;
-	// 				}
-	// 		}
-	// 		catch(Exception e){
-	// 			//do nothing but interate completely
-	// 		}
-	// 	}
-	// 	return newSkill;
-	// }
- //
-	// public WebElement searchInFinalSkillsList() {
-	// 	int nosOfSkills = finalSkillsList.size();
-	// 	for( int i = 0 ; i < nosOfSkills ; i++) {
-	// 		try {
- //
-	// 			if (explicitWaitForTextInElement(finalSkillsList.get(i),this.skill,3) ){
-	// 				 cucumberLogs.info("Found, latest skill added...");
-	// 				 return finalSkillsList.get(i);
-	// 			}
-	// 		}
-	// 		catch(Exception e){
-	// 			//do nothing but interate completely
-	// 		}
-	// 	}
- //
-	// 	 return null;
-	// }
- //
- // public boolean deleteLatestSkill() {
-	//  WebElement skill = searchSkill();
-	//  if( skill != null ){
-	// 	 WebElement	deleteIcon = skill.findElement(By.xpath(".//child::i"));
-	// 	 scrolldownbrowser(skill);
-	// 	 deleteIcon.click();
-	// 	 return true;
-	//  }
- //    return false;
- // }
- //
-	//  public boolean isDeletedSkillDisplayed() {
-	// 	 WebElement skill = searchSkill();
-	// 	 if( skill == null ){
-	// 		 return true;
-	// 	 }
-	// 	  return false;
-	//  }
- //
-	//  public boolean isAddedSkillDisplayed() {
-	// 	 WebElement skill = searchInFinalSkillsList();
-	// 	 if( skill != null ){
-	// 		 return true;
-	// 	 }
-	// 	  return false;
-	//  }
- //
-	//  public void confirmDeleteSkill() {
-	// 	 explicitWait(dlg_Delete, "visibilityOf", 120);
-	// 	 explicitWait(lnk_Delete, "elementToBeClickable", 20);
-	// 	 clickElement(lnk_Delete, "Delete link");
-	//  }
- //
-	// public void continueEditingSkills() {
- //
-	// 	explicitWait(dlg_DiscardChanges, "visibilityOf", 120);
-	// 	explicitWait(lnk_ContinueEditing, "elementToBeClickable", 20);
-	// 	clickElement(lnk_ContinueEditing, "Continue editing link");
-	// }
- //
- //  public void SaveChanges()  {
-	// 	explicitWait(btn_SaveChanges, "elementToBeClickable", 10);
-	// 	clickElement(btn_SaveChanges, "Save Changes button");
-	// }
+	public void continueEditingEDIDetails() {
 
+		explicitWait(dlg_DiscardChanges, "visibilityOf", 120);
+		explicitWait(lnk_ContinueEditing, "elementToBeClickable", 20);
+		clickElement(lnk_ContinueEditing, "Continue editing link");
+	}
+
+	public void clickReviewChanges() {
+
+		explicitWait(btn_reviewChanges, "elementToBeClickable", 10);
+		scrolldownbrowser(btn_reviewChanges);
+		clickElement(btn_reviewChanges, "Review Changes button");
+	}
+
+	public void cancelReviewChanges() {
+		explicitWait(dlg_ReviewChanges, "elementToBeClickable", 10);
+		scrolldownbrowser(btn_cancelReviewChanges);
+		clickElement(btn_cancelReviewChanges, "Cancel on Review Changes dialogue");
+	}
+
+  public void SaveReviewChanges()  {
+		explicitWait(dlg_ReviewChanges, "elementToBeClickable", 10);
+		explicitWait(btn_ConfirmReviewChanges, "elementToBeClickable", 10);
+		clickElement(btn_ConfirmReviewChanges, "Confirm on Review Changes dialogue");
+	}
+
+  public boolean isEthnicOriginUpdated() {
+		return explicitWaitForTextInElement(lbl_ethnicOrigin,this.ethnicorigin,20);
+	}
+
+  public boolean isGenderUpdated() {
+		return explicitWaitForTextInElement(lbl_gender,this.gender,20);
+	}
 
 }
