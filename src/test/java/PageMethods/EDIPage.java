@@ -93,7 +93,7 @@ public class EDIPage extends commonMethods {
 	@FindBy(xpath = "//div[@id='GenderDescription']")
 	WebElement lbl_genderDescription;
 
-	String gender,ethnicorigin;
+	String gender,ethnicity,religion,sexualorientation, genderatbirth,description ;
 
 	public EDIPage(WebDriver driver) {
 
@@ -127,36 +127,36 @@ public class EDIPage extends commonMethods {
 	public void setEthnicity(String ethnicity ) {
 
 		selectDropdown(drpdown_Ethnicity, "selectByVisiblTtext",ethnicity);
-		// this.ethnicity = ethnicity ;
+		this.ethnicity = ethnicity ;
 	}
 
 	public void setGender(String gender ) {
 
 		selectDropdown(drpdown_Gender, "selectByVisiblTtext",gender);
-		// this.gender = gender ;
+		this.gender = gender ;
 	}
 
 	public void setReligion(String religion ) {
 
 		selectDropdown(drpdown_Religion, "selectByVisiblTtext",religion);
-		// this.religion = religion ;
+		this.religion = religion ;
 	}
 
 	public void setSexualOrientation (String orientation ) {
 
 		selectDropdown(drpdown_SexualOrientation, "selectByVisiblTtext",orientation);
-		// this.SexualOrientation = orientation ;
+		this.sexualorientation = orientation ;
 	}
 
 	public void setSexRegisteredatBirth (String genderatbirth ) {
 
 		selectDropdown(drpdown_GenderSameAsBirth, "selectByVisiblTtext",genderatbirth);
-		// this.genderatbirth = genderatbirth ;
+		this.genderatbirth = genderatbirth ;
 	}
 
 	public void setGenderDescription(String description) {
 		clearText(txt_GenderDescription);
-		// this.description = description;
+		this.description = description;
 		enterText(txt_GenderDescription, description);
 	}
 
@@ -232,11 +232,15 @@ public class EDIPage extends commonMethods {
 	}
 
   public boolean isEthnicOriginUpdated() {
-		return explicitWaitForTextInElement(lbl_ethnicOrigin,this.ethnicorigin,20);
+		return explicitWaitForTextInElement(lbl_ethnicOrigin,this.ethnicity,20);
 	}
 
   public boolean isGenderUpdated() {
 		return explicitWaitForTextInElement(lbl_gender,this.gender,20);
+	}
+
+	public boolean isGenderDescriptionUpdated() {
+		return explicitWaitForTextInElement(lbl_genderDescription,this.description,20);
 	}
 
 }
