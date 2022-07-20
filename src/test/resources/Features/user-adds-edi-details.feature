@@ -16,7 +16,7 @@ Feature: Equality, diversity and inclusion
   	When I choose to edit EDI details
     Then edit EDI page is displayed
     When I enter edit details as below
-      | Ethnicity          | Other ethinic background |
+      | Ethnicity          | Prefer not to say |
       | Sexual orientation | Other                    |
     And I choose to cancel entered of edi details
     And decide to discard entered edi details

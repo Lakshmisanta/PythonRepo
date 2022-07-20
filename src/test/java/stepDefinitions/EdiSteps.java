@@ -60,16 +60,9 @@ public class EdiSteps extends commonMethods {
 																"Skill details page is not displayed");
 	}
 
-	@When("I edi details as below")
+	@When("I enter edit details as below")
 	public void i_edi_details_as_below(io.cucumber.datatable.DataTable dataTable) {
-	    // Write code here that turns the phrase above into concrete actions
-	    // For automatic transformation, change DataTable to one of
-	    // E, List<E>, List<List<E>>, List<Map<K,V>>, Map<K,V> or
-	    // Map<K, List<V>>. E,K,V must be a String, Integer, Float,
-	    // Double, Byte, Short, Long, BigInteger or BigDecimal.
-	    //
-	    // For other transformations you can register a DataTableType.
-	    throw new io.cucumber.java.PendingException();
+	    objediPage.updateEDIDetails(dataTable);
 	}
 
 
@@ -77,28 +70,28 @@ public class EdiSteps extends commonMethods {
 	// public void i_add_my_professional_skills() {
 	// 	objskillsPage.addSkill();
 	// }
-	//
-	// @When("I choose to cancel editing of skills")
-  // public void i_choose_to_cancel_editing_of_skills() {
-	//  	objskillsPage.cancelAddingSkill();
-	// }
-	//
+
+	@When("I choose to cancel entered of edi details")
+  public void i_choose_to_cancel_editing_of_edi_details() {
+	 	objediPage.cancelAddedEdiDetails();
+	}
+
 	// // @Then("I am on interest details landing page")
 	// // public void i_am_on_interest_details_landing_page() {
 	// //
 	// // }
-	// //
-	// @When("decide to discard entered skills")
-	// public void decide_to_discard_entered_skills() {
-	// 	objskillsPage.discardSkill();
-	// }
 	//
-	// @Then("I am redirected to skills landing page")
-	// public void i_am_redirected_to_skills_landing_page() {
-	// 	softAssert.assertEquals(objskillsPage.is_SkillsDetails_Landing_Displayed(),true,
-	// 															"Skill details page is not displayed");
-	// }
-	//
+	@When("decide to discard entered edi details")
+	public void decide_to_discard_entered_edi_details() {
+		objediPage.discardAddedEdiDetails();
+	}
+
+	@Then("I am redirected to edi landing page")
+	public void i_am_redirected_to_edi_landing_page() {
+		softAssert.assertEquals(objediPage.is_EDIDetails_Landing_Displayed(),true,
+																"EDI details page is not displayed");
+	}
+
 	// //
 	// // @When("again decide to continue editing of interests")
 	// // public void again_decide_to_continue_editing_of_interests() {

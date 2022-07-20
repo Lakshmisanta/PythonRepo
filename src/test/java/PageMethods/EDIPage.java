@@ -137,15 +137,47 @@ public class EDIPage extends commonMethods {
 		// this.SexualOrientation = orientation ;
 	}
 
-	public void set	setSexRegisteredatBirth (String genderatbirth ) {
+	public void setSexRegisteredatBirth (String genderatbirth ) {
 
 		selectDropdown(drpdown_GenderSameAsBirth, "selectByVisiblTtext",genderatbirth);
 		// this.genderatbirth = genderatbirth ;
 	}
 
+	public void setGenderDescription(String description) {
+		clearText(txt_GenderDescription);
+		// this.description = description;
+		enterText(txt_GenderDescription, description);
+	}
+
 
  public void updateEDIDetails(DataTable ediDetails ) {
+	 int totalRows = ediDetails.height();
+	 //Write the code to handle Data Table
+	 for(int i=0; i < totalRows; i++){
 
+			switch(ediDetails.cell(i,0).toLowerCase()){
+				case "ethnicity":
+					setEthnicity(ediDetails.cell(i,1) );
+					break;
+				case "religion":
+					setReligion(ediDetails.cell(i,1) );
+					break;
+				case "sexual orientation":
+					setSexualOrientation(ediDetails.cell(i,1) );
+					break;
+				case "sex":
+					setGender(ediDetails.cell(i,1) );
+					break;
+				case "sex at birth":
+					setReligion(ediDetails.cell(i,1) );
+					break;
+				case "gender description":
+					setGenderDescription(ediDetails.cell(i,1) );
+					break;
+				default:
+					break;
+			}
+		}
 
  }
 
@@ -157,20 +189,20 @@ public class EDIPage extends commonMethods {
 	// 	cucumberLogs.info(this.skill + " skill is added ");
 	// 	System.out.println(this.skill + " skill is added ");
 	// }
- //
-	// public void cancelAddingSkill() {
-	// 	explicitWait(btn_Cancel, "elementToBeClickable", 20);
-	// 	clickElement(btn_Cancel, "Cancel button");
-	// 	moveToElement(btn_Cancel);
-	// }
- //
-	// public void discardSkill() {
- //
-	// 	explicitWait(dlg_DiscardChanges, "visibilityOf", 120);
-	// 	explicitWait(lnk_discard, "elementToBeClickable", 20);
-	// 	clickElement(lnk_discard, "Discard link");
-	// }
- //
+
+	public void cancelAddedEdiDetails() {
+		explicitWait(btn_Cancel, "elementToBeClickable", 20);
+		clickElement(btn_Cancel, "Cancel button");
+		moveToElement(btn_Cancel);
+	}
+
+	public void discardAddedEdiDetails() {
+
+		explicitWait(dlg_DiscardChanges, "visibilityOf", 120);
+		explicitWait(lnk_discard, "elementToBeClickable", 20);
+		clickElement(lnk_discard, "Discard link");
+	}
+
 	// public WebElement searchSkill() {
 	// 	int nosOfSkills = skillsList.size();
 	// 	WebElement newSkill = null ;
