@@ -33,13 +33,27 @@ Scenario: User discards equality, diversity and inclusion details
       | Religion           | Jewish  |
       | Gender             | Male    |
       | sex at birth       | Yes     |
-      | sexual orientation | Asexual |
     And I choose to cancel editing of edi details
     But again decide to continue editing of edi details
     When I enter edi details as below
       | Ethnicity   | Asian or Asian British - Indian |
       | Religion    | Sikh                            |
       | Gender      | Female                          |
+    And I review changes in edi details
+    And I save changes in edi details as final
+
+  @test
+ Scenario: User discards equality, diversity and inclusion details
+
+    When I navigate to equality, diversity and inclusion
+    Then edi landing page is displayed
+   	When I choose to edit EDI details
+    Then edit EDI page is displayed
+    When I enter edi details as below
+       | Ethnicity          | White   |
+       | Religion           | Jewish  |
+       | Gender             | Female  |
+       | sex at birth       | Yes     |
     And I review changes in edi details
     And I cancel reviewed changes in edi details
     Then edit EDI page is displayed
