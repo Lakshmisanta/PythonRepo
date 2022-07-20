@@ -606,7 +606,7 @@ public class mydetailsPage extends commonMethods {
 
 	public void EDI() {
 		explicitWait(link_EDI, "elementToBeClickable", 20);
-		clickElement(link_EDI, "link_EDI");
+		clickElement(link_EDI, "Equality, diversity and inclusion link");
 	}
 
 	public void Edit_EDI() {
